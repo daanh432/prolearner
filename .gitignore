@@ -22,3 +22,5 @@ Homestead.json
 .rocketeer/
 .idea/
 .vscode/
+
+public/mix-manifest\.json
