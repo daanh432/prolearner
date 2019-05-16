@@ -8,19 +8,31 @@ php:
 
 services:
   - mysql
+  - redis-server
 
-before_script:
+sudo: required
+
+branches:
+  only:
+    - master
+    - develop
+
+cache:
+  directories:
+    - vendor
+    - node_modules
+
+install:
   - composer self-update
   - composer install --no-interaction
+  - npm install
+
+before_script:
   - cp .env.travis .env
+  - npm run prod
   - mysql -e 'create database testing_db;'
-  - pear install pear/PHP_CodeSniffer
-  - phpenv rehash
-  - nvm install 7.7.1
-  - npm install npm@latest -g
-  - npm install -g jshint
   - php artisan key:generate
-  - php artisan migrate --seed
+  - php artisan migrate --force --seed
 
 script:
   - vendor/bin/phpunit --coverage-text
