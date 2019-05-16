@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CourseFeedback extends Migration
+class CreateCourseChaptersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CourseFeedback extends Migration
      */
     public function up()
     {
-        Schema::create('course_feedback', function (Blueprint $table) {
+        Schema::create('course_chapters', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('course_id');
-            $table->string('comment', 2048);
+            $table->string('name');
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ class CourseFeedback extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('course_feedback');
+        Schema::dropIfExists('course_chapters');
     }
 }
