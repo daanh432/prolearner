@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class UserProgress extends Migration
+class CreateForumPostReactionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,8 @@ class UserProgress extends Migration
      */
     public function up()
     {
-        Schema::create('user_progress', function (Blueprint $table) {
+        Schema::create('forum_post_reactions', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('course_chapter_lesson_id');
-            $table->boolean('completed');
-            $table->text('answer');
             $table->timestamps();
         });
     }
@@ -30,6 +26,6 @@ class UserProgress extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('user_progress');
+        Schema::dropIfExists('forum_post_reactions');
     }
 }

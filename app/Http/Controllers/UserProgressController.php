@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\user_progress;
+use App\userProgress;
 use Illuminate\Http\Request;
 
 class UserProgressController extends Controller
@@ -41,10 +41,10 @@ class UserProgressController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\user_progress  $user_progress
+     * @param  \App\userProgress  $userProgress
      * @return \Illuminate\Http\Response
      */
-    public function show(user_progress $user_progress)
+    public function show(userProgress $userProgress)
     {
         //
     }
@@ -52,10 +52,10 @@ class UserProgressController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\user_progress  $user_progress
+     * @param  \App\userProgress  $userProgress
      * @return \Illuminate\Http\Response
      */
-    public function edit(user_progress $user_progress)
+    public function edit(userProgress $userProgress)
     {
         //
     }
@@ -64,10 +64,10 @@ class UserProgressController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\user_progress  $user_progress
+     * @param  \App\userProgress  $userProgress
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, user_progress $user_progress)
+    public function update(Request $request, userProgress $userProgress)
     {
         //
     }
@@ -75,10 +75,10 @@ class UserProgressController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\user_progress  $user_progress
+     * @param  \App\userProgress  $userProgress
      * @return \Illuminate\Http\Response
      */
-    public function destroy(user_progress $user_progress)
+    public function destroy(userProgress $userProgress)
     {
         //
     }

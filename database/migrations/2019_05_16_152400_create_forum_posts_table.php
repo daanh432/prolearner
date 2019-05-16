@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class ProgrammingLanguages extends Migration
+class CreateForumPostsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,12 @@ class ProgrammingLanguages extends Migration
      */
     public function up()
     {
-        Schema::create('programming_languages', function (Blueprint $table) {
+        Schema::create('forum_posts', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name');
-            $table->string('description', 1024);
-            $table->string('image');
+            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('course_id');
+            $table->string('title');
+            $table->string('description', 4096);
             $table->timestamps();
         });
     }
@@ -29,6 +30,6 @@ class ProgrammingLanguages extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('programming_languages');
+        Schema::dropIfExists('forum_posts');
     }
 }
