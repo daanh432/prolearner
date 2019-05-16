@@ -16,8 +16,10 @@ class CourseChaptersController extends Controller
      */
     public function index(courses $course)
     {
+        $chapters = courseChapters::all();
         return view('courses.chapters.index', [
-            'course' => $course
+            'course' => $course,
+            'chapters' => $chapters
         ]);
     }
 
@@ -49,14 +51,14 @@ class CourseChaptersController extends Controller
      * Display the specified resource.
      *
      * @param courses $course
-     * @param \App\courseChapters $courseChapters
+     * @param courseChapters $chapter
      * @return \Illuminate\Http\Response
      */
-    public function show(courses $course, courseChapters $courseChapters)
+    public function show(courses $course, courseChapters $chapter)
     {
         return view('courses.chapters.show', [
             'course' => $course,
-            'courseChapters' => $courseChapters
+            'chapter' => $chapter
         ]);
     }
 
@@ -64,14 +66,14 @@ class CourseChaptersController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param courses $course
-     * @param \App\courseChapters $courseChapters
+     * @param courseChapters $chapter
      * @return \Illuminate\Http\Response
      */
-    public function edit(courses $course, courseChapters $courseChapters)
+    public function edit(courses $course, courseChapters $chapter)
     {
         return view('courses.chapters.show', [
             'course' => $course,
-            'courseChapters' => $courseChapters
+            'chapter' => $chapter
         ]);
     }
 
@@ -82,7 +84,7 @@ class CourseChaptersController extends Controller
      * @param  \App\courseChapters  $courseChapters
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, courses $course, courseChapters $courseChapters)
+    public function update(Request $request, courses $course, courseChapters $chapter)
     {
         //
     }
@@ -93,7 +95,7 @@ class CourseChaptersController extends Controller
      * @param  \App\courseChapters  $courseChapters
      * @return \Illuminate\Http\Response
      */
-    public function destroy(courses $course, courseChapters $courseChapters)
+    public function destroy(courses $course, courseChapters $chapter)
     {
         //
     }
