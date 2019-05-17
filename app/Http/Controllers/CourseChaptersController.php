@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\course_chapters;
+use App\courseChapters;
+use App\courses;
 use Illuminate\Http\Request;
 
 class CourseChaptersController extends Controller
@@ -10,21 +11,29 @@ class CourseChaptersController extends Controller
     /**
      * Display a listing of the resource.
      *
+     * @param courses $course
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(courses $course)
     {
-        //
+        $chapters = courseChapters::all();
+        return view('courses.chapters.index', [
+            'course' => $course,
+            'chapters' => $chapters
+        ]);
     }
 
     /**
      * Show the form for creating a new resource.
      *
+     * @param courses $course
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(courses $course)
     {
-        //
+        return view('courses.chapters.create', [
+            'course' => $course
+        ]);
     }
 
     /**
@@ -33,7 +42,7 @@ class CourseChaptersController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, courses $course)
     {
         //
     }
@@ -41,33 +50,41 @@ class CourseChaptersController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\course_chapters  $course_chapters
+     * @param courses $course
+     * @param courseChapters $chapter
      * @return \Illuminate\Http\Response
      */
-    public function show(course_chapters $course_chapters)
+    public function show(courses $course, courseChapters $chapter)
     {
-        //
+        return view('courses.chapters.show', [
+            'course' => $course,
+            'chapter' => $chapter
+        ]);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\course_chapters  $course_chapters
+     * @param courses $course
+     * @param courseChapters $chapter
      * @return \Illuminate\Http\Response
      */
-    public function edit(course_chapters $course_chapters)
+    public function edit(courses $course, courseChapters $chapter)
     {
-        //
+        return view('courses.chapters.show', [
+            'course' => $course,
+            'chapter' => $chapter
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\course_chapters  $course_chapters
+     * @param  \App\courseChapters  $courseChapters
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, course_chapters $course_chapters)
+    public function update(Request $request, courses $course, courseChapters $chapter)
     {
         //
     }
@@ -75,10 +92,10 @@ class CourseChaptersController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\course_chapters  $course_chapters
+     * @param  \App\courseChapters  $courseChapters
      * @return \Illuminate\Http\Response
      */
-    public function destroy(course_chapters $course_chapters)
+    public function destroy(courses $course, courseChapters $chapter)
     {
         //
     }

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\forum_post_reactions;
+use App\forumPostReactions;
 use Illuminate\Http\Request;
 
 class ForumPostReactionsController extends Controller
@@ -41,10 +41,10 @@ class ForumPostReactionsController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\forum_post_reactions  $forum_post_reactions
+     * @param  \App\forumPostReactions  $forumPostReactions
      * @return \Illuminate\Http\Response
      */
-    public function show(forum_post_reactions $forum_post_reactions)
+    public function show(forumPostReactions $forumPostReactions)
     {
         //
     }
@@ -52,10 +52,10 @@ class ForumPostReactionsController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\forum_post_reactions  $forum_post_reactions
+     * @param  \App\forumPostReactions  $forumPostReactions
      * @return \Illuminate\Http\Response
      */
-    public function edit(forum_post_reactions $forum_post_reactions)
+    public function edit(forumPostReactions $forumPostReactions)
     {
         //
     }
@@ -64,10 +64,10 @@ class ForumPostReactionsController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\forum_post_reactions  $forum_post_reactions
+     * @param  \App\forumPostReactions  $forumPostReactions
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, forum_post_reactions $forum_post_reactions)
+    public function update(Request $request, forumPostReactions $forumPostReactions)
     {
         //
     }
@@ -75,10 +75,10 @@ class ForumPostReactionsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\forum_post_reactions  $forum_post_reactions
+     * @param  \App\forumPostReactions  $forumPostReactions
      * @return \Illuminate\Http\Response
      */
-    public function destroy(forum_post_reactions $forum_post_reactions)
+    public function destroy(forumPostReactions $forumPostReactions)
     {
         //
     }

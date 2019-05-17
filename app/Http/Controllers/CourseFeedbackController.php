@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\course_feedback;
+use App\courseFeedback;
 use Illuminate\Http\Request;
 
 class CourseFeedbackController extends Controller
@@ -41,10 +41,10 @@ class CourseFeedbackController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\course_feedback  $course_feedback
+     * @param  \App\courseFeedback  $courseFeedback
      * @return \Illuminate\Http\Response
      */
-    public function show(course_feedback $course_feedback)
+    public function show(courseFeedback $courseFeedback)
     {
         //
     }
@@ -52,10 +52,10 @@ class CourseFeedbackController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\course_feedback  $course_feedback
+     * @param  \App\courseFeedback  $courseFeedback
      * @return \Illuminate\Http\Response
      */
-    public function edit(course_feedback $course_feedback)
+    public function edit(courseFeedback $courseFeedback)
     {
         //
     }
@@ -64,10 +64,10 @@ class CourseFeedbackController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\course_feedback  $course_feedback
+     * @param  \App\courseFeedback  $courseFeedback
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, course_feedback $course_feedback)
+    public function update(Request $request, courseFeedback $courseFeedback)
     {
         //
     }
@@ -75,10 +75,10 @@ class CourseFeedbackController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\course_feedback  $course_feedback
+     * @param  \App\courseFeedback  $courseFeedback
      * @return \Illuminate\Http\Response
      */
-    public function destroy(course_feedback $course_feedback)
+    public function destroy(courseFeedback $courseFeedback)
     {
         //
     }

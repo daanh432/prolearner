@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CourseChapterLessons extends Migration
+class CreateProgrammingLanguagesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,11 @@ class CourseChapterLessons extends Migration
      */
     public function up()
     {
-        Schema::create('course_chapter_lessons', function (Blueprint $table) {
+        Schema::create('programming_languages', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('course_chapter_id');
             $table->string('name');
-            $table->string('description', 4096);
-            $table->string('assignment', 4096);
-            $table->string('inputCheck', 1024);
-            $table->string('outputCheck', 1024);
+            $table->string('description', 1024);
+            $table->string('image');
             $table->timestamps();
         });
     }
@@ -32,6 +29,6 @@ class CourseChapterLessons extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('course_chapter_lessons');
+        Schema::dropIfExists('programming_languages');
     }
 }
