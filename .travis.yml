@@ -1,0 +1,39 @@
+os:
+  - linux
+
+language: php
+
+php:
+  - '7.2'
+
+services:
+  - mysql
+  - redis-server
+
+sudo: required
+
+branches:
+  only:
+    - master
+    - develop
+
+cache:
+  directories:
+    - vendor
+    - node_modules
+
+install:
+  - composer self-update
+  - composer install --no-interaction
+  - npm install
+
+before_script:
+  - cp .env.travis .env
+  - npm run prod
+  - mysql -e 'create database testing_db;'
+  - php artisan key:generate
+  - php artisan migrate --force --seed
+
+script:
+  - vendor/bin/phpunit --coverage-text
+  - npm run production

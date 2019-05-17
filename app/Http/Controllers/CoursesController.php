@@ -14,7 +14,10 @@ class CoursesController extends Controller
      */
     public function index()
     {
-        //
+        $courses = courses::all();
+        return view('courses.index', [
+            'courses' => $courses
+        ]);
     }
 
     /**
@@ -24,7 +27,7 @@ class CoursesController extends Controller
      */
     public function create()
     {
-        //
+        return view('courses.create');
     }
 
     /**
@@ -41,23 +44,27 @@ class CoursesController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\courses  $courses
+     * @param  \App\courses  $course
      * @return \Illuminate\Http\Response
      */
-    public function show(courses $courses)
+    public function show(courses $course)
     {
-        //
+        return view('courses.show', [
+            'course' => $course
+        ]);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\courses  $courses
+     * @param  \App\courses  $course
      * @return \Illuminate\Http\Response
      */
-    public function edit(courses $courses)
+    public function edit(courses $course)
     {
-        //
+        return view('courses.edit', [
+            'course' => $course
+        ]);
     }
 
     /**

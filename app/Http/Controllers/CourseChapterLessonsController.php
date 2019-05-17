@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\course_chapter_lessons;
+use App\courseChapterLessons;
 use Illuminate\Http\Request;
 
 class CourseChapterLessonsController extends Controller
@@ -41,10 +41,10 @@ class CourseChapterLessonsController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\course_chapter_lessons  $course_chapter_lessons
+     * @param  \App\courseChapterLessons  $courseChapterLessons
      * @return \Illuminate\Http\Response
      */
-    public function show(course_chapter_lessons $course_chapter_lessons)
+    public function show(courseChapterLessons $courseChapterLessons)
     {
         //
     }
@@ -52,10 +52,10 @@ class CourseChapterLessonsController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\course_chapter_lessons  $course_chapter_lessons
+     * @param  \App\courseChapterLessons  $courseChapterLessons
      * @return \Illuminate\Http\Response
      */
-    public function edit(course_chapter_lessons $course_chapter_lessons)
+    public function edit(courseChapterLessons $courseChapterLessons)
     {
         //
     }
@@ -64,10 +64,10 @@ class CourseChapterLessonsController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\course_chapter_lessons  $course_chapter_lessons
+     * @param  \App\courseChapterLessons  $courseChapterLessons
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, course_chapter_lessons $course_chapter_lessons)
+    public function update(Request $request, courseChapterLessons $courseChapterLessons)
     {
         //
     }
@@ -75,10 +75,10 @@ class CourseChapterLessonsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\course_chapter_lessons  $course_chapter_lessons
+     * @param  \App\courseChapterLessons  $courseChapterLessons
      * @return \Illuminate\Http\Response
      */
-    public function destroy(course_chapter_lessons $course_chapter_lessons)
+    public function destroy(courseChapterLessons $courseChapterLessons)
     {
         //
     }

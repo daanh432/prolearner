@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\forum_posts;
+use App\forumPosts;
 use Illuminate\Http\Request;
 
 class ForumPostsController extends Controller
@@ -41,10 +41,10 @@ class ForumPostsController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\forum_posts  $forum_posts
+     * @param  \App\forumPosts  $forumPosts
      * @return \Illuminate\Http\Response
      */
-    public function show(forum_posts $forum_posts)
+    public function show(forumPosts $forumPosts)
     {
         //
     }
@@ -52,10 +52,10 @@ class ForumPostsController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\forum_posts  $forum_posts
+     * @param  \App\forumPosts  $forumPosts
      * @return \Illuminate\Http\Response
      */
-    public function edit(forum_posts $forum_posts)
+    public function edit(forumPosts $forumPosts)
     {
         //
     }
@@ -64,10 +64,10 @@ class ForumPostsController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\forum_posts  $forum_posts
+     * @param  \App\forumPosts  $forumPosts
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, forum_posts $forum_posts)
+    public function update(Request $request, forumPosts $forumPosts)
     {
         //
     }
@@ -75,10 +75,10 @@ class ForumPostsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\forum_posts  $forum_posts
+     * @param  \App\forumPosts  $forumPosts
      * @return \Illuminate\Http\Response
      */
-    public function destroy(forum_posts $forum_posts)
+    public function destroy(forumPosts $forumPosts)
     {
         //
     }

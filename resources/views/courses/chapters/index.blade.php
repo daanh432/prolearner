@@ -1,0 +1,2 @@
+{{ dump($course) }}
+{{ dump($chapters) }}

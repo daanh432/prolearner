@@ -16,3 +16,7 @@ Auth::routes(['verify' => true, 'register' => true]);
 Route::get('/', function() {
     return view('index');
 })->name('index');
+
+Route::resource('/courses', 'CoursesController');
+Route::resource('/courses.chapters', 'CourseChaptersController');
+Route::resource('/courses.chapters.lessons', 'CourseChapterLessonsController');

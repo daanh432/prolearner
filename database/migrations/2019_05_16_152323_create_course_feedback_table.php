@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class ForumPostReactions extends Migration
+class CreateCourseFeedbackTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class ForumPostReactions extends Migration
      */
     public function up()
     {
-        Schema::create('forum_post_reactions', function (Blueprint $table) {
+        Schema::create('course_feedback', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('form_post_id');
+            $table->unsignedBigInteger('course_id');
+            $table->string('comment', 2048);
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ class ForumPostReactions extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('forum_post_reactions');
+        Schema::dropIfExists('course_feedback');
     }
 }
