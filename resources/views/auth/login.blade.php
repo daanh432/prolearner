@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="w-75 m-auto p-5 rounded-lg bg-white">
+<div class="w-75 mx-auto p-5 rounded-lg bg-white mt-5">
     <form method="POST" action="{{ route('login') }}">
         @csrf
         <h1>Sign in</h1>
@@ -37,12 +37,10 @@
 
         <div class="form-group row">
             <div class="col-sm-6 text-center">
-                <button type="submit" class="btn btn-primary">
-                    {{ __('Login') }}
-                </button>
+                <button class="btn btn-info w-50" type="submit">Sign in</button>
             </div>
             <div class="col-sm-6 text-center">
-                <a href="{{ route('register') }}" class="btn btn-primary">Register</a>
+                <a href="{{ 'register' }}" class="btn btn-secondary w-50 mr-5">Sign up</a>
             </div>
 
             @if (Route::has('password.request'))
