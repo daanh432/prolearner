@@ -45,18 +45,21 @@
 
             <div class="form-group row">
                 <div class="col-sm-6 text-center">
-                    <button class="btn btn-info w-50" type="submit">Sign in</button>
+                    <button class="btn btn-primary w-50" type="submit">Sign in</button>
+                    @if (Route::has('password.request'))
+                        <a class="btn btn-link" href="{{ route('password.request') }}">
+                            {{ __('Forgot Your Password?') }}
+                        </a>
+                    @endif
                 </div>
                 <div class="col-sm-6 text-center">
                     <a href="{{ 'register' }}" class="btn btn-secondary w-50 mr-5">Sign up</a>
                 </div>
-
-                @if (Route::has('password.request'))
-                    <a class="btn btn-link" href="{{ route('password.request') }}">
-                        {{ __('Forgot Your Password?') }}
-                    </a>
-                @endif
             </div>
         </form>
     </div>
 @endsection
+
+@push('head')
+    {!! htmlScriptTagJsApi() !!}
+@endpush

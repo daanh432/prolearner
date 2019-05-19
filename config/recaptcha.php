@@ -44,7 +44,7 @@ return [
      * IP addresses for which validation will be skipped
      *
      */
-    'skip_ip' => ['127.0.0.1'],
+    'skip_ip' => [],
 
     /**
      *
