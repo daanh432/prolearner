@@ -19,7 +19,7 @@
 {{--@include('components.footer')--}}
 
 {{-- Scripts --}}
-@stack('scripts')
 <script src="{{ asset('/assets/js/app.js') }}"></script>
+@stack('scripts')
 </body>
 </html>
