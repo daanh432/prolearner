@@ -15,6 +15,7 @@
     @yield('content')
 </div>
 
+@include('components.errors')
 {{--@include('components.footer')--}}
 
 {{-- Scripts --}}
