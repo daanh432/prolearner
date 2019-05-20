@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\courses;
 use App\programmingLanguages;
-use Carbon\Language;
 use Illuminate\Http\Request;
 
 class CoursesController extends Controller
