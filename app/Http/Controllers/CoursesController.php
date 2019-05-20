@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\courses;
+use App\programmingLanguages;
 use Illuminate\Http\Request;
 
 class CoursesController extends Controller
@@ -27,7 +28,11 @@ class CoursesController extends Controller
      */
     public function create()
     {
-        return view('courses.create');
+        $languages = programmingLanguages::all();
+
+        return view('courses.create', [
+            'languages' => $languages
+        ]);
     }
 
     /**
@@ -38,7 +43,20 @@ class CoursesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'name' => ['required', 'string'],
+            'duration' => ['required', 'string'],
+            'difficulty' => ['required', 'string'],
+            'price' => ['required', 'numeric'],
+            'programming_language_id' => ['required', 'exists:programming_languages,id'],
+            'image' => ['required', 'image', 'mimes:jpeg,png,jpg,gif', 'max:2048']
+        ]);
+
+        $validated['image'] = $request->file('image')->store('courseImages', 'public');
+
+        courses::create($validated);
+
+        return redirect(route('courses.index'));
     }
 
     /**
