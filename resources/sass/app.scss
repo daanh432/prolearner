@@ -4,7 +4,6 @@
 @import 'variables';
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
-
 // Custom imports
 @import 'homepage';
 
@@ -22,9 +21,15 @@
 }
 
 .darkTheme .primaryText {
-  color: #171717;
+    color: #171717;
 }
 
 .lightTheme .primaryText {
-  color: #FAFAFA;
+    color: #FAFAFA;
+}
+
+#errorMessages {
+    position: absolute;
+    bottom: 0;
+    right: 0;
 }

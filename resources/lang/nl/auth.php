@@ -13,15 +13,15 @@ return [
     |
     */
 
-    'failed' => 'These credentials do not match our records.',
-    'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
+    'failed' => 'Deze combinatie van e-mailadres en wachtwoord is niet geldig.',
+    'throttle' => 'Te veel mislukte loginpogingen. Probeer het over :seconds seconden nogmaals.',
     'recaptcha' => 'Recaptcha',
-    'password' => 'Password',
-    'E-Mail Address' => 'E-Mail Address',
-    'rememberMe' => 'Remember Me',
-    'forgotYourPassword' => 'Forgot Your Password?',
+    'password' => 'Wachtwoord',
+    'E-Mail Address' => 'E-Mail Adres',
+    'rememberMe' => 'Onthoud Mij',
+    'forgotYourPassword' => 'Wachtwoord Vergeten?',
     'login' => 'Login',
-    'register' => 'Register',
-    'alreadyRegistered' => 'Already have an account? Click here',
-    'dontHaveAccount' => 'Don\'t have an account yet? Click here',
+    'register' => 'Registreer',
+    'alreadyRegistered' => 'Al een account? Klik hier.',
+    'dontHaveAccount' => 'Nog geen account? Klik hier.',
 ];
