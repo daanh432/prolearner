@@ -55,7 +55,7 @@
 
             <div class="form-group row">
                 <div class="col-sm-6 text-center">
-                    <button class="btn btn-info w-50" type="submit">Sign up</button>
+                    <button class="btn btn-primary w-50" type="submit">Sign up</button>
                 </div>
                 <div class="col-sm-6 text-center">
                     <a href="{{ 'login' }}" class="btn btn-secondary w-50 mr-5">Sign in</a>
