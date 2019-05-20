@@ -5,7 +5,17 @@
  */
 
 require('./bootstrap');
+require('./libraries/jquery.visible');
+
+
 
 $(document).ready(function(){
     $('.toast').toast('show');
+
+    let elem = $('[data-scroll-anchor="' + window.location.hash.replace('#', '') + '"]'); // Fetch element to scroll to
+    if (elem && elem.visible(true) === false) {
+        $([document.documentElement, document.body]).animate({
+            scrollTop: elem.offset().top
+        }, 2000);
+    }
 });
