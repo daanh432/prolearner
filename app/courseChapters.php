@@ -24,5 +24,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class courseChapters extends Model
 {
-    //
+    public function Lessons() {
+        return $this->hasMany('courseChapterLessons')->orderBy('id', 'ASC')->get();
+    }
 }

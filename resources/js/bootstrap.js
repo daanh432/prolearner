@@ -59,12 +59,18 @@ if (token) {
 /**
  * Bootstrap laravel form validation
  */
-// Loop over them and prevent submission
-$('.needs-validation').submit(function event() {
-        if (event.target.checkValidity() === false) {
-            event.preventDefault();
-            event.stopPropagation();
-        }
-        form.classList.add('was-validated');
-    }
-);
+$('document').ready(function () {
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    let formsToValidate = document.getElementsByClassName('needs-validation');
+    // Loop over them and prevent submission
+    Array.prototype.filter.call(formsToValidate, function (formToValidate) {
+        formToValidate.addEventListener('submit', function (event) {
+            if (formToValidate.checkValidity() === false) {
+                event.preventDefault();
+                event.stopPropagation();
+            }
+            formToValidate.classList.add('was-validated');
+        }, false);
+    });
+
+});
