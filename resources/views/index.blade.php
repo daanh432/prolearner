@@ -4,59 +4,61 @@
 
 @section('content')
     <div class="row-full parallax-row" data-parallax="scroll" data-image-src="{{ asset('/assets/img/parallaxBackground.jpg') }}">
-        <div class="row mt-md-5">
-            <div class="col-md-10 mx-auto">
-                <div class="row">
-                    <div class="col-md-7 mt-5">
-                        <h1>The free programming learner</h1>
-                        <p>Go from zero to a junior programmer within weeks!</p>
-                    </div>
-                    <div id="homepageRegistrationForm" class="p-4 bg-light rounded col-md-5">
-                        <!-- Register form -->
-                        <form action="{{ route('register') }}" method="post">
-                            @csrf
-                            <h2 class="text-center my-4">{{ __('auth.register') }}</h2>
-                            <div class="form-group mb-4">
-                                <input type="text" id="fullName" class="form-control" placeholder="Full name"
-                                       name="fullName" required>
-                                <div class="valid-feedback">Valid.</div>
-                                <div class="invalid-feedback">Please fill out this field.</div>
-                            </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-10 mx-auto mt-5 p-0">
+                    <div class="row">
+                        <div class="col-md-7 mt-5">
+                            <h1>The free programming learner</h1>
+                            <p>Go from zero to a junior programmer within weeks!</p>
+                        </div>
+                        <div id="homepageRegistrationForm" class="p-4 bg-light rounded col-md-5">
+                            <!-- Register form -->
+                            <form action="{{ route('register') }}" method="post">
+                                @csrf
+                                <h2 class="text-center my-4">{{ __('auth.register') }}</h2>
+                                <div class="form-group mb-4">
+                                    <input type="text" id="fullName" class="form-control" placeholder="Full name"
+                                           name="fullName" required>
+                                    <div class="valid-feedback">Valid.</div>
+                                    <div class="invalid-feedback">Please fill out this field.</div>
+                                </div>
 
-                            <div class="form-group mb-4">
-                                <input type="email" id="email" class="form-control" placeholder="E-mail" name="email"
-                                       required>
-                                <div class="valid-feedback">Valid.</div>
-                                <div class="invalid-feedback">Please fill out this field.</div>
-                            </div>
+                                <div class="form-group mb-4">
+                                    <input type="email" id="email" class="form-control" placeholder="E-mail" name="email"
+                                           required>
+                                    <div class="valid-feedback">Valid.</div>
+                                    <div class="invalid-feedback">Please fill out this field.</div>
+                                </div>
 
-                            <div class="form-group mb-4">
-                                <input type="password" id="password" class="form-control" placeholder="Password" name="password" aria-describedby="defaultRegisterFormPasswordHelpBlock" required>
-                                <div class="valid-feedback">Valid.</div>
-                                <div class="invalid-feedback">Please fill out this field.</div>
-                            </div>
+                                <div class="form-group mb-4">
+                                    <input type="password" id="password" class="form-control" placeholder="Password" name="password" aria-describedby="defaultRegisterFormPasswordHelpBlock" required>
+                                    <div class="valid-feedback">Valid.</div>
+                                    <div class="invalid-feedback">Please fill out this field.</div>
+                                </div>
 
-                            <div class="form-group mb-4">
-                                <input type="password" id="confirmPassword" class="form-control" placeholder="Confirm Password" name="confirmPassword" aria-describedby="defaultRegisterFormPasswordHelpBlock" required>
-                                <div class="valid-feedback">Valid.</div>
-                                <div class="invalid-feedback">Please fill out this field.</div>
-                            </div>
+                                <div class="form-group mb-4">
+                                    <input type="password" id="confirmPassword" class="form-control" placeholder="Confirm Password" name="confirmPassword" aria-describedby="defaultRegisterFormPasswordHelpBlock" required>
+                                    <div class="valid-feedback">Valid.</div>
+                                    <div class="invalid-feedback">Please fill out this field.</div>
+                                </div>
 
-                            <div class="form-group">
-                                <div class="text-center">
-                                    <div class="gc-reset d-inline-block {{ $errors->has('g-recaptcha-response') ? 'border border-danger rounded' : '' }}">
-                                        {!! htmlFormSnippet() !!}
+                                <div class="form-group">
+                                    <div class="text-center">
+                                        <div class="gc-reset d-inline-block {{ $errors->has('g-recaptcha-response') ? 'border border-danger rounded' : '' }}">
+                                            {!! htmlFormSnippet() !!}
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
 
 
-                            <div class="text-center row no-gutters">
-                                <button class="btn btn-primary col-md-5" type="submit">{{ __('auth.register') }}</button>
-                                <div class="col-md-2"></div>
-                                <a href="{{route ('login')}}" class="btn btn-secondary col-md-5">{{ __('auth.login') }}</a>
-                            </div>
-                        </form>
+                                <div class="text-center row no-gutters">
+                                    <button class="btn btn-primary col-md-5" type="submit">{{ __('auth.register') }}</button>
+                                    <div class="col-md-2"></div>
+                                    <a href="{{route ('login')}}" class="btn btn-secondary col-md-5">{{ __('auth.login') }}</a>
+                                </div>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
