@@ -1,9 +1,7 @@
 // Fonts
 @import url('https://fonts.googleapis.com/css?family=Nunito');
-
 // Variables
 @import 'variables';
-
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
@@ -11,6 +9,13 @@
 
 // Custom inline
 
+.gc-reset {
+    transform: scale(0.95) !important;
+    -webkit-transform: scale(0.95) !important;
+    transform-origin: 0 0 !important;
+    -webkit-transform-origin: 0 0 !important;
+}
+
 .w-40 {
-  width: 40% !important;
+    width: 40% !important;
 }

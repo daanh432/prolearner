@@ -36,7 +36,7 @@
             </div>
 
             <div class="form-group">
-                <input id="confirmPassword" type="password" class="form-control @error('confirmPassword') is-invalid @enderror" name="confirmPassword" required autocomplete="current-password" placeholder="Confirm password">
+                <input id="password-confirm" type="password" class="form-control @error('confirmPassword') is-invalid @enderror" name="password_confirmation" required autocomplete="current-password" placeholder="Confirm password">
 
                 @error('confirmPassword')
                 <span class="invalid-feedback" role="alert">
@@ -45,9 +45,17 @@
                 @enderror
             </div>
 
+            <div class="form-group">
+                <div class="text-center">
+                    <div class="gc-reset d-inline-block {{ $errors->has('g-recaptcha-response') ? 'border border-danger rounded' : '' }}">
+                        {!! htmlFormSnippet() !!}
+                    </div>
+                </div>
+            </div>
+
             <div class="form-group row">
                 <div class="col-sm-6 text-center">
-                    <button class="btn btn-info w-50" type="submit">Sign up</button>
+                    <button class="btn btn-primary w-50" type="submit">Sign up</button>
                 </div>
                 <div class="col-sm-6 text-center">
                     <a href="{{ 'login' }}" class="btn btn-secondary w-50 mr-5">Sign in</a>
@@ -56,3 +64,7 @@
         </form>
     </div>
 @endsection
+
+@push('head')
+    {!! htmlScriptTagJsApi() !!}
+@endpush
