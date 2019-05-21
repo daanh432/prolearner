@@ -14,7 +14,6 @@ class UpdateForumPostsAnswerTable extends Migration
     public function up()
     {
         Schema::table('forum_posts', function (Blueprint $table) {
-            $table->dropForeign('course_id');
             $table->dropColumn('course_id');
             $table->unsignedBigInteger('forum_post_reaction_id');
         });
@@ -28,7 +27,6 @@ class UpdateForumPostsAnswerTable extends Migration
     public function down()
     {
         Schema::table('forum_posts', function (Blueprint $table) {
-            $table->dropForeign('forum_post_reaction_id');
             $table->dropColumn('forum_post_reaction_id');
             $table->unsignedBigInteger('course_id');
         });

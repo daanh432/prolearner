@@ -18,7 +18,7 @@ class CreateCoursesTable extends Migration
             $table->unsignedBigInteger('programming_language_id');
             $table->string('name');
             $table->string('duration');
-            $table->string('difficulty');
+            $table->unsignedInteger('difficulty');
             $table->string('image');
             $table->integer('price');
             $table->timestamps();
