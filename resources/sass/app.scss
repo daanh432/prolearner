@@ -1,5 +1,5 @@
 // Fonts
-@import url('https://fonts.googleapis.com/css?family=Nunito');
+//@import url('https://fonts.googleapis.com/css?family=Nunito');
 // Variables
 @import 'variables';
 // Bootstrap
@@ -16,8 +16,12 @@
     -webkit-transform-origin: 0 0 !important;
 }
 
-.w-40 {
-    width: 40% !important;
+.darkTheme {
+    background-color: $darkPrimaryBackground;
+}
+
+.lightTheme {
+    background-color: white;
 }
 
 .darkTheme .primaryText {
@@ -25,11 +29,19 @@
 }
 
 .lightTheme .primaryText {
-    color: #FAFAFA;
+    color: #171717;
+}
+
+.darkTheme .secondaryText {
+    color: white;
+}
+
+.lightTheme .secondaryText {
+    color: white;
 }
 
 #errorMessages {
-    position: absolute;
+    position: fixed;
     bottom: 0;
     right: 0;
 }

@@ -8,11 +8,11 @@
             <div class="row">
                 <div class="col-md-10 mx-auto mt-5 p-0">
                     <div class="row">
-                        <div class="col-md-7 mt-5">
+                        <div class="col-md-7 mt-5 secondaryText">
                             <h1>The free programming learner</h1>
                             <p>Go from zero to a junior programmer within weeks!</p>
                         </div>
-                        <div id="homepageRegistrationForm" class="p-4 bg-light rounded col-md-5">
+                        <div id="homepageRegistrationForm" class="p-4 bg-light rounded col-md-5 primaryText">
                             <!-- Register form -->
                             <form action="{{ route('register') }}" method="post">
                                 @csrf
@@ -65,7 +65,7 @@
         </div>
     </div>
     <div class="row my-5">
-        <div id="homepageAboutUs" class="bg-light rounded mx-auto p-4 col-md-10">
+        <div id="homepageAboutUs" class="bg-light rounded mx-auto p-4 col-md-10 primaryText">
             <h2 class="text-center my-4">About ProLearner</h2>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus quis elit elit. Nam luctus finibus nisi,
                 ac imperdiet
@@ -122,7 +122,7 @@
                         </form>
 
                         <div class="text-center">
-                            <a class="btn btn-primary w-40">Send</a>
+                            <button type="submit" class="btn btn-primary w-50">Send</button>
                         </div>
                     </div>
                 </div>
