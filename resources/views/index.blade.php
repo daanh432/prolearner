@@ -11,7 +11,7 @@
                     <h1 class="">The free programming learner</h1>
                     <p class="">Go from zero to a junior programmer within weeks!</p>
                 </div>
-                <div id="homepageRegistrationForm" class="p-4 bg-light rounded col-md-5">
+                <div id="homepageRegistrationForm" class="p-4 bg-light br-30 col-md-5">
                     <!-- Register form -->
                     <form action="{{ route('register') }}" method="post">
                         @csrf
@@ -43,8 +43,8 @@
                             <div class="invalid-feedback">Please fill out this field.</div>
                         </div>
                         <div class="text-center">
-                            <a href="{{route ('login')}}" class="btn btn-secondary w-25 mr-5">Sign in</a>
-                            <button class="btn btn-primary w-25" type="submit">Sign up</button>
+                            <a href="{{route ('login')}}" class="btn btn-secondary w-25 mr-5 br-20">Sign in</a>
+                            <button class="btn btn-primary w-25 br-20" type="submit">Sign up</button>
                         </div>
                     </form>
                 </div>
@@ -53,7 +53,7 @@
     </div>
 
     <div class="row">
-        <div id="homepageAboutUs" class="bg-light rounded mx-auto my-2 px-5 col-md-10">
+        <div id="homepageAboutUs" class="bg-light br-30 mx-auto my-2 px-5 col-md-10">
             <h2 class="text-center my-4">About ProLearner</h2>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus quis elit elit. Nam luctus finibus nisi,
                 ac imperdiet
@@ -72,7 +72,7 @@
     </div>
     <div class="row">
         <!-- Contact form -->
-        <div id="homepageContactForm" class="col-md-10 p-4 bg-light rounded mx-auto">
+        <div id="homepageContactForm" class="col-md-10 p-4 bg-light br-30 mx-auto">
             <section class="mb-4">
 
                 <h2 class="text-center my-4">Contact ProLearner</h2>
@@ -116,7 +116,7 @@
                         </form>
 
                         <div class="text-center">
-                            <a class="btn btn-primary w-40">Send</a>
+                            <a class="btn btn-primary w-40 br-20">Send</a>
                         </div>
                     </div>
                 </div>
