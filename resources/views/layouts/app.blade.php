@@ -16,7 +16,6 @@
 </div>
 
 @include('components.errors')
-{{--@include('components.footer')--}}
 
 {{-- Scripts --}}
 <script src="{{ asset('/assets/js/app.js') }}"></script>
