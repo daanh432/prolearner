@@ -12,5 +12,5 @@ const mix = require('laravel-mix');
  */
 
 mix.js('resources/js/app.js', 'public/assets/js')
-    .js('resources/js/parallax.js', 'public/assets/js')
+    .js('resources/js/libraries/parallax.js', 'public/assets/js')
     .sass('resources/sass/app.scss', 'public/assets/css');

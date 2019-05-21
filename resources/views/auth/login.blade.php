@@ -12,6 +12,9 @@
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
                 </span>
+                @if (Route::has('password.request'))
+                    <a class="btn btn-link" href="{{ route('password.request') }}">{{ __('auth.forgotYourPassword') }}</a>
+                @endif
                 @enderror
             </div>
 
@@ -22,17 +25,10 @@
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
                 </span>
+                @if (Route::has('password.request'))
+                    <a class="btn btn-link" href="{{ route('password.request') }}">{{ __('auth.forgotYourPassword') }}</a>
+                @endif
                 @enderror
-            </div>
-
-            <div class="form-group">
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-
-                    <label class="form-check-label" for="remember">
-                        {{ __('Remember Me') }}
-                    </label>
-                </div>
             </div>
 
             <div class="form-group">
@@ -45,16 +41,17 @@
 
             <div class="form-group row">
                 <div class="col-sm-6 text-center">
-                    <button class="btn btn-primary w-50" type="submit">Sign in</button>
-                    @if (Route::has('password.request'))
-                        <a class="btn btn-link" href="{{ route('password.request') }}">
-                            {{ __('Forgot Your Password?') }}
-                        </a>
-                    @endif
+                    <button class="btn btn-primary w-75" type="submit">{{ __('auth.login') }}</button>
+                    <div class="custom-control custom-switch">
+                        <input type="checkbox" class="custom-control-input" id="rememberSwitch" name="remember" {{ old('remember') ? 'checked' : '' }}>
+                        <label class="custom-control-label" for="rememberSwitch">{{ __('auth.rememberMe') }}</label>
+                    </div>
                 </div>
-                <div class="col-sm-6 text-center">
-                    <a href="{{ 'register' }}" class="btn btn-secondary w-50 mr-5">Sign up</a>
-                </div>
+                @if (Route::has('register'))
+                    <div class="col-sm-6 text-center">
+                        <a href="{{ 'register' }}" class="btn btn-link w-75">{{ __('auth.dontHaveAccount') }}</a>
+                    </div>
+                @endif
             </div>
         </form>
     </div>

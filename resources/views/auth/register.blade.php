@@ -55,10 +55,10 @@
 
             <div class="form-group row">
                 <div class="col-sm-6 text-center">
-                    <button class="btn btn-primary w-50" type="submit">Sign up</button>
+                    <button class="btn btn-primary w-75" type="submit">{{ __('auth.register') }}</button>
                 </div>
                 <div class="col-sm-6 text-center">
-                    <a href="{{ 'login' }}" class="btn btn-secondary w-50 mr-5">Sign in</a>
+                    <a href="{{ 'login' }}" class="btn btn-link w-75">{{ __('auth.alreadyRegistered') }}</a>
                 </div>
             </div>
         </form>

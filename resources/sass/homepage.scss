@@ -1,12 +1,25 @@
 .parallax-window {
-  min-height: 400px;
-  position: absolute;
-  left: 0;
-  right: 0;
-  background: transparent;
+    min-height: 400px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    background: transparent;
 }
 
 .parallax-window-reserve {
-  width: 100%;
-  min-height: 400px;
+    width: 100%;
+    min-height: 400px;
+}
+
+.row-full {
+    width: 100vw;
+    position: relative;
+    margin-left: -51vw;
+    overflow: hidden;
+    left: 50%;
+}
+
+.parallax-row {
+    min-height: 65vh;
+    background: transparent;
 }
