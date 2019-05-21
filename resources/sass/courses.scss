@@ -1,0 +1,26 @@
+.courseGridContainer {
+  display: grid;
+  grid-column-gap: 10vw;
+  grid-row-gap: 50px;
+  grid-template-columns: 1fr 1fr;
+}
+
+.gridItem {
+  background: white;
+  height: 250px;
+  width: 100%;
+}
+
+.duration {
+  bottom: 10px;
+}
+
+.gridItem a {
+  right: 25px;
+  bottom: 25px;
+}
+
+.difficulty {
+  right: 25px;
+  top: 25px;
+}
