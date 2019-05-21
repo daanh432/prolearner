@@ -44,7 +44,15 @@ class CourseChaptersController extends Controller
      */
     public function store(Request $request, courses $course)
     {
-        //
+        $validated = $request->validate([
+            'name' => ['required', 'string'],
+        ]);
+
+        $validated['course_id'] = $course->id;
+
+        courseChapters::create($validated);
+
+        return redirect(route('courses.show', ['course_id' => $course->id]));
     }
 
     /**

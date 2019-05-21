@@ -24,3 +24,34 @@
   right: 25px;
   top: 25px;
 }
+
+.lessons > a > li {
+  border-bottom: 1px solid #707070;
+}
+
+.lessons > a > li:hover, .lessonHeader:hover {
+  background-color: #f0f0f0;
+}
+
+.lessons > a:last-child > li {
+  border-bottom: none;
+}
+
+.courseBoardHeader {
+  position: relative;
+  height: 33%;
+  width: 100%;
+}
+
+.courseBoardHeader img {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  object-fit: cover;
+}
+
+.courseBoardHeader h1 {
+
+}
