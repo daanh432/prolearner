@@ -12,21 +12,19 @@
                             <h1>The free programming learner</h1>
                             <p>Go from zero to a junior programmer within weeks!</p>
                         </div>
-                        <div id="homepageRegistrationForm" class="p-4 bg-light rounded col-md-5 primaryText">
+                        <div id="homepageRegistrationForm" class="p-4 bg-light br-20 col-md-5 primaryText">
                             <!-- Register form -->
                             <form action="{{ route('register') }}" method="post">
                                 @csrf
                                 <h2 class="text-center my-4">{{ __('auth.register') }}</h2>
                                 <div class="form-group mb-4">
-                                    <input type="text" id="fullName" class="form-control" placeholder="Full name"
-                                           name="fullName" required>
+                                    <input type="text" id="fullName" class="form-control" placeholder="Full name" name="name" required>
                                     <div class="valid-feedback">Valid.</div>
                                     <div class="invalid-feedback">Please fill out this field.</div>
                                 </div>
 
                                 <div class="form-group mb-4">
-                                    <input type="email" id="email" class="form-control" placeholder="E-mail" name="email"
-                                           required>
+                                    <input type="email" id="email" class="form-control" placeholder="E-mail" name="email" required>
                                     <div class="valid-feedback">Valid.</div>
                                     <div class="invalid-feedback">Please fill out this field.</div>
                                 </div>
@@ -36,9 +34,9 @@
                                     <div class="valid-feedback">Valid.</div>
                                     <div class="invalid-feedback">Please fill out this field.</div>
                                 </div>
-                                
+
                                 <div class="form-group mb-4">
-                                    <input type="password" id="confirmPassword" class="form-control" placeholder="Confirm Password" name="confirmPassword" aria-describedby="defaultRegisterFormPasswordHelpBlock" required>
+                                    <input type="password" id="confirmPassword" class="form-control" placeholder="Confirm Password" name="password_confirmation" aria-describedby="defaultRegisterFormPasswordHelpBlock" required>
                                     <div class="valid-feedback">Valid.</div>
                                     <div class="invalid-feedback">Please fill out this field.</div>
                                 </div>
