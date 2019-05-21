@@ -36,7 +36,7 @@
                                     <div class="valid-feedback">Valid.</div>
                                     <div class="invalid-feedback">Please fill out this field.</div>
                                 </div>
-
+                                
                                 <div class="form-group mb-4">
                                     <input type="password" id="confirmPassword" class="form-control" placeholder="Confirm Password" name="confirmPassword" aria-describedby="defaultRegisterFormPasswordHelpBlock" required>
                                     <div class="valid-feedback">Valid.</div>
@@ -53,9 +53,9 @@
 
 
                                 <div class="text-center row no-gutters">
-                                    <button class="btn btn-primary col-md-5" type="submit">{{ __('auth.register') }}</button>
+                                    <button class="btn btn-primary col-md-5 br-20" type="submit">{{ __('auth.register') }}</button>
                                     <div class="col-md-2"></div>
-                                    <a href="{{route ('login')}}" class="btn btn-secondary col-md-5">{{ __('auth.login') }}</a>
+                                    <a href="{{route ('login')}}" class="btn btn-secondary col-md-5 br-20">{{ __('auth.login') }}</a>
                                 </div>
                             </form>
                         </div>
@@ -65,7 +65,7 @@
         </div>
     </div>
     <div class="row my-5">
-        <div id="homepageAboutUs" class="bg-light rounded mx-auto p-4 col-md-10 primaryText">
+        <div id="homepageAboutUs" class="bg-light br-30 mx-auto p-4 col-md-10 primaryText">
             <h2 class="text-center my-4">About ProLearner</h2>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus quis elit elit. Nam luctus finibus nisi,
                 ac imperdiet
@@ -84,7 +84,7 @@
     </div>
     <div class="row my-5">
         <!-- Contact form -->
-        <div id="homepageContactForm" data-scroll-anchor="contact" class="col-md-10 p-4 bg-light rounded mx-auto">
+        <div id="homepageContactForm" data-scroll-anchor="contact" class="col-md-10 p-4 bg-light br-30 mx-auto">
             <section class="mb-4">
                 <h2 class="text-center my-4">Contact ProLearner</h2>
                 <div class="row mb-5">
@@ -122,7 +122,7 @@
                         </form>
 
                         <div class="text-center">
-                            <button type="submit" class="btn btn-primary w-50">Send</button>
+                            <button type="submit" class="btn btn-primary w-50 br-20">Send</button>
                         </div>
                     </div>
                 </div>
