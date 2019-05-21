@@ -19,16 +19,20 @@
             </div>
             <div class="row text-center mb-3">
                 <div class="col-4 custom-control custom-radio">
-                    <input type="radio" class="custom-control-input" id="cBeginner" name="difficulty" value="beginner" checked>
+                    <input type="radio" class="custom-control-input" id="cBeginner" name="difficulty" value="0" checked>
                     <label class="custom-control-label" for="cBeginner">Beginner</label>
                 </div>
                 <div class="col-4 custom-control custom-radio">
-                    <input type="radio" class="custom-control-input" id="cAdvanced" name="difficulty" value="advanced">
-                    <label class="custom-control-label" for="cAdvanced">Advanced</label>
+                    <input type="radio" class="custom-control-input" id="cAdvanced" name="difficulty" value="1">
+                    <label class="custom-control-label" for="cAdvanced">Intermediate</label>
                 </div>
                 <div class="col-4 custom-control custom-radio">
-                    <input type="radio" class="custom-control-input" id="cVeteran" name="difficulty" value="veteran">
-                    <label class="custom-control-label" for="cVeteran">Veteran</label>
+                    <input type="radio" class="custom-control-input" id="cVeteran" name="difficulty" value="2">
+                    <label class="custom-control-label" for="cVeteran">Advanced</label>
+                </div>
+                <div class="col-4 custom-control custom-radio">
+                    <input type="radio" class="custom-control-input" id="cVeteran" name="difficulty" value="3">
+                    <label class="custom-control-label" for="cVeteran">Expert</label>
                 </div>
             </div>
             <div class="form-group">
