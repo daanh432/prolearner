@@ -35,6 +35,6 @@ class courses extends Model
     protected $fillable = ['name', 'duration', 'difficulty', 'programming_language_id', 'image', 'price'];
 
     public function Chapters() {
-        return $this->hasMany('courseChapters')->orderBy('id', 'ASC')->get();
+        return $this->hasMany('App\courseChapters', 'course_id', 'id')->orderBy('id', 'ASC')->get();
     }
 }
