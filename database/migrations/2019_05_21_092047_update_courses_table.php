@@ -15,7 +15,7 @@ class UpdateCoursesTable extends Migration
     {
         Schema::table('courses', function (Blueprint $table) {
             $table->string('description', 2048);
-            $table->unsignedTinyInteger('difficulty')->change();
+            $table->unsignedInteger('difficulty')->change();
         });
     }
 
