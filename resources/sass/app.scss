@@ -6,7 +6,7 @@
 @import '~bootstrap/scss/bootstrap';
 // Custom imports
 @import 'homepage';
-
+@import 'courses';
 // Custom inline
 
 .gc-reset {
@@ -22,6 +22,42 @@
 
 .lightTheme {
     background-color: white;
+}
+
+.br-5 {
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+}
+
+.br-10 {
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+}
+
+.br-15 {
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  border-radius: 15px;
+}
+
+.br-20 {
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  border-radius: 20px;
+}
+
+.br-25 {
+  -webkit-border-radius: 25px;
+  -moz-border-radius: 25px;
+  border-radius: 25px;
+}
+
+.br-30 {
+  -webkit-border-radius: 30px;
+  -moz-border-radius: 30px;
+  border-radius: 30px;
 }
 
 .darkTheme .primaryText {
