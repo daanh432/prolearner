@@ -1,10 +1,9 @@
 // Fonts
-@import url('https://fonts.googleapis.com/css?family=Nunito');
+//@import url('https://fonts.googleapis.com/css?family=Nunito');
 // Variables
 @import 'variables';
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
-
 // Custom imports
 @import 'homepage';
 @import 'courses';
@@ -17,8 +16,12 @@
     -webkit-transform-origin: 0 0 !important;
 }
 
-.w-40 {
-    width: 40% !important;
+.darkTheme {
+    background-color: $darkPrimaryBackground;
+}
+
+.lightTheme {
+    background-color: white;
 }
 
 .br-5 {
@@ -58,9 +61,23 @@
 }
 
 .darkTheme .primaryText {
-  color: #171717;
+    color: #171717;
 }
 
 .lightTheme .primaryText {
-  color: #FAFAFA;
+    color: #171717;
+}
+
+.darkTheme .secondaryText {
+    color: white;
+}
+
+.lightTheme .secondaryText {
+    color: white;
+}
+
+#errorMessages {
+    position: fixed;
+    bottom: 0;
+    right: 0;
 }
