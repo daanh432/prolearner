@@ -45,6 +45,7 @@ class CoursesController extends Controller
     {
         $validated = $request->validate([
             'name' => ['required', 'string'],
+            'description' => ['required', 'string', 'max:300'],
             'duration' => ['required', 'string'],
             'difficulty' => ['required', 'string'],
             'price' => ['required', 'numeric'],
