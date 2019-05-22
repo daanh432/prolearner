@@ -8,6 +8,7 @@
             <div class="col-md-12">
                 <div class="courseGridContainer my-5 ">
                     @foreach($courses as $course)
+                        <div class="gridItem p-3 br-20 position-relative containerBackground secondaryText">
                             <h1>{{ $course->name }}</h1>
                             <div class="difficulty position-absolute">
                                 @for($i =0; $i <= $course->difficulty; $i++)
@@ -23,7 +24,6 @@
                                     Start
                                 @endif
                             </a>
-                    <div class="gridItem p-3 br-20 position-relative containerBackground secondaryText">
                         </div>
                     @endforeach
                 </div>
