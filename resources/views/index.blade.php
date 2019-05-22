@@ -64,18 +64,20 @@
     </div>
     <div class="container">
         <div class="row my-5">
-            <div id="homepageAboutUs" class="containerBackground br-30 mx-auto p-4 col-md-10 secondaryText">
-                <h2 class="text-center my-4">About ProLearner</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus quis elit elit. Nam luctus finibus nisi,
-                    ac imperdiet
-                    nibh. Sed rhoncus, magna eget fringilla tempor, diam lorem mattis ante, tristique fringilla enim nisi
-                    vitae erat.
-                    Aenean ut neque congue magna convallis dignissim nec vel nisi. Proin aliquam sit amet mi nec pharetra.
-                    Proin varius, ligula quis semper commodo, purus mauris volutpat orci, varius mollis dui odio ut lacus.
-                    In vel sapien vitae velit consequat molestie vel non urna. Cras sollicitudin nulla sit amet sodales
-                    gravida.
-                    Fusce blandit gravida viverra. Donec vulputate nisi at augue varius sollicitudin. hendrerit quis, tempus
-                    eu tortor.</p>
+            <div class="col-md-12">
+                <div id="homepageAboutUs" class="containerBackground br-30 mx-auto p-4 col-md-10 secondaryText">
+                    <h2 class="text-center my-4">About ProLearner</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus quis elit elit. Nam luctus finibus nisi,
+                        ac imperdiet
+                        nibh. Sed rhoncus, magna eget fringilla tempor, diam lorem mattis ante, tristique fringilla enim nisi
+                        vitae erat.
+                        Aenean ut neque congue magna convallis dignissim nec vel nisi. Proin aliquam sit amet mi nec pharetra.
+                        Proin varius, ligula quis semper commodo, purus mauris volutpat orci, varius mollis dui odio ut lacus.
+                        In vel sapien vitae velit consequat molestie vel non urna. Cras sollicitudin nulla sit amet sodales
+                        gravida.
+                        Fusce blandit gravida viverra. Donec vulputate nisi at augue varius sollicitudin. hendrerit quis, tempus
+                        eu tortor.</p>
+                </div>
             </div>
         </div>
     </div>
