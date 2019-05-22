@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\courseChapterLessons;
+use App\courseChapters;
+use App\courses;
 use Illuminate\Http\Request;
 
 class CourseChapterLessonsController extends Controller
@@ -12,9 +14,14 @@ class CourseChapterLessonsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(courses $course, courseChapters $chapter)
     {
-        //
+        $lessons = courseChapterLessons::all();
+        return view('courses.chapters.lessons.index', [
+            'course' => $course,
+            'chapter' => $chapter,
+            'lessons' => $lessons
+        ]);
     }
 
     /**
@@ -22,9 +29,12 @@ class CourseChapterLessonsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(courses $course, courseChapters $chapter)
     {
-        //
+        return view('courses.chapters.lessons.create', [
+            'course' => $course,
+            'chapter' => $chapter
+        ]);
     }
 
     /**
@@ -33,9 +43,21 @@ class CourseChapterLessonsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, courses $course , courseChapters $chapter)
     {
-        //
+        $validated = $request->validate([
+            'name' => ['required', 'string'],
+            'description' => ['required', 'string', 'max:5000'],
+            'assignment' => ['required', 'string', 'max:5000'],
+            'inputCheck' => ['required', 'string'],
+            'outputCheck' => ['required', 'string'],
+        ]);
+
+        $validated['course_chapter_id'] = $chapter->id;
+
+        courseChapterLessons::create($validated);
+
+        return redirect(route('courses.show', ['course_id' => $course->id]));
     }
 
     /**
