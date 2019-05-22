@@ -32,7 +32,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class courses extends Model
 {
-    protected $fillable = ['name', 'duration', 'difficulty', 'programming_language_id', 'image', 'price'];
+    protected $fillable = ['name', 'duration', 'difficulty', 'programming_language_id', 'image', 'price', 'description'];
 
     public function Chapters() {
         return $this->hasMany('App\courseChapters', 'course_id', 'id')->orderBy('id', 'ASC')->get();
