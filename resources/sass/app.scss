@@ -21,7 +21,7 @@
 }
 
 .lightTheme {
-  background-color: red;
+  background-color: $lightPrimaryBackground;
 }
 
 .br-5 {
@@ -66,19 +66,19 @@
 }
 
 .darkTheme .primaryText {
-  color: #171717;
+  color: $darkText;
 }
 
 .lightTheme .primaryText {
-  color: #171717;
+  color: $lightText;
 }
 
 .darkTheme .secondaryText {
-  color: red;
+  color: $lightText;
 }
 
 .lightTheme .secondaryText {
-  color: red;
+  color: $darkText;
 }
 
 #errorMessages {
@@ -103,4 +103,45 @@
 .parallax-row {
   min-height: 65vh;
   background: transparent;
+}
+
+.lightTheme .containerBackground {
+  background-color: $lightSecondaryBackground;
+}
+
+.darkTheme .containerBackground {
+  background-color: $darkSecondaryBackground;
+}
+
+.lightText {
+  color: $lightText;
+}
+
+.darkTheme .headerBackground {
+  background-color: $darkHeaderBackground;
+}
+
+.lightTheme .headerBackground {
+  background-color: $lightHeaderBackground;
+}
+
+.darkTheme .headerBackground .navbar-brand {
+  color: $lightText;
+}
+
+.darkTheme .headerBackground .nav-link:hover {
+  color: $lightText;
+}
+
+
+.lightTheme .headerBackground .nav-link:hover {
+  color: $darkText;
+}
+
+.lightTheme .headerBackground .nav-link {
+  color: #5f5f5f;
+}
+
+.darkTheme .headerBackground .nav-link {
+  color: #cdcdcd;
 }
