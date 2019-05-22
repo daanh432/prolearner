@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container">
-        <div class="w-75 mx-auto p-5 rounded-lg bg-white mt-5">
+        <div class="w-75 mx-auto p-5 br-20 containerBackground mt-5 secondaryText">
             <form method="POST" action="{{ route('login') }}">
                 @csrf
                 <h1>Sign in</h1>
@@ -40,19 +40,17 @@
                     </div>
                 </div>
 
-                <div class="form-group row">
-                    <div class="col-sm-6 text-center">
-                        <button class="btn btn-primary w-75" type="submit">{{ __('auth.login') }}</button>
-                        <div class="custom-control custom-switch">
+                <div class="form-group">
+                    <div class="text-center">
+                        <button class="btn btn-primary w-50 br-20" type="submit">{{ __('auth.login') }}</button>
+                        <div class="custom-control custom-switch text-center mt-1">
                             <input type="checkbox" class="custom-control-input" id="rememberSwitch" name="remember" {{ old('remember') ? 'checked' : '' }}>
                             <label class="custom-control-label" for="rememberSwitch">{{ __('auth.rememberMe') }}</label>
                         </div>
-                    </div>
-                    @if (Route::has('register'))
-                        <div class="col-sm-6 text-center">
+                        @if (Route::has('register'))
                             <a href="{{ 'register' }}" class="btn btn-link w-75">{{ __('auth.dontHaveAccount') }}</a>
-                        </div>
-                    @endif
+                        @endif
+                    </div>
                 </div>
             </form>
         </div>
