@@ -3,6 +3,7 @@
 @section('title', 'Create course')
 
 @section('content')
+{{--    edit page--}}
     <div class="container">
         <div class="row">
             <form action="{{ route('courses.store') }}" method="post" id="storeCourse" enctype="multipart/form-data" class="needs-validation col-md-6 mx-auto bg-white p-5 mt-5 rounded" novalidate>
