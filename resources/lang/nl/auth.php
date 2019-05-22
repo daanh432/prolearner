@@ -17,7 +17,7 @@ return [
     'throttle' => 'Te veel mislukte loginpogingen. Probeer het over :seconds seconden nogmaals.',
     'recaptcha' => 'Recaptcha',
     'password' => 'Wachtwoord',
-    'E-Mail Address' => 'E-Mail Adres',
+    'E-Mail Address' => 'E-Mail',
     'rememberMe' => 'Onthoud Mij',
     'forgotYourPassword' => 'Wachtwoord Vergeten?',
     'login' => 'Login',

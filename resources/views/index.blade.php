@@ -25,7 +25,7 @@
                                     </div>
 
                                     <div class="form-group mb-4">
-                                        <input type="email" id="email" class="form-control" placeholder="{{ __('pages.email') }}" name="email" required>
+                                        <input type="email" id="email" class="form-control" placeholder="{{ __('auth.E-Mail Address') }}" name="email" required>
                                         <div class="valid-feedback">Valid.</div>
                                         <div class="invalid-feedback">Please fill out this field.</div>
                                     </div>

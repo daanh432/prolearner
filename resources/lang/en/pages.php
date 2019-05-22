@@ -17,7 +17,6 @@ return [
     'fullName' => 'Full name',
     'confirmPassword' => 'Confirm Password',
     'contact' => 'Contact',
-    'email' => 'Email',
     'name' => 'Name',
     'subject' => 'Subject',
     'message' => 'Message',
