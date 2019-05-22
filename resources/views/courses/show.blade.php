@@ -3,12 +3,12 @@
 @section('title', 'Courses')
 
 @section('content')
-
-    <div class="row">
-        <div class="col-md-12">
-            <div class="courseBoardHeader">
-                <img src="{{ asset('/assets/img/parallaxBackground.jpg') }}" alt="">
-                <h1 class="secondaryText">{{ $course->name }}</h1>
+    <div class="row-full parallax-row" data-parallax="scroll" data-image-src="{{ asset('/assets/img/parallaxBackground.jpg') }}">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1 class="secondaryText">{{ $course->name }}</h1>
+                </div>
             </div>
         </div>
     </div>
@@ -38,5 +38,8 @@
             </div>
         </div>
     </div>
-
 @endsection
+
+@push('scripts')
+    <script src="{{ asset('/assets/js/parallax.js') }}"></script>
+@endpush
