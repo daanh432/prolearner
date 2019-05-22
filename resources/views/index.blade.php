@@ -122,11 +122,10 @@
                                             </div>
                                         </div>
                                     </div>
-                                </form>
-                                
-                                <div class="text-center">
-                                    <button type="submit" class="btn btn-primary w-50 br-20">{{ __("pages.send") }}</button>
-                                </div>
+
+                                    <div class="text-center">
+                                        <button type="submit" class="btn btn-primary w-50 br-20">{{ __("pages.send") }}</button>
+                                    </div>
                                 </form>
                             </div>
                     </section>
