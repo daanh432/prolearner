@@ -84,52 +84,54 @@
     <div class="container-fluid">
         <div class="row parallax-row" data-parallax="scroll" data-image-src="{{ asset('/assets/img/parallaxBackground.jpg') }}"></div>
     </div>
-    <div id="homepageContactForm" data-scroll-anchor="contact" class="col-md-10 p-4 containerBackground secondaryText br-30 mx-auto">
-        <!-- Contact form -->
-        <div class="row my-5">
-            <div class="container">
-                <section class="mb-4">
-                    <h2 class="text-center my-4">Contact ProLearner</h2>
-                    <div class="row mb-5">
-                        <div class="col-md-9 mb-md-0 mx-auto">
-                            <form action="" method="POST">
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="md-form mb-0">
-                                            <input type="text" id="name" name="name" placeholder="Name" class="form-control mb-4">
+    <div class="container">
+        <div id="homepageContactForm" data-scroll-anchor="contact" class="col-md-10 p-4 containerBackground secondaryText br-30 mx-auto">
+            <!-- Contact form -->
+            <div class="row my-5">
+                <div class="container">
+                    <section class="mb-4">
+                        <h2 class="text-center my-4">Contact ProLearner</h2>
+                        <div class="row mb-5">
+                            <div class="col-md-9 mb-md-0 mx-auto">
+                                <form action="" method="POST">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="md-form mb-0">
+                                                <input type="text" id="name" name="name" placeholder="Name" class="form-control mb-4">
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <div class="md-form mb-0">
+                                                <input type="text" id="emailContact" name="email" placeholder="Email" class="form-control mb-4">
+                                            </div>
                                         </div>
                                     </div>
 
-                                    <div class="col-md-6">
-                                        <div class="md-form mb-0">
-                                            <input type="text" id="emailContact" name="email" placeholder="Email" class="form-control mb-4">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="md-form mb-0">
+                                                <input type="text" id="subject" name="subject" placeholder="Subject" class="form-control mb-4">
+                                            </div>
                                         </div>
                                     </div>
+
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="md-form">
+                                                <textarea id="message" name="message" rows="2" maxlength="500" placeholder="Message" class="form-control md-textarea mb-4"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+
+                                <div class="text-center">
+                                    <button type="submit" class="btn btn-primary w-50 br-20">Send</button>
                                 </div>
-
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="md-form mb-0">
-                                            <input type="text" id="subject" name="subject" placeholder="Subject" class="form-control mb-4">
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="md-form">
-                                            <textarea id="message" name="message" rows="2" maxlength="500" placeholder="Message" class="form-control md-textarea mb-4"></textarea>
-                                        </div>
-                                    </div>
-                                </div>
-                            </form>
-
-                            <div class="text-center">
-                                <button type="submit" class="btn btn-primary w-50 br-20">Send</button>
                             </div>
                         </div>
-                    </div>
-                </section>
+                    </section>
+                </div>
             </div>
         </div>
     </div>
