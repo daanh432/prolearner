@@ -63,70 +63,74 @@
     </div>
     <div class="container">
         <div class="row my-5">
-            <div id="homepageAboutUs" class="containerBackground br-30 mx-auto p-4 col-md-10 secondaryText">
-                <h2 class="text-center my-4">{{ __('pages.about') }} ProLearner</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus quis elit elit. Nam luctus finibus nisi,
-                    ac imperdiet
-                    nibh. Sed rhoncus, magna eget fringilla tempor, diam lorem mattis ante, tristique fringilla enim nisi
-                    vitae erat.
-                    Aenean ut neque congue magna convallis dignissim nec vel nisi. Proin aliquam sit amet mi nec pharetra.
-                    Proin varius, ligula quis semper commodo, purus mauris volutpat orci, varius mollis dui odio ut lacus.
-                    In vel sapien vitae velit consequat molestie vel non urna. Cras sollicitudin nulla sit amet sodales
-                    gravida.
-                    Fusce blandit gravida viverra. Donec vulputate nisi at augue varius sollicitudin. hendrerit quis, tempus
-                    eu tortor.</p>
+            <div class="col-md-12">
+                <div id="homepageAboutUs" class="containerBackground br-30 mx-auto p-4 col-md-10 secondaryText">
+                    <h2 class="text-center my-4">{{ __('pages.about') }} ProLearner</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus quis elit elit. Nam luctus finibus nisi,
+                        ac imperdiet
+                        nibh. Sed rhoncus, magna eget fringilla tempor, diam lorem mattis ante, tristique fringilla enim nisi
+                        vitae erat.
+                        Aenean ut neque congue magna convallis dignissim nec vel nisi. Proin aliquam sit amet mi nec pharetra.
+                        Proin varius, ligula quis semper commodo, purus mauris volutpat orci, varius mollis dui odio ut lacus.
+                        In vel sapien vitae velit consequat molestie vel non urna. Cras sollicitudin nulla sit amet sodales
+                        gravida.
+                        Fusce blandit gravida viverra. Donec vulputate nisi at augue varius sollicitudin. hendrerit quis, tempus
+                        eu tortor.</p>
+                </div>
             </div>
         </div>
     </div>
     <div class="container-fluid">
         <div class="row parallax-row" data-parallax="scroll" data-image-src="{{ asset('/assets/img/parallaxBackground.jpg') }}"></div>
     </div>
-    <div id="homepageContactForm" data-scroll-anchor="contact" class="col-md-10 p-4 containerBackground secondaryText br-30 mx-auto">
-        <!-- Contact form -->
-        <div class="row my-5">
-            <div class="container">
-                <section class="mb-4">
-                    <h2 class="text-center my-4">{{ __("pages.contact") }} ProLearner</h2>
-                    <div class="row mb-5">
-                        <div class="col-md-9 mb-md-0 mx-auto">
-                            <form action="" method="POST">
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="md-form mb-0">
-                                            <input type="text" id="name" name="name" placeholder="{{ __("pages.name") }}" class="form-control mb-4">
+    <div class="container">
+        <div id="homepageContactForm" data-scroll-anchor="contact" class="col-md-10 p-4 containerBackground secondaryText br-30 mx-auto">
+            <!-- Contact form -->
+            <div class="row my-5">
+                <div class="container">
+                    <section class="mb-4">
+                        <h2 class="text-center my-4">{{ __("pages.contact") }} ProLearner</h2>
+                        <div class="row mb-5">
+                            <div class="col-md-9 mb-md-0 mx-auto">
+                                <form action="" method="POST">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="md-form mb-0">
+                                                <input type="text" id="name" name="name" placeholder="{{ __("pages.name") }}" class="form-control mb-4">
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <div class="md-form mb-0">
+                                                <input type="text" id="emailContact" name="email" placeholder="{{ __("pages.email") }}" class="form-control mb-4">
+                                            </div>
                                         </div>
                                     </div>
 
-                                    <div class="col-md-6">
-                                        <div class="md-form mb-0">
-                                            <input type="text" id="emailContact" name="email" placeholder="{{ __("pages.email") }}" class="form-control mb-4">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="md-form mb-0">
+                                                <input type="text" id="subject" name="subject" placeholder="{{ __("pages.subject") }}" class="form-control mb-4">
+                                            </div>
                                         </div>
                                     </div>
+
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="md-form">
+                                                <textarea id="message" name="message" rows="2" maxlength="500" placeholder="{{ __("pages.message") }}" class="form-control md-textarea mb-4"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                                
+                                <div class="text-center">
+                                    <button type="submit" class="btn btn-primary w-50 br-20">{{ __("pages.send") }}</button>
                                 </div>
-
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="md-form mb-0">
-                                            <input type="text" id="subject" name="subject" placeholder="{{ __("pages.subject") }}" class="form-control mb-4">
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="md-form">
-                                            <textarea id="message" name="message" rows="2" maxlength="500" placeholder="{{ __("pages.message") }}" class="form-control md-textarea mb-4"></textarea>
-                                        </div>
-                                    </div>
-                                </div>
-                            </form>
-
-                            <div class="text-center">
-                                <button type="submit" class="btn btn-primary w-50 br-20">{{ __("pages.send") }}</button>
+                                </form>
                             </div>
-                        </div>
-                    </div>
-                </section>
+                    </section>
+                </div>
             </div>
         </div>
     </div>
