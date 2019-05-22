@@ -25,5 +25,7 @@ return [
     'send' => 'Send',
     'homepageTitle' => 'The free programming learner',
     'homepageText' => 'Go from zero to a junior programmer within weeks!',
+    'unlockFor' => 'Unlock for :points credits',
+    'start' => 'Start'
 
 ];

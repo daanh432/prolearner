@@ -19,9 +19,9 @@
                             <p class="position-absolute duration">Duration: {{ $course->duration }}. </p>
                             <a href="{{ route('courses.show', [$course->id]) }}" class="btn btn-info w-25 br-20 position-absolute">
                                 @if($course->price >= 1)
-                                    Unlock for {{ $course->price }} points
+                                    {{ __('pages.unlockFor', ['points' => $course->price]) }}
                                 @else
-                                    Start
+                                    {{ __('pages.start') }}
                                 @endif
                             </a>
                         </div>

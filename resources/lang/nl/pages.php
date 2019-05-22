@@ -25,5 +25,7 @@ return [
     'send' => 'Verstuur',
     'homepageTitle' => 'De gratis programmeer-leer website',
     'homepageText' => 'Ga van niets naar een junior programmeerder binnen een paar weken!',
+    'unlockFor' => 'Verkrijg voor :points credits',
+    'start' => 'Start'
 
 ];
