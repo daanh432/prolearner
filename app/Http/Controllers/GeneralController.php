@@ -28,4 +28,8 @@ class GeneralController extends Controller
 
         return redirect(route('index'));
     }
+
+    public function Dashboard() {
+        return view('dashboard');
+    }
 }
