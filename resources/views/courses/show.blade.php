@@ -6,9 +6,9 @@
     <div class="container-fluid">
         <div id="courseHeaderImage" class="row parallax-row" data-parallax="scroll" data-image-src="{{ asset('/assets/img/parallaxBackground.jpg') }}">
             <div class="container">
-                <div class="row">
-                    <div class="col-md-10 mx-auto">
-                        <div class="text-center">
+                <div class="row h-100">
+                    <div class="col-md-10 mx-auto h-100">
+                        <div id="courseName">
                             <h1 class="secondaryText">{{ $course->name }}</h1>
                         </div>
                     </div>
@@ -19,15 +19,15 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <div id="accordion" class="w-100">
+                <div id="accordion" class="w-100 mt-4">
                     @foreach($course->Chapters() as $chapter)
                         <div class="card containerBackground">
-                            <a class="lessonHeader card-link" data-toggle="collapse" href="#collapseOne">
+                            <a class="lessonHeader card-link" data-toggle="collapse" href="#collapse{{ $chapter->id }}">
                                 <div class="card-header secondaryText">
                                     {{ $chapter->name }}
                                 </div>
                             </a>
-                            <div id="collapseOne" class="collapse show" data-parent="#accordion">
+                            <div id="collapse{{ $chapter->id }}" class="collapse show" data-parent="#accordion">
                                 <div class="card-body p-0">
                                     <ul class="pl-0 mb-0 lessons">
                                         @foreach ($chapter->Lessons() as $lesson)
