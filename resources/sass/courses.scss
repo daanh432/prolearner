@@ -5,6 +5,12 @@
     grid-template-columns: 1fr 1fr;
 }
 
+@media only screen and (max-width: 900px) {
+  .courseGridContainer {
+    grid-template-columns: 1fr;
+  }
+}
+
 .gridItem {
     background: white;
     height: 250px;
@@ -25,12 +31,28 @@
     top: 25px;
 }
 
-.lessons > a > li {
+.lightTheme .lessons > a > li {
     border-bottom: 1px solid #707070;
 }
 
-.lessons > a > li:hover, .lessonHeader:hover {
+.darkTheme .lessons > a > li {
+    border-bottom: 1px solid #232428;
+}
+
+.darkTheme .lessons > a > li:hover, .darkTheme .lessonHeader:hover {
+    background-color: #404040;
+}
+
+.lightTheme .lessons > a > li:hover, .lightTheme .lessonHeader:hover {
     background-color: #f0f0f0;
+}
+
+.darkTheme .lessonHeader {
+    background-color: #24262a;
+}
+
+.lightTheme .lessonHeader {
+    background-color: #ebebeb;
 }
 
 .lessons > a:last-child > li {
