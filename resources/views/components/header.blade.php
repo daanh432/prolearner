@@ -36,7 +36,7 @@
                             <i class="fas fa-user"></i> {{ Auth::user()->name }}
                         </a>
                         <div class="dropdown-menu">
-                            <a class="dropdown-item" href="#">Profile</a>
+                            <a class="dropdown-item" href="{{ route('dashboard') }}">Profile</a>
                             <form action="{{ route('logout') }}" method="post">
                                 @csrf
                                 <button type="submit" class="dropdown-item">Logout</button>
