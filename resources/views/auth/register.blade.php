@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container">
-        <div class="w-75 mx-auto p-5 rounded-lg bg-white mt-5">
+        <div class="w-75 mx-auto p-5 br-20 mt-5 containerBackground secondaryText">
             <form method="POST" action="{{ route('register') }}">
                 @csrf
                 <h1>Sign up</h1>
@@ -54,11 +54,9 @@
                     </div>
                 </div>
 
-                <div class="form-group row">
-                    <div class="col-sm-6 text-center">
-                        <button class="btn btn-primary w-75" type="submit">{{ __('auth.register') }}</button>
-                    </div>
-                    <div class="col-sm-6 text-center">
+                <div class="form-group">
+                    <div class="text-center">
+                        <button class="btn btn-primary w-50 br-20" type="submit">{{ __('auth.register') }}</button>
                         <a href="{{ 'login' }}" class="btn btn-link w-75">{{ __('auth.alreadyRegistered') }}</a>
                     </div>
                 </div>
