@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-md bg-dark navbar-dark sticky-top">
+<nav class="navbar navbar-expand-md navbar-dark sticky-top headerBackground">
     <div class="container">
         <!-- Brand -->
         <a class="navbar-brand" href="{{ route('index') }}">ProLearner</a>
