@@ -79,7 +79,7 @@ class CourseChaptersController extends Controller
      */
     public function edit(courses $course, courseChapters $chapter)
     {
-        return view('courses.chapters.show', [
+        return view('courses.chapters.edit', [
             'course' => $course,
             'chapter' => $chapter
         ]);
@@ -94,7 +94,15 @@ class CourseChaptersController extends Controller
      */
     public function update(Request $request, courses $course, courseChapters $chapter)
     {
-        //
+        $validated = $request->validate([
+            'name' => ['required', 'string']
+        ]);
+
+        $validated['course_id'] = $course->id;
+
+        $chapter->update($validated);
+
+        return redirect(route('courses.show', ['course_id' => $course->id]));
     }
 
     /**
