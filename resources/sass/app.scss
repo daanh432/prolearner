@@ -6,21 +6,22 @@
 @import '~bootstrap/scss/bootstrap';
 // Custom imports
 @import 'courses';
+@import 'dashboard';
 // Custom inline
 
 .gc-reset {
-    transform: scale(0.95) !important;
-    -webkit-transform: scale(0.95) !important;
-    transform-origin: 0 0 !important;
-    -webkit-transform-origin: 0 0 !important;
+  transform: scale(0.95) !important;
+  -webkit-transform: scale(0.95) !important;
+  transform-origin: 0 0 !important;
+  -webkit-transform-origin: 0 0 !important;
 }
 
 .darkTheme {
-    background-color: $darkPrimaryBackground;
+  background-color: $darkPrimaryBackground;
 }
 
 .lightTheme {
-    background-color: red;
+  background-color: red;
 }
 
 .br-5 {
@@ -65,49 +66,41 @@
 }
 
 .darkTheme .primaryText {
-    color: #171717;
+  color: #171717;
 }
 
 .lightTheme .primaryText {
-    color: #171717;
+  color: #171717;
 }
 
 .darkTheme .secondaryText {
-    color: red;
+  color: red;
 }
 
 .lightTheme .secondaryText {
-    color: red;
+  color: red;
 }
 
 #errorMessages {
-    position: fixed;
-    bottom: 0;
-    right: 0;
+  position: fixed;
+  bottom: 0;
+  right: 0;
 }
 
 .parallax-window {
-    min-height: 400px;
-    position: absolute;
-    left: 0;
-    right: 0;
-    background: transparent;
+  min-height: 400px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  background: transparent;
 }
 
 .parallax-window-reserve {
-    width: 100%;
-    min-height: 400px;
-}
-
-.row-full {
-    width: 100vw;
-    position: relative;
-    margin-left: -50vw;
-    overflow: hidden;
-    left: 50%;
+  width: 100%;
+  min-height: 400px;
 }
 
 .parallax-row {
-    min-height: 65vh;
-    background: transparent;
+  min-height: 65vh;
+  background: transparent;
 }
