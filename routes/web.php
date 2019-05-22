@@ -16,8 +16,8 @@ Auth::routes(['verify' => true, 'register' => true]);
 Route::get('/','GeneralController@Homepage')->name('index');
 Route::get('/contact','GeneralController@Contact')->name('contact');
 Route::post('/contact','GeneralController@ContactSubmission')->name('contact.submission');
-Route::get('/dashboard', 'GeneralController@Dashboard')->name('dashboard');
+Route::get('/dashboard', 'GeneralController@Dashboard')->name('dashboard')->middleware('verified');
 
 Route::resource('/courses', 'CoursesController');
-Route::resource('/courses.chapters', 'CourseChaptersController');
-Route::resource('/courses.chapters.lessons', 'CourseChapterLessonsController');
+Route::resource('/courses.chapters', 'CourseChaptersController')->middleware('verified');
+Route::resource('/courses.chapters.lessons', 'CourseChapterLessonsController')->middleware('verified');
