@@ -9,11 +9,11 @@
                 <div class="row">
                     <div class="col-md-10 mx-auto mt-5 p-0">
                         <div class="row">
-                            <div class="col-md-7 mt-5 secondaryText">
+                            <div class="col-md-7 mt-5 lightText">
                                 <h1>The free programming learner</h1>
                                 <p>Go from zero to a junior programmer within weeks!</p>
                             </div>
-                            <div id="homepageRegistrationForm" class="p-4 bg-light br-20 col-md-5 primaryText">
+                            <div id="homepageRegistrationForm" class="p-4 br-20 col-md-5 secondaryText containerBackground">
                                 <!-- Register form -->
                                 <form action="{{ route('register') }}" method="post">
                                     @csrf
@@ -52,9 +52,7 @@
 
 
                                     <div class="text-center row no-gutters">
-                                        <button class="btn btn-primary col-md-5 br-20" type="submit">{{ __('auth.register') }}</button>
-                                        <div class="col-md-2"></div>
-                                        <a href="{{route ('login')}}" class="btn btn-secondary col-md-5 br-20">{{ __('auth.login') }}</a>
+                                        <button class="btn btn-primary col-md-12 br-20" type="submit">{{ __('auth.register') }}</button>
                                     </div>
                                 </form>
                             </div>
@@ -66,7 +64,7 @@
     </div>
     <div class="container">
         <div class="row my-5">
-            <div id="homepageAboutUs" class="bg-light br-30 mx-auto p-4 col-md-10 primaryText">
+            <div id="homepageAboutUs" class="containerBackground br-30 mx-auto p-4 col-md-10 secondaryText">
                 <h2 class="text-center my-4">About ProLearner</h2>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus quis elit elit. Nam luctus finibus nisi,
                     ac imperdiet
@@ -84,10 +82,10 @@
     <div class="container-fluid">
         <div class="row parallax-row" data-parallax="scroll" data-image-src="{{ asset('/assets/img/parallaxBackground.jpg') }}"></div>
     </div>
-    <div class="container">
+    <div id="homepageContactForm" data-scroll-anchor="contact" class="col-md-10 p-4 containerBackground secondaryText br-30 mx-auto">
+        <!-- Contact form -->
         <div class="row my-5">
-            <!-- Contact form -->
-            <div id="homepageContactForm" data-scroll-anchor="contact" class="col-md-10 p-4 bg-light br-30 mx-auto">
+            <div class="container">
                 <section class="mb-4">
                     <h2 class="text-center my-4">Contact ProLearner</h2>
                     <div class="row mb-5">

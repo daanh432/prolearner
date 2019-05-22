@@ -16,9 +16,9 @@
         <div class="col-md-12">
             <div id="accordion" class="w-100">
                 @foreach($course->Chapters() as $chapter)
-                    <div class="card">
+                    <div class="card containerBackground">
                         <a class="lessonHeader card-link" data-toggle="collapse" href="#collapseOne">
-                            <div class="card-header primaryText">
+                            <div class="card-header secondaryText">
                                 {{ $chapter->name }}
                             </div>
                         </a>
@@ -27,7 +27,7 @@
                                 <ul class="pl-0 mb-0 lessons">
                                     @foreach ($chapter->Lessons() as $lesson)
                                         <a href="" class="text-decoration-none">
-                                            <li class="list-style-type-none p-3 primaryText">{{ $lesson->name }}</li>
+                                            <li class="list-style-type-none p-3 secondaryText">{{ $lesson->name }}</li>
                                         </a>
                                     @endforeach
                                 </ul>
