@@ -15,6 +15,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('courses.index') }}">Courses</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link scrollLink" href="{{ route('index') }}#contact">Contact</a>
+                </li>
             </ul>
             <ul class="navbar-nav">
                 <li class="nav-item">

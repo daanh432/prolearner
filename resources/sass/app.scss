@@ -5,7 +5,6 @@
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 // Custom imports
-@import 'homepage';
 @import 'courses';
 // Custom inline
 
@@ -21,7 +20,7 @@
 }
 
 .lightTheme {
-    background-color: white;
+    background-color: red;
 }
 
 .br-5 {
@@ -74,15 +73,41 @@
 }
 
 .darkTheme .secondaryText {
-    color: white;
+    color: red;
 }
 
 .lightTheme .secondaryText {
-    color: white;
+    color: red;
 }
 
 #errorMessages {
     position: fixed;
     bottom: 0;
     right: 0;
+}
+
+.parallax-window {
+    min-height: 400px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    background: transparent;
+}
+
+.parallax-window-reserve {
+    width: 100%;
+    min-height: 400px;
+}
+
+.row-full {
+    width: 100vw;
+    position: relative;
+    margin-left: -50vw;
+    overflow: hidden;
+    left: 50%;
+}
+
+.parallax-row {
+    min-height: 65vh;
+    background: transparent;
 }

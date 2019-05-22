@@ -24,7 +24,9 @@ use Illuminate\Database\Eloquent\Model;
  */
 class courseChapters extends Model
 {
-    protected $fillable = [];
+    protected $fillable = [
+        'name', 'course_id'
+    ];
 
     public function Lessons() {
         return $this->hasMany('App\courseChapterLessons', 'course_chapter_id', 'id')->orderBy('id', 'ASC')->get();
