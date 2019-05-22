@@ -17,7 +17,7 @@ return [
     'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
     'recaptcha' => 'Recaptcha',
     'password' => 'Password',
-    'E-Mail Address' => 'E-Mail Address',
+    'E-Mail Address' => 'Email',
     'rememberMe' => 'Remember Me',
     'forgotYourPassword' => 'Forgot Your Password?',
     'login' => 'Login',
