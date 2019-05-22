@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\courses;
 use App\programmingLanguages;
 use Illuminate\Http\Request;
+use Storage;
 
 class CoursesController extends Controller
 {
@@ -38,7 +39,7 @@ class CoursesController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -63,7 +64,7 @@ class CoursesController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\courses  $course
+     * @param \App\courses $course
      * @return \Illuminate\Http\Response
      */
     public function show(courses $course)
@@ -76,32 +77,53 @@ class CoursesController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\courses  $course
+     * @param \App\courses $course
      * @return \Illuminate\Http\Response
      */
     public function edit(courses $course)
     {
+        $languages = programmingLanguages::all();
+
         return view('courses.edit', [
-            'course' => $course
+            'course' => $course,
+            'languages' => $languages
         ]);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\courses  $courses
+     * @param \Illuminate\Http\Request $request
+     * @param \App\courses $courses
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, courses $courses)
+    public function update(Request $request, courses $course)
     {
-        //
+        $validated = $request->validate([
+            'name' => ['required', 'string'],
+            'description' => ['required', 'string', 'max:300'],
+            'duration' => ['required', 'string'],
+            'difficulty' => ['required', 'string'],
+            'price' => ['required', 'numeric'],
+            'programming_language_id' => ['required', 'exists:programming_languages,id'],
+        ]);
+
+        if ($request->hasFile('image')) {
+            Storage::disk('public')->delete($course->image);
+            $validated['image'] = $request->file('image')->store('courseImages', 'public');
+        } else {
+            $validated['image'] = $course->image;
+        }
+
+        $course->update($validated);
+
+        return redirect(route('courses.index'));
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\courses  $courses
+     * @param \App\courses $courses
      * @return \Illuminate\Http\Response
      */
     public function destroy(courses $courses)
