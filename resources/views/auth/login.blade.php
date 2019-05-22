@@ -7,7 +7,7 @@
                 @csrf
                 <h1>{{ __('auth.login') }}</h1>
                 <div class="form-group">
-                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus placeholder="{{ __('pages.email') }}">
+                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus placeholder="{{ __('auth.E-Mail Address') }}">
 
                     @error('email')
                     <span class="invalid-feedback" role="alert">
