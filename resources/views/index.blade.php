@@ -31,7 +31,7 @@
                                     </div>
 
                                     <div class="form-group mb-4">
-                                        <input type="password" id="password" class="form-control" placeholder="{{ __('pages.password') }}" name="password" aria-describedby="defaultRegisterFormPasswordHelpBlock" required>
+                                        <input type="password" id="password" class="form-control" placeholder="{{ __('auth.password') }}" name="password" aria-describedby="defaultRegisterFormPasswordHelpBlock" required>
                                         <div class="valid-feedback">Valid.</div>
                                         <div class="invalid-feedback">Please fill out this field.</div>
                                     </div>

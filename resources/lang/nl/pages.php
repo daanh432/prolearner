@@ -15,7 +15,6 @@ return [
 
     'about' => 'Over',
     'fullName' => 'Volledige naam',
-    'password' => 'Wachtwoord',
     'confirmPassword' => 'Wachtwoord bevestigen',
     'contact' => 'Contacteer',
     'email' => 'E-mail',
