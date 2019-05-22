@@ -4,7 +4,7 @@
 
 @section('content')
     <div class="container-fluid">
-        <div id="" class="row parallax-row" data-parallax="scroll" data-image-src="{{ asset('/assets/img/parallaxBackground.jpg') }}">
+        <div id="courseHeaderImage" class="row parallax-row" data-parallax="scroll" data-image-src="{{ asset('/assets/img/parallaxBackground.jpg') }}">
             <div class="container">
                 <div class="row">
                     <div class="col-md-10 mx-auto">
@@ -21,7 +21,7 @@
             <div class="col-md-12">
                 <div id="accordion" class="w-100">
                     @foreach($course->Chapters() as $chapter)
-                        <div class="card">
+                        <div class="card containerBackground">
                             <a class="lessonHeader card-link" data-toggle="collapse" href="#collapseOne">
                                 <div class="card-header secondaryText">
                                     {{ $chapter->name }}
