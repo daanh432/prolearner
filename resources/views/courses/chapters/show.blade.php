@@ -1,2 +1,0 @@
-{{ dump($course) }}
-{{ dump($chapter) }}
