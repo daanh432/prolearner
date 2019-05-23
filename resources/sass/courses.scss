@@ -1,0 +1,101 @@
+.courseGridContainer {
+  display: grid;
+  grid-column-gap: 10vw;
+  grid-row-gap: 50px;
+  grid-template-columns: 1fr 1fr;
+}
+
+@media only screen and (max-width: 900px) {
+  .courseGridContainer {
+    grid-template-columns: 1fr;
+  }
+}
+
+.gridItem {
+  background: white;
+  height: 250px;
+  width: 100%;
+}
+
+.duration {
+  bottom: 10px;
+}
+
+.gridItem a {
+  right: 25px;
+  bottom: 25px;
+}
+
+.difficulty {
+  right: 25px;
+  top: 25px;
+}
+
+.lightTheme .lessons > a > li {
+  border-bottom: 1px solid #707070;
+}
+
+.darkTheme .lessons > a > li {
+  border-bottom: 1px solid #232428;
+}
+
+.darkTheme .lessons > a > li:hover, .darkTheme .lessonHeader:hover {
+  background-color: #404040;
+}
+
+.lightTheme .lessons > a > li:hover, .lightTheme .lessonHeader:hover {
+  background-color: #f0f0f0;
+}
+
+.darkTheme .lessonHeader {
+  background-color: #24262a;
+}
+
+.lightTheme .lessonHeader {
+  background-color: #ebebeb;
+}
+
+.lessons > a:last-child > li {
+  border-bottom: none;
+}
+
+.courseBoardHeader {
+    position: relative;
+    height: 200px;
+    width: 100%;
+}
+
+.courseBoardHeader img {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    height: 100%;
+    width:100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+#courseHeaderImage {
+  min-height: 40vh !important;
+  height: 40vh !important;
+}
+
+#courseName {
+  position: relative;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+#courseName h1 {
+  position: absolute;
+  top: 15vh;
+  font-size: 6vh;
+  left: 0;
+  right: 0;
+  text-align: center;
+  padding: 0;
+  margin: 0;
+}
