@@ -5,7 +5,7 @@
 @section('content')
     <div class="container">
         <div class="row">
-            <form action="{{ route('courses.store') }}" method="post" id="storeCourse" enctype="multipart/form-data" class="needs-validation col-md-6 mx-auto bg-white p-5 mt-5 rounded" novalidate>
+            <form action="{{ route('courses.store') }}" method="post" id="storeCourse" enctype="multipart/form-data" class="needs-validation col-md-6 mx-auto p-5 mt-5 br-20 containerBackground secondaryText" novalidate>
                 @csrf
                 <h1>Create course</h1>
                 <div class="form-group">

@@ -9,6 +9,12 @@ use Storage;
 
 class CoursesController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('verified')->except(['index', 'show']);
+        $this->middleware('auth')->only('show');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -105,6 +111,7 @@ class CoursesController extends Controller
             'duration' => ['required', 'string'],
             'difficulty' => ['required', 'string'],
             'price' => ['required', 'numeric'],
+            'image' => ['', 'image', 'mimes:jpeg,png,jpg,gif', 'max:2048'],
             'programming_language_id' => ['required', 'exists:programming_languages,id'],
         ]);
 
@@ -117,7 +124,7 @@ class CoursesController extends Controller
 
         $course->update($validated);
 
-        return redirect(route('courses.index'));
+        return redirect(route('courses.show', [$course->id]));
     }
 
     /**
@@ -125,9 +132,11 @@ class CoursesController extends Controller
      *
      * @param \App\courses $courses
      * @return \Illuminate\Http\Response
+     * @throws \Exception
      */
-    public function destroy(courses $courses)
+    public function destroy(courses $course)
     {
-        //
+        $course->delete();
+        return redirect(route('courses.index'));
     }
 }

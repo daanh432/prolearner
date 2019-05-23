@@ -1,7 +1,6 @@
-{{--{{ dump($course) }}--}}
 @extends('layouts.app')
 
-@section('title', 'Create course')
+@section('title', 'Create Chapter')
 
 @section('content')
     <div class="container">

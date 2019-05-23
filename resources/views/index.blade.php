@@ -93,7 +93,7 @@
                         <h2 class="text-center my-4">Contact ProLearner</h2>
                         <div class="row mb-5">
                             <div class="col-md-9 mb-md-0 mx-auto">
-                                <form action="" method="POST">
+                                <form action="{{ route('contact.submission') }}" method="POST">
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="md-form mb-0">
