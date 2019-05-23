@@ -102,7 +102,7 @@
 
                                         <div class="col-md-6">
                                             <div class="md-form mb-0">
-                                                <input type="text" id="emailContact" name="email" placeholder="{{ __("pages.email") }}" class="form-control mb-4">
+                                                <input type="text" id="emailContact" name="email" placeholder="{{ __("auth.E-Mail Address") }}" class="form-control mb-4">
                                             </div>
                                         </div>
                                     </div>
