@@ -13,25 +13,6 @@
 
 Auth::routes(['verify' => true, 'register' => true]);
 
-#region Admin Routes
-//Route::middleware('verified')->group(function () {
-//    // Courses routes
-//    Route::get('/courses/{course}/edit', 'CoursesController@edit')->name('courses.edit');
-//    Route::get('/courses/create', 'CoursesController@create')->name('courses.create');
-//    Route::patch('/courses/{course}', 'CoursesController@update')->name('courses.update');
-//    Route::post('/courses', 'CoursesController@store')->name('courses.store');
-//    Route::delete('/courses/{course}', 'CoursesController@destroy')->name('courses.delete');
-//});
-#endregion
-
-#region User Routes
-//Route::middleware('auth')->group(function () {
-//    Route::get('/dashboard', 'GeneralController@Dashboard')->name('dashboard');
-//    Route::get('/courses/{course}', 'CoursesController@show')->name('courses.show');
-//    Route::get('/courses/{course}/lessons/{courseChapterLesson}', 'CourseChapterLessonsController@show')->name('courseLessonEditor');
-//});
-#endregion
-
 Route::get('/', 'GeneralController@Homepage')->name('index');
 Route::get('/contact', 'GeneralController@Contact')->name('contact');
 Route::post('/contact', 'GeneralController@ContactSubmission')->name('contact.submission');
