@@ -5,7 +5,7 @@
 @section('content')
     <div class="container">
         <div class="row mt-4">
-            <div class="col-md-12" id="accountPage">
+            <div class="col-md-12 containerBackground secondaryText" id="accountPage">
                 <div class="row" id="profileHeader">
                     <div class="col-md-3">
                         <img src="{{asset('assets/img/user.png')}}" class="rounded-circle mx-auto mx-md-0 d-block d-md-inline-block"
@@ -16,9 +16,9 @@
                         <h3 class="text-center text-sm-left">Credits: {{ Auth::user()->credits }}</h3>
                         <form action="{{ route('logout') }}" method="post" class="d-inline-block">
                             @csrf
-                            <button type="submit" class="btn btn-primary">Logout</button>
+                            <button type="submit" class="btn btn-secondary br-20">{{ __('pages.logout') }}</button>
                         </form>
-                        <a href="" class="btn btn-dark d-inline-block">Edit profile</a>
+                        <a href="" class="btn btn-primary br-20 d-inline-block">{{ __('pages.editProfile') }}</a>
                     </div>
                 </div>
             </div>

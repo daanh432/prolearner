@@ -10,7 +10,7 @@
                     <div class="col-md-10 mx-auto mt-5 p-0">
                         <div class="row">
                             <div class="col-md-7 mt-5 lightText">
-                                <h1>The free programming learner</h1>
+                                <h1>{{ __('pages.homepageTitle') }}</h1>
                                 <p>Go from zero to a junior programmer within weeks!</p>
                             </div>
                             <div id="homepageRegistrationForm" class="p-4 br-20 col-md-5 secondaryText containerBackground">
@@ -19,25 +19,25 @@
                                     @csrf
                                     <h2 class="text-center my-4">{{ __('auth.register') }}</h2>
                                     <div class="form-group mb-4">
-                                        <input type="text" id="fullName" class="form-control" placeholder="Full name" name="name" required>
+                                        <input type="text" id="fullName" class="form-control" placeholder="{{ __('pages.fullName') }}" name="name" required>
                                         <div class="valid-feedback">Valid.</div>
                                         <div class="invalid-feedback">Please fill out this field.</div>
                                     </div>
 
                                     <div class="form-group mb-4">
-                                        <input type="email" id="email" class="form-control" placeholder="E-mail" name="email" required>
+                                        <input type="email" id="email" class="form-control" placeholder="{{ __('auth.E-Mail Address') }}" name="email" required>
                                         <div class="valid-feedback">Valid.</div>
                                         <div class="invalid-feedback">Please fill out this field.</div>
                                     </div>
 
                                     <div class="form-group mb-4">
-                                        <input type="password" id="password" class="form-control" placeholder="Password" name="password" aria-describedby="defaultRegisterFormPasswordHelpBlock" required>
+                                        <input type="password" id="password" class="form-control" placeholder="{{ __('auth.password') }}" name="password" aria-describedby="defaultRegisterFormPasswordHelpBlock" required>
                                         <div class="valid-feedback">Valid.</div>
                                         <div class="invalid-feedback">Please fill out this field.</div>
                                     </div>
 
                                     <div class="form-group mb-4">
-                                        <input type="password" id="confirmPassword" class="form-control" placeholder="Confirm Password" name="password_confirmation" aria-describedby="defaultRegisterFormPasswordHelpBlock" required>
+                                        <input type="password" id="confirmPassword" class="form-control" placeholder="{{ __('pages.confirmPassword') }}" name="password_confirmation" aria-describedby="defaultRegisterFormPasswordHelpBlock" required>
                                         <div class="valid-feedback">Valid.</div>
                                         <div class="invalid-feedback">Please fill out this field.</div>
                                     </div>
@@ -49,7 +49,6 @@
                                             </div>
                                         </div>
                                     </div>
-
 
                                     <div class="text-center row no-gutters">
                                         <button class="btn btn-primary col-md-12 br-20" type="submit">{{ __('auth.register') }}</button>
@@ -66,7 +65,7 @@
         <div class="row my-5">
             <div class="col-md-12">
                 <div id="homepageAboutUs" class="containerBackground br-30 mx-auto p-4 col-md-10 secondaryText">
-                    <h2 class="text-center my-4">About ProLearner</h2>
+                    <h2 class="text-center my-4">{{ __('pages.about') }} ProLearner</h2>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus quis elit elit. Nam luctus finibus nisi,
                         ac imperdiet
                         nibh. Sed rhoncus, magna eget fringilla tempor, diam lorem mattis ante, tristique fringilla enim nisi
@@ -90,20 +89,20 @@
             <div class="row my-5">
                 <div class="container">
                     <section class="mb-4">
-                        <h2 class="text-center my-4">Contact ProLearner</h2>
+                        <h2 class="text-center my-4">{{ __("pages.contact") }} ProLearner</h2>
                         <div class="row mb-5">
                             <div class="col-md-9 mb-md-0 mx-auto">
                                 <form action="{{ route('contact.submission') }}" method="POST">
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="md-form mb-0">
-                                                <input type="text" id="name" name="name" placeholder="Name" class="form-control mb-4">
+                                                <input type="text" id="name" name="name" placeholder="{{ __("pages.name") }}" class="form-control mb-4">
                                             </div>
                                         </div>
 
                                         <div class="col-md-6">
                                             <div class="md-form mb-0">
-                                                <input type="text" id="emailContact" name="email" placeholder="Email" class="form-control mb-4">
+                                                <input type="text" id="emailContact" name="email" placeholder="{{ __("auth.E-Mail Address") }}" class="form-control mb-4">
                                             </div>
                                         </div>
                                     </div>
@@ -111,7 +110,7 @@
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="md-form mb-0">
-                                                <input type="text" id="subject" name="subject" placeholder="Subject" class="form-control mb-4">
+                                                <input type="text" id="subject" name="subject" placeholder="{{ __("pages.subject") }}" class="form-control mb-4">
                                             </div>
                                         </div>
                                     </div>
@@ -119,17 +118,16 @@
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="md-form">
-                                                <textarea id="message" name="message" rows="2" maxlength="500" placeholder="Message" class="form-control md-textarea mb-4"></textarea>
+                                                <textarea id="message" name="message" rows="2" maxlength="500" placeholder="{{ __("pages.message") }}" class="form-control md-textarea mb-4"></textarea>
                                             </div>
                                         </div>
                                     </div>
-                                </form>
 
-                                <div class="text-center">
-                                    <button type="submit" class="btn btn-primary w-50 br-20">Send</button>
-                                </div>
+                                    <div class="text-center">
+                                        <button type="submit" class="btn btn-primary w-50 br-20">{{ __("pages.send") }}</button>
+                                    </div>
+                                </form>
                             </div>
-                        </div>
                     </section>
                 </div>
             </div>

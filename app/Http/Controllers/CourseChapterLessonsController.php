@@ -41,6 +41,20 @@ class CourseChapterLessonsController extends Controller
     public function store(Request $request, courses $course, courseChapters $chapter)
     {
         abort_if($course->id != $chapter->Course()->id, 404);
+
+        $validated = $request->validate([
+            'name' => ['required', 'string'],
+            'description' => ['required', 'string', 'max:5000'],
+            'assignment' => ['required', 'string', 'max:5000'],
+            'inputCheck' => ['required', 'string'],
+            'outputCheck' => ['required', 'string'],
+        ]);
+
+        $validated['course_chapter_id'] = $chapter->id;
+
+        courseChapterLessons::create($validated);
+
+        return redirect(route('courses.show', ['course_id' => $course->id]));
     }
 
     /**

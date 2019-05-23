@@ -32,6 +32,15 @@ use Illuminate\Database\Eloquent\Model;
  */
 class courseChapterLessons extends Model
 {
+    protected $fillable = [
+        'course_chapter_id',
+        'name',
+        'description',
+        'assignment',
+        'inputCheck',
+        'outputCheck'
+    ];
+    
     public function Chapter() {
         return $this->belongsTo('App\courseChapters', 'course_chapter_id', 'id')->get()->first();
     }

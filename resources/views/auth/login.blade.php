@@ -5,9 +5,9 @@
         <div class="w-75 mx-auto p-5 br-20 containerBackground mt-5 secondaryText">
             <form method="POST" action="{{ route('login') }}">
                 @csrf
-                <h1>Sign in</h1>
+                <h1>{{ __('auth.login') }}</h1>
                 <div class="form-group">
-                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus placeholder="Email">
+                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus placeholder="{{ __('auth.E-Mail Address') }}">
 
                     @error('email')
                     <span class="invalid-feedback" role="alert">
@@ -20,7 +20,7 @@
                 </div>
 
                 <div class="form-group">
-                    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password" placeholder="Password">
+                    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password" placeholder="{{ __('auth.password') }}">
 
                     @error('password')
                     <span class="invalid-feedback" role="alert">
