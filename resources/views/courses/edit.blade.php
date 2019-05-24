@@ -1,14 +1,14 @@
 @extends('layouts.app')
 
-@section('title', 'Create course')
+@section('title', 'Edit course')
 
 @section('content')
     <div class="container">
         <div class="row">
-            <form action="{{ route('courses.update', ['course' => $course->id]) }}" method="POST" id="storeCourse" enctype="multipart/form-data" class="needs-validation col-md-6 mx-auto bg-white p-5 mt-5 rounded" novalidate>
+            <form action="{{ route('courses.update', ['course' => $course->id]) }}" method="POST" id="storeCourse" enctype="multipart/form-data" class="needs-validation col-md-6 mx-auto p-5 mt-5 br-20 containerBackground secondaryText" novalidate>
                 @csrf
                 @method('PATCH')
-                <h1>Create course</h1>
+                <h1>Edit course</h1>
                 <div class="form-group">
                     <input type="text" class="form-control" id="cName" placeholder="Course name" name="name" value="{{ $course->name }}" required>
                     <div class="valid-feedback">Valid.</div>
@@ -58,9 +58,11 @@
                 <div class="form-group">
                     <input type="file" class="form-control" id="cImage" placeholder="Image" name="image" value="{{ $course->image }}">
                     <div class="valid-feedback">Valid.</div>
-                    <div class="invalid-feedback">Please fill out this field.</div>
+                    <div class="invalid-feedback">Please upload a valid image.</div>
                 </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary w-75 br-20">Submit</button>
+                </div>
             </form>
         </div>
     </div>

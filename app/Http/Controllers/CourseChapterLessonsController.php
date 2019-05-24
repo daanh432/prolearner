@@ -9,28 +9,23 @@ use Illuminate\Http\Request;
 
 class CourseChapterLessonsController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index(courses $course, courseChapters $chapter)
+    public function __construct()
     {
-        $lessons = courseChapterLessons::all();
-        return view('courses.chapters.lessons.index', [
-            'course' => $course,
-            'chapter' => $chapter,
-            'lessons' => $lessons
-        ]);
+        $this->middleware('verified')->except(['show']);
+        $this->middleware('auth')->only(['show']);
     }
 
     /**
      * Show the form for creating a new resource.
      *
+     * @param courses $course
+     * @param courseChapters $chapter
      * @return \Illuminate\Http\Response
      */
     public function create(courses $course, courseChapters $chapter)
     {
+        abort_if($course->id != $chapter->Course()->id, 404);
+
         return view('courses.chapters.lessons.create', [
             'course' => $course,
             'chapter' => $chapter
@@ -40,11 +35,13 @@ class CourseChapterLessonsController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, courses $course , courseChapters $chapter)
+    public function store(Request $request, courses $course, courseChapters $chapter)
     {
+        abort_if($course->id != $chapter->Course()->id, 404);
+
         $validated = $request->validate([
             'name' => ['required', 'string'],
             'description' => ['required', 'string', 'max:5000'],
@@ -63,45 +60,58 @@ class CourseChapterLessonsController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\courseChapterLessons  $courseChapterLessons
+     * @param courses $course
+     * @param courseChapterLessons $lesson
      * @return \Illuminate\Http\Response
      */
-    public function show(courseChapterLessons $courseChapterLessons)
+    public function show(courses $course, courseChapterLessons $lesson)
     {
-        //
+        abort_if($course->id != $lesson->Chapter()->Course()->id, 404);
+        return view('courses.chapters.lessons.show', [
+            'lesson' => $lesson
+        ]);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\courseChapterLessons  $courseChapterLessons
+     * @param courses $course
+     * @param courseChapterLessons $lesson
      * @return \Illuminate\Http\Response
      */
-    public function edit(courseChapterLessons $courseChapterLessons)
+    public function edit(courses $course, courseChapterLessons $lesson)
     {
-        //
+        abort_if($course->id == $lesson->Chapter()->Course()->id, 404);
+        return view('courses.chapters.lessons.edit', [
+            'lesson' => $lesson
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\courseChapterLessons  $courseChapterLessons
+     * @param \Illuminate\Http\Request $request
+     * @param courses $course
+     * @param courseChapterLessons $lesson
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, courseChapterLessons $courseChapterLessons)
+    public function update(Request $request, courses $course, courseChapterLessons $lesson)
     {
-        //
+        abort_if($course->id != $lesson->Chapter()->Course()->id, 404);
+        return redirect(route('courses.show', [$course->id]));
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\courseChapterLessons  $courseChapterLessons
-     * @return \Illuminate\Http\Response
+     * @param courses $course
+     * @param courseChapterLessons $lesson
+     * @return void
+     * @throws \Exception
      */
-    public function destroy(courseChapterLessons $courseChapterLessons)
+    public function destroy(courses $course, courseChapterLessons $lesson)
     {
-        //
+        abort_if($course->id != $lesson->Chapter()->Course()->id, 404);
+        $lesson->delete();
     }
 }

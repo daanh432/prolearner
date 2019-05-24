@@ -31,4 +31,8 @@ class courseChapters extends Model
     public function Lessons() {
         return $this->hasMany('App\courseChapterLessons', 'course_chapter_id', 'id')->orderBy('id', 'ASC')->get();
     }
+
+    public function Course() {
+        return $this->belongsTo('App\courses', 'course_id', 'id')->get()->first();
+    }
 }
