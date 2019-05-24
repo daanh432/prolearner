@@ -8,14 +8,14 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-10 mx-auto mt-5 p-0">
-                        <div class="row">
-                            <div class="col-md-7 mt-5 lightText">
-                                <h1>{{ __('pages.homepageTitle') }}</h1>
-                                <p>Go from zero to a junior programmer within weeks!</p>
-                            </div>
-                            <div id="homepageRegistrationForm" class="p-4 br-20 col-md-5 secondaryText containerBackground">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-6 mt-5 lightText">
+                                    <h1>{{ __('pages.homepageTitle') }}</h1>
+                                    <p>Go from zero to a junior programmer within weeks!</p>
+                                </div>
                                 <!-- Register form -->
-                                <form action="{{ route('register') }}" method="post">
+                                <form action="{{ route('register') }}" id="homepageRegistrationForm" class="needs-validation p-4 br-20 col-lg-6 secondaryText containerBackground" method="post" novalidate>
                                     @csrf
                                     <h2 class="text-center my-4">{{ __('auth.register') }}</h2>
                                     <div class="form-group mb-4">
@@ -88,11 +88,12 @@
             <!-- Contact form -->
             <div class="row my-5">
                 <div class="container">
-                    <section class="mb-4">
+                    <section>
                         <h2 class="text-center my-4">{{ __("pages.contact") }} ProLearner</h2>
-                        <div class="row mb-5">
-                            <div class="col-md-9 mb-md-0 mx-auto">
+                        <div class="row">
+                            <div class="col-md-9 mx-auto">
                                 <form action="{{ route('contact.submission') }}" method="POST">
+                                    @csrf
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="md-form mb-0">
@@ -119,6 +120,16 @@
                                         <div class="col-md-12">
                                             <div class="md-form">
                                                 <textarea id="message" name="message" rows="2" maxlength="500" placeholder="{{ __("pages.message") }}" class="form-control md-textarea mb-4"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="md-form text-center">
+                                                <div class="d-inline-block {{ $errors->has('g-recaptcha-response') ? 'border border-danger rounded' : '' }}">
+                                                    {!! htmlFormSnippet() !!}
+                                                </div>
                                             </div>
                                         </div>
                                     </div>

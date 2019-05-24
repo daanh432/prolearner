@@ -9,13 +9,6 @@
 @import 'dashboard';
 // Custom inline
 
-.gc-reset {
-  transform: scale(0.95) !important;
-  -webkit-transform: scale(0.95) !important;
-  transform-origin: 0 0 !important;
-  -webkit-transform-origin: 0 0 !important;
-}
-
 .darkTheme {
   background-color: $darkPrimaryBackground;
 }
