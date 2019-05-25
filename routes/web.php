@@ -14,6 +14,7 @@
 Auth::routes(['verify' => true, 'register' => true]);
 
 Route::get('/', 'GeneralController@Homepage')->name('index');
+Route::get('/locale/{locale}', 'GeneralController@changeLocale')->name('locale.update');
 Route::get('/contact', 'GeneralController@Contact')->name('contact');
 Route::post('/contact', 'GeneralController@ContactSubmission')->name('contact.submission');
 Route::get('/courses', 'CoursesController@index')->name('courses.index');
