@@ -61,8 +61,8 @@
             </div>
         </div>
     </div>
-    <div class="container">
-        <div class="row my-5">
+    <div class="container my-5">
+        <div class="row">
             <div class="col-md-12">
                 <div id="homepageAboutUs" class="containerBackground br-30 mx-auto p-4 col-md-10 secondaryText">
                     <h2 class="text-center my-4">{{ __('pages.about') }} ProLearner</h2>
@@ -83,10 +83,10 @@
     <div class="container-fluid">
         <div class="row parallax-row" data-parallax="scroll" data-image-src="{{ asset('/assets/img/parallaxBackground.jpg') }}"></div>
     </div>
-    <div class="container">
+    <div class="container mt-5">
         <div id="homepageContactForm" data-scroll-anchor="contact" class="col-md-10 p-4 containerBackground secondaryText br-30 mx-auto">
             <!-- Contact form -->
-            <div class="row my-5">
+            <div class="row">
                 <div class="container">
                     <section>
                         <h2 class="text-center my-4">{{ __("pages.contact") }} ProLearner</h2>

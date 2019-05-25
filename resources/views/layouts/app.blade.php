@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="{{ app()->getLocale() }}">
 <head>
     <title>@yield('title', 'Prolearner')</title>
     <meta name="csrf-token" content="{{ csrf_token() }}">

@@ -28,3 +28,16 @@ $(document).ready(function () {
         }, 500);
     }
 });
+
+$('#element').click(function() {
+    $.get('/test', {
+        'pietje': 'pukje',
+        'puke': 'pietje'
+    }, function(data, status, xhr) {
+        if (status === 200) {
+            if (data["gameStarted"] == true) {
+
+            }
+        }
+    }, 'json');
+});
