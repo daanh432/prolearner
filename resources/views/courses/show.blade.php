@@ -4,12 +4,12 @@
 
 @section('content')
     <div class="container-fluid">
-        <div id="courseHeaderImage" class="row parallax-row" data-parallax="scroll" data-image-src="{{ asset('/assets/img/parallaxBackground.jpg') }}">
+        <div id="courseHeaderImage" class="row parallax-row" data-parallax="scroll" data-image-src="{{ Storage::url($course->image) }}">
             <div class="container">
                 <div class="row h-100">
                     <div class="col-md-10 mx-auto h-100">
                         <div id="courseName">
-                            <h1 class="secondaryText">{{ $course->name }}</h1>
+                            <h1 class="lightText">{{ $course->name }}</h1>
                         </div>
                     </div>
                 </div>

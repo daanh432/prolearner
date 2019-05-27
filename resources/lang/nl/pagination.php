@@ -14,4 +14,5 @@ return [
 
     'previous' => '&laquo; Vorige',
     'next' => 'Volgende &raquo;',
+    'courses' => 'Cursussen',
 ];

@@ -13,6 +13,8 @@ return [
     |
     */
 
+    'lightTheme' => 'Light Theme',
+    'darkTheme' => 'Dark Theme',
     'about' => 'About',
     'fullName' => 'Full name',
     'confirmPassword' => 'Confirm Password',
@@ -27,5 +29,5 @@ return [
     'start' => 'Start',
     'logout' => 'Logout',
     'editProfile' => 'Edit profile',
-
+    'profile' => 'Profile',
 ];
