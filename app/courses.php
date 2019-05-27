@@ -39,4 +39,16 @@ class courses extends Model
     public function Chapters() {
         return $this->hasMany('App\courseChapters', 'course_id', 'id')->orderBy('id', 'ASC')->get();
     }
+
+    public function AmountOfAssignments() {
+        $m_amountOfAssignments = 0;
+
+        foreach ($this->Chapters() as $chapter) {
+            foreach ($chapter->Lessons() as $lesson) {
+                $m_amountOfAssignments++;
+            }
+        }
+
+        return $m_amountOfAssignments;
+    }
 }

@@ -31,10 +31,10 @@ class userCourseUnlocks extends Model
     protected $guarded = [];
 
     public function Finished() {
-        return $this->amountOfCompletedLessons == $this->amountOfLessons;
+        return $this->amountOfCompletedLessons == $this->belongsTo('App\courses', 'course_id', 'id')->get()->first()->AmountOfAssignments();
     }
 
     public function ProgressPercentage() {
-        return 100 / $this->amountOfLessons * $this->amountOfCompletedLessons;
+        return 100 / $this->belongsTo('App\courses', 'course_id', 'id')->get()->first()->AmountOfAssignments() * $this->amountOfCompletedLessons;
     }
 }
