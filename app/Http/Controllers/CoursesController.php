@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\courses;
 use App\programmingLanguages;
+use App\userCourseUnlocks;
 use Illuminate\Http\Request;
 use Storage;
 
@@ -75,9 +76,26 @@ class CoursesController extends Controller
      */
     public function show(courses $course)
     {
-        return view('courses.show', [
-            'course' => $course
-        ]);
+        $progress = userCourseUnlocks::where('course_id', $course->id)->where('user_id', Auth()->user()->id)->get();
+        if ($progress->count() == 0) {
+            if (Auth()->user()->PayCredits($course->price)) {
+                userCourseUnlocks::create([
+                    'user_id' => Auth()->user()->id,
+                    'course_id' => $course->id,
+                    'amountOfLessons' => $course->AmountOfAssignments(),
+                    'amountOfCompletedLessons' => 0,
+                ]);
+                return view('courses.show', [
+                    'course' => $course
+                ]);
+            } else {
+                return view('courses.notEnoughCredits');
+            }
+        } else {
+            return view('courses.show', [
+                'course' => $course
+            ]);
+        }
     }
 
     /**
