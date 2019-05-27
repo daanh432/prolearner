@@ -45,4 +45,11 @@ class GeneralController extends Controller
         }
         return back();
     }
+
+    public function changeTheme(string $theme) {
+        if ($theme == 'darkTheme' || $theme == 'lightTheme') {
+            Session::put('theme', $theme);
+        }
+        return back();
+    }
 }

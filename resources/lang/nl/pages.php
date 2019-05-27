@@ -13,11 +13,12 @@ return [
     |
     */
 
+    'lightTheme' => 'Licht Thema',
+    'darkTheme' => 'Donker Thema',
     'about' => 'Over',
     'fullName' => 'Volledige naam',
     'confirmPassword' => 'Wachtwoord bevestigen',
     'contact' => 'Contacteer',
-    'email' => 'E-mail',
     'name' => 'Naam',
     'subject' => 'Onderwerp',
     'message' => 'Bericht',
@@ -28,5 +29,5 @@ return [
     'start' => 'Start',
     'logout' => 'Uitloggen',
     'editProfile' => 'Profiel bewerken',
-
+    'profile' => 'Profiel',
 ];

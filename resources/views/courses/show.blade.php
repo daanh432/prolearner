@@ -9,7 +9,7 @@
                 <div class="row h-100">
                     <div class="col-md-10 mx-auto h-100">
                         <div id="courseName">
-                            <h1 class="secondaryText">{{ $course->name }}</h1>
+                            <h1 class="lightText">{{ $course->name }}</h1>
                         </div>
                     </div>
                 </div>
