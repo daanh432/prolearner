@@ -40,4 +40,8 @@ class courseChapterLessons extends Model
         'inputCheck',
         'outputCheck'
     ];
+    
+    public function Chapter() {
+        return $this->belongsTo('App\courseChapters', 'course_chapter_id', 'id')->get()->first();
+    }
 }

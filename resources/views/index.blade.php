@@ -92,7 +92,7 @@
                         <h2 class="text-center my-4">{{ __("pages.contact") }} ProLearner</h2>
                         <div class="row mb-5">
                             <div class="col-md-9 mb-md-0 mx-auto">
-                                <form action="" method="POST">
+                                <form action="{{ route('contact.submission') }}" method="POST">
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="md-form mb-0">
@@ -102,7 +102,7 @@
 
                                         <div class="col-md-6">
                                             <div class="md-form mb-0">
-                                                <input type="text" id="emailContact" name="email" placeholder="{{ __("pages.email") }}" class="form-control mb-4">
+                                                <input type="text" id="emailContact" name="email" placeholder="{{ __("auth.E-Mail Address") }}" class="form-control mb-4">
                                             </div>
                                         </div>
                                     </div>
