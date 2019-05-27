@@ -81,9 +81,10 @@ class CourseChapterLessonsController extends Controller
      */
     public function edit(courses $course, courseChapterLessons $lesson)
     {
-        abort_if($course->id == $lesson->Chapter()->Course()->id, 404);
+        abort_if($course->id != $lesson->Chapter()->Course()->id, 404);
         return view('courses.chapters.lessons.edit', [
-            'lesson' => $lesson
+            'lesson' => $lesson,
+            'course' => $course
         ]);
     }
 
@@ -98,6 +99,19 @@ class CourseChapterLessonsController extends Controller
     public function update(Request $request, courses $course, courseChapterLessons $lesson)
     {
         abort_if($course->id != $lesson->Chapter()->Course()->id, 404);
+        $validated = $request->validate([
+            'name' => ['required', 'string'],
+            'description' => ['required', 'string'],
+            'assignment' => ['required', 'string'],
+            'inputCheck' => ['required', 'string'],
+            'outputCheck' => ['required', 'string']
+        ]);
+
+        $validated['course_id'] = $course->id;
+
+        $lesson->update($validated);
+
+
         return redirect(route('courses.show', [$course->id]));
     }
 
