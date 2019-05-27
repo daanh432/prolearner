@@ -38,4 +38,13 @@ Om dit te bereiken, zullen wij een communityforum maken waar je met iedereen kun
 problemen/prestaties. Je kan je eigen certificaat behalen na het voltooien van een van onze cursussen. 
 Daarin zullen we zeggen wat je hebt bereikt met handtekeningen van ons. 
 ProLearner begon als een schoolproject maar groeit nu massaal uit tot een enorm bedrijf.',
+    'notEnoughTitle' => 'Niet genoeg',
+    'notEnoughText' => 'Je hebt nog niet genoeg credits om deze cursus te volgen.',
+    'goBack' => 'Ga terug',
+    'getMore' => 'Verkrijg meer',
+    'getMoreCredits' => 'Verkrijg meer credits',
+    'referralCode' => 'Verwijzings code',
+    'submit' => 'Versturen',
+    'close' => 'Sluiten',
+
 ];

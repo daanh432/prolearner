@@ -37,4 +37,13 @@ of courses with SQL, C++, C#, JAVA and C. Creating a big community is also on ou
 will be making a community forum where you can talk to anyone about your questions or other problems/accomplishments.
 You will be able to get your own certificate after completing one of our courses. In there we will state what you\'ve
 accomplished with a signature from the creators. ProLearner started as a school project but is now growing immensely fast.',
+    'notEnoughTitle' => 'Not enough',
+    'notEnoughText' => 'You do not have enough credits to follow this course.',
+    'goBack' => 'Go back',
+    'getMore' => 'Get more',
+    'getMoreCredits' => 'Get more credits',
+    'referralCode' => 'Referral code',
+    'submit' => 'Submit',
+    'close' => 'Close',
+
 ];
