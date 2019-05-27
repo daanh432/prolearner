@@ -20,9 +20,16 @@
                 </li>
             </ul>
             <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Languages</a>
-                </li>
+                @if(Session::exists('locale') && Session::get('locale', 'unknown') != 'en')
+                    <li class="nav-item">
+                        <a rel="nofollow" href="{{ route('locale.update', 'en') }}" data-toggle="tooltip" data-placement="bottom" title="English" class="nav-link"><span class="languageIcon icon-gb"></span></a>
+                    </li>
+                @elseif(!Session::exists('locale') || Session::get('locale', 'unknown') != 'nl')
+                    <li class="nav-item">
+                        <a rel="nofollow" href="{{ route('locale.update', 'nl') }}" data-toggle="tooltip" data-placement="bottom" title="Nederlands" class="nav-link"><span class="languageIcon icon-nl"></span></a>
+                    </li>
+
+                @endif
                 <li class="nav-item">
                     <a class="nav-link" href="#">Thema</a>
                 </li>
