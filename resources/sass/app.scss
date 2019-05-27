@@ -166,11 +166,17 @@
 
 .br-30 {
   -webkit-border-radius: 30px;
+  -webkit-border-radius: 30px;
   -moz-border-radius: 30px;
   border-radius: 30px;
 }
 
 .editButtons {
   background-color: $editButtons;
+  color: white;
+}
+
+.primaryButton {
+  background-color: $primaryButtons;
   color: white;
 }
