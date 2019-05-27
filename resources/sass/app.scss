@@ -176,7 +176,8 @@
   color: white;
 }
 
-.primaryButton {
-  background-color: $primaryButtons;
-  color: white;
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
 }

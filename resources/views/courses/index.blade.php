@@ -6,7 +6,9 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <a href="{{ route('courses.create') }}" class="btn editButtons mt-1" id="addCourse">New Course</a>
+                <div class="text-right">
+                    <a href="{{ route('courses.create') }}" class="btn editButtons mt-1">New Course</a>
+                </div>
                 <div class="courseGridContainer my-5 ">
                     @foreach($courses as $course)
                         <div class="gridItem p-3 br-20 position-relative containerBackground secondaryText">
