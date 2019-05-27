@@ -63,4 +63,15 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function PayCredits(int $a_amountOfCoins)
+    {
+        if ($a_amountOfCoins >= 0 && $this->credits >= $a_amountOfCoins) {
+            $this->credits = $this->credits - $a_amountOfCoins;
+            $this->save();
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

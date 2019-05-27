@@ -25,6 +25,8 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\forumPosts whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\forumPosts whereUserId($value)
  * @mixin \Eloquent
+ * @property int $forum_post_reaction_id
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\forumPosts whereForumPostReactionId($value)
  */
 class forumPosts extends Model
 {

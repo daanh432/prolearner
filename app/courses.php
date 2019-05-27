@@ -29,6 +29,8 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\courses whereProgrammingLanguageId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\courses whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property string $description
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\courses whereDescription($value)
  */
 class courses extends Model
 {
@@ -36,5 +38,17 @@ class courses extends Model
 
     public function Chapters() {
         return $this->hasMany('App\courseChapters', 'course_id', 'id')->orderBy('id', 'ASC')->get();
+    }
+
+    public function AmountOfAssignments() {
+        $m_amountOfAssignments = 0;
+
+        foreach ($this->Chapters() as $chapter) {
+            foreach ($chapter->Lessons() as $lesson) {
+                $m_amountOfAssignments++;
+            }
+        }
+
+        return $m_amountOfAssignments;
     }
 }
