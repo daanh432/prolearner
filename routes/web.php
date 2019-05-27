@@ -14,6 +14,7 @@
 Auth::routes(['verify' => true, 'register' => true]);
 
 Route::get('/', 'GeneralController@Homepage')->name('index');
+Route::get('/theme/{theme}', 'GeneralController@changeTheme')->name('theme.update');
 Route::get('/locale/{locale}', 'GeneralController@changeLocale')->name('locale.update');
 Route::get('/contact', 'GeneralController@Contact')->name('contact');
 Route::post('/contact', 'GeneralController@ContactSubmission')->name('contact.submission');
@@ -39,9 +40,11 @@ Route::middleware('verified')->group(function () {
 });
 #endregion
 
+#region Course Chapter Lessons Routes
 Route::get('/courses/{course}/chapters/{chapter}/lessons/create', 'CourseChapterLessonsController@create')->name('courses.chapters.lessons.create');
 Route::post('/courses/{course}/chapters/{chapter}/lessons', 'CourseChapterLessonsController@store')->name('courses.chapters.lessons.store');
 Route::get('/courses/{course}/lessons/{lesson}', 'CourseChapterLessonsController@show')->name('courses.lessons.show');
 Route::get('/courses/{course}/lessons/{lesson}/edit', 'CourseChapterLessonsController@edit')->name('courses.lessons.edit');
 Route::patch('/courses/{course}/lessons/{lesson}', 'CourseChapterLessonsController@update')->name('courses.lessons.update');
 Route::delete('/courses/{course}/lessons/{lesson}', 'CourseChapterLessonsController@destroy')->name('courses.lessons.destroy');
+#endregion
