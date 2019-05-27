@@ -11,9 +11,9 @@
                         <div class="container">
                             <div class="row">
                                 <div class="col-lg-6 mt-5 lightText">
-                                </div>
-                                <p>{{__('pages.homepageText')}}</p>
                                     <h1>{{ __('pages.homepageTitle') }}</h1>
+                                    <p>{{__('pages.homepageText')}}</p>
+                                </div>
                                 <!-- Register form -->
                                 <form action="{{ route('register') }}" id="homepageRegistrationForm" class="needs-validation p-4 br-20 col-lg-6 secondaryText containerBackground" method="post" novalidate>
                                     @csrf
