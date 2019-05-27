@@ -29,6 +29,8 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\courses whereProgrammingLanguageId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\courses whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property string $description
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\courses whereDescription($value)
  */
 class courses extends Model
 {
