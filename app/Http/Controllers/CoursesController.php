@@ -6,6 +6,7 @@ use App\courses;
 use App\programmingLanguages;
 use App\userCourseUnlocks;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Storage;
 
 class CoursesController extends Controller
@@ -76,7 +77,7 @@ class CoursesController extends Controller
      */
     public function show(courses $course)
     {
-        if (Auth()::check && Auth()->user()->can('view', $course)) {
+        if (Auth()->user()->can('view', $course)) {
             return view('courses.show', [
                 'course' => $course
             ]);
