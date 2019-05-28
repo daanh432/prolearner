@@ -52,11 +52,11 @@ class CoursesController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'name' => ['required', 'string'],
+            'name' => ['required', 'string', 'max:255'],
             'description' => ['required', 'string', 'max:300'],
-            'duration' => ['required', 'string'],
-            'difficulty' => ['required', 'string'],
-            'price' => ['required', 'numeric'],
+            'duration' => ['required', 'string', 'max:11'],
+            'difficulty' => ['required', 'numeric', 'between:0,3'],
+            'price' => ['required', 'numeric', 'between:0,1000'],
             'programming_language_id' => ['required', 'exists:programming_languages,id'],
             'image' => ['required', 'image', 'mimes:jpeg,png,jpg,gif', 'max:2048']
         ]);
@@ -123,13 +123,13 @@ class CoursesController extends Controller
     public function update(Request $request, courses $course)
     {
         $validated = $request->validate([
-            'name' => ['required', 'string'],
+            'name' => ['required', 'string', 'max:100'],
             'description' => ['required', 'string', 'max:300'],
-            'duration' => ['required', 'string'],
-            'difficulty' => ['required', 'string'],
-            'price' => ['required', 'numeric'],
-            'image' => ['', 'image', 'mimes:jpeg,png,jpg,gif', 'max:2048'],
+            'duration' => ['required', 'string', 'max:11'],
+            'difficulty' => ['required', 'numeric', 'between:0,3'],
+            'price' => ['required', 'numeric', 'between:0,1000'],
             'programming_language_id' => ['required', 'exists:programming_languages,id'],
+            'image' => ['required', 'image', 'mimes:jpeg,png,jpg,gif', 'max:2048']
         ]);
 
         if ($request->hasFile('image')) {
