@@ -74,4 +74,12 @@ class User extends Authenticatable implements MustVerifyEmail
             return false;
         }
     }
+
+    public function isAdmin() {
+        if (Auth()->user()->id == 1) {
+            return true;
+        } else {
+            false;
+        }
+    }
 }

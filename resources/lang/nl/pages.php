@@ -46,5 +46,5 @@ ProLearner begon als een schoolproject maar groeit nu massaal uit tot een enorm 
     'referralCode' => 'Verwijzings code',
     'submit' => 'Versturen',
     'close' => 'Sluiten',
-
+    'continue' => 'Doorgaan',
 ];
