@@ -36,7 +36,7 @@ class CourseChaptersController extends Controller
     public function store(Request $request, courses $course)
     {
         $validated = $request->validate([
-            'name' => ['required', 'string'],
+            'name' => ['required', 'string', 'max:100'],
         ]);
 
         $validated['course_id'] = $course->id;
@@ -74,7 +74,7 @@ class CourseChaptersController extends Controller
     {
         abort_if($course->id != $chapter->Course()->id, 404);
         $validated = $request->validate([
-            'name' => ['required', 'string']
+            'name' => ['required', 'string', 'max:150'],
         ]);
 
         $validated['course_id'] = $course->id;
@@ -96,5 +96,7 @@ class CourseChaptersController extends Controller
     {
         abort_if($course->id != $chapter->Course()->id, 404);
         $chapter->delete();
+
+        return redirect(route('courses.show', ['course_id' => $course->id]));
     }
 }

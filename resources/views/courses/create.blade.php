@@ -9,7 +9,7 @@
                 @csrf
                 <h1>Create course</h1>
                 <div class="form-group">
-                    <input type="text" class="form-control" id="cName" placeholder="Course name" name="name" value="{{ old('name') }}" required>
+                    <input type="text" class="form-control" id="cName" placeholder="Course name" name="name" value="{{ old('name') }}" maxlength="100" required>
                     <div class="valid-feedback">Valid.</div>
                     <div class="invalid-feedback">Please fill out this field.</div>
                 </div>
@@ -19,7 +19,7 @@
                     <div class="invalid-feedback">Please fill out this field.</div>
                 </div>
                 <div class="form-group">
-                    <input type="text" class="form-control" id="cDur" placeholder="Duration" name="duration" value="{{ old('duration') }}" required>
+                    <input type="text" class="form-control" id="cDur" placeholder="Duration" name="duration" value="{{ old('duration') }}" maxlength="11" required>
                     <div class="valid-feedback">Valid.</div>
                     <div class="invalid-feedback">Please fill out this field.</div>
                 </div>
@@ -42,7 +42,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <input type="text" class="form-control" id="cPrice" placeholder="Price" name="price" value="{{ old('price') }}" required>
+                    <input type="number" class="form-control" id="cPrice" placeholder="Price" name="price" value="{{ old('price') }}" minlength="0" maxlength="4" required>
                     <div class="valid-feedback">Valid.</div>
                     <div class="invalid-feedback">Please fill out this field.</div>
                 </div>
