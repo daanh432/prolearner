@@ -11,27 +11,27 @@
                     @method('PATCH')
                     <h1>Edit lesson</h1>
                     <div class="form-group">
-                        <input type="text" class="form-control" id="lesName" placeholder="Lesson name" name="name" value="{{ $lesson->name }}" required>
+                        <input type="text" class="form-control" id="lesName" placeholder="Lesson name" maxlength="200" name="name" value="{{ $lesson->name }}" required>
                         <div class="valid-feedback">Valid.</div>
                         <div class="invalid-feedback">Please fill out this field.</div>
                     </div>
                     <div class="form-group">
-                        <textarea type="text" class="form-control" id="lesDes" placeholder="Description" name="description" maxlength="5000" required>{{ $lesson->description }}</textarea>
+                        <textarea type="text" class="form-control" id="lesDes" placeholder="Description" name="description" maxlength="4096" required>{{ $lesson->description }}</textarea>
                         <div class="valid-feedback">Valid.</div>
                         <div class="invalid-feedback">Please fill out this field.</div>
                     </div>
                     <div class="form-group">
-                        <textarea type="text" class="form-control" id="lesAssignment" placeholder="Assignment name" name="assignment" maxlength="5000" required>{{ $lesson->assignment }}</textarea>
+                        <textarea type="text" class="form-control" id="lesAssignment" placeholder="Assignment name" name="assignment" maxlength="4096" required>{{ $lesson->assignment }}</textarea>
                         <div class="valid-feedback">Valid.</div>
                         <div class="invalid-feedback">Please fill out this field.</div>
                     </div>
                     <div class="form-group">
-                        <input type="text" class="form-control" id="lesInputCheck" placeholder="Input check" name="inputCheck" value="{{ $lesson->inputCheck }}" required>
+                        <input type="text" class="form-control" id="lesInputCheck" placeholder="Input check" maxlength="1024" name="inputCheck" value="{{ $lesson->inputCheck }}" required>
                         <div class="valid-feedback">Valid.</div>
                         <div class="invalid-feedback">Please fill out this field.</div>
                     </div>
                     <div class="form-group">
-                        <input type="text" class="form-control" id="lesOutputCheck" placeholder="Output check" name="outputCheck" value="{{ $lesson->outputCheck }}" required>
+                        <input type="text" class="form-control" id="lesOutputCheck" placeholder="Output check" maxlength="1024" name="outputCheck" value="{{ $lesson->outputCheck }}" required>
                         <div class="valid-feedback">Valid.</div>
                         <div class="invalid-feedback">Please fill out this field.</div>
                     </div>
