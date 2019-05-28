@@ -45,5 +45,5 @@ accomplished with a signature from the creators. ProLearner started as a school 
     'referralCode' => 'Referral code',
     'submit' => 'Submit',
     'close' => 'Close',
-
+    'continue' => 'Continue',
 ];

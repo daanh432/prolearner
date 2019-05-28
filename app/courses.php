@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 
 /**
  * App\courses
@@ -36,10 +37,16 @@ class courses extends Model
 {
     protected $fillable = ['name', 'duration', 'difficulty', 'programming_language_id', 'image', 'price', 'description'];
 
+    /** Returns all the chapters from this course
+     * @return \Illuminate\Database\Eloquent\Collection
+     */
     public function Chapters() {
         return $this->hasMany('App\courseChapters', 'course_id', 'id')->orderBy('id', 'ASC')->get();
     }
 
+    /** Returns the amount of assignments in this course
+     * @return int
+     */
     public function AmountOfAssignments() {
         $m_amountOfAssignments = 0;
 
@@ -50,5 +57,16 @@ class courses extends Model
         }
 
         return $m_amountOfAssignments;
+    }
+
+    /** Checks if user has unlocked and bought the course
+     * @return bool
+     */
+    public function Unlocked() {
+        if (Auth::check()) {
+            return userCourseUnlocks::where('course_id', $this->id)->where('user_id', Auth()->user()->id)->get()->count() > 0;
+        } else {
+            return false;
+        }
     }
 }
