@@ -76,8 +76,11 @@ class CoursesController extends Controller
      */
     public function show(courses $course)
     {
-        $progress = userCourseUnlocks::where('course_id', $course->id)->where('user_id', Auth()->user()->id)->get();
-        if ($progress->count() == 0) {
+        if (Auth()::check && Auth()->user()->can('view', $course)) {
+            return view('courses.show', [
+                'course' => $course
+            ]);
+        } else {
             if (Auth()->user()->PayCredits($course->price)) {
                 userCourseUnlocks::create([
                     'user_id' => Auth()->user()->id,
@@ -91,10 +94,6 @@ class CoursesController extends Controller
             } else {
                 return view('courses.notEnoughCredits');
             }
-        } else {
-            return view('courses.show', [
-                'course' => $course
-            ]);
         }
     }
 

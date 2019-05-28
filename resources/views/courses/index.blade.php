@@ -21,10 +21,14 @@
                             <p>{{ $course->description }}</p>
                             <p class="position-absolute duration">Duration: {{ $course->duration }}. </p>
                             <a href="{{ route('courses.show', [$course->id]) }}" class="btn btn-info w-25 br-20 position-absolute">
-                                @if($course->price >= 1)
-                                    {{ __('pages.unlockFor', ['points' => $course->price]) }}
+                                @if(Auth::check() && Auth::user()->can('view', $course))
+                                    {{ __('pages.continue') }}
                                 @else
-                                    {{ __('pages.start') }}
+                                    @if($course->price > 0)
+                                        {{ __('pages.unlockFor', ['points' => $course->price]) }}
+                                    @else
+                                        {{ __('pages.start') }}
+                                    @endif
                                 @endif
                             </a>
                         </div>
