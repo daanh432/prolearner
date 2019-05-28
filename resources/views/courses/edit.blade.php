@@ -11,7 +11,7 @@
                     @method('PATCH')
                     <h1>Edit course</h1>
                     <div class="form-group">
-                        <input type="text" class="form-control" id="cName" placeholder="Course name" name="name" value="{{ $course->name }}" required>
+                        <input type="text" class="form-control" id="cName" placeholder="Course name" name="name" value="{{ $course->name }}" maxlength="100" required>
                         <div class="valid-feedback">Valid.</div>
                         <div class="invalid-feedback">Please fill out this field.</div>
                     </div>
@@ -21,7 +21,7 @@
                         <div class="invalid-feedback">Please fill out this field.</div>
                     </div>
                     <div class="form-group">
-                        <input type="text" class="form-control" id="cDur" placeholder="Duration" name="duration" value="{{ $course->duration }}" required>
+                        <input type="text" class="form-control" id="cDur" placeholder="Duration" name="duration" value="{{ $course->duration }}" maxlength="11" required>
                         <div class="valid-feedback">Valid.</div>
                         <div class="invalid-feedback">Please fill out this field.</div>
                     </div>
@@ -44,7 +44,7 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <input type="text" class="form-control" id="cPrice" placeholder="Price" name="price" value="{{ $course->price }}" required>
+                        <input type="number" class="form-control" id="cPrice" placeholder="Price" name="price" value="{{ $course->price }}" min="0" max="1000" required>
                         <div class="valid-feedback">Valid.</div>
                         <div class="invalid-feedback">Please fill out this field.</div>
                     </div>
