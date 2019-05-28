@@ -96,5 +96,7 @@ class CourseChaptersController extends Controller
     {
         abort_if($course->id != $chapter->Course()->id, 404);
         $chapter->delete();
+
+        return redirect(route('courses.show', ['course_id' => $course->id]));
     }
 }
