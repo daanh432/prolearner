@@ -43,11 +43,11 @@ class CourseChapterLessonsController extends Controller
         abort_if($course->id != $chapter->Course()->id, 404);
 
         $validated = $request->validate([
-            'name' => ['required', 'string'],
-            'description' => ['required', 'string', 'max:5000'],
-            'assignment' => ['required', 'string', 'max:5000'],
-            'inputCheck' => ['required', 'string'],
-            'outputCheck' => ['required', 'string'],
+            'name' => ['required', 'string', 'max:200'],
+            'description' => ['required', 'string', 'max:4096'],
+            'assignment' => ['required', 'string', 'max:4096'],
+            'inputCheck' => ['required', 'string', 'max:1024'],
+            'outputCheck' => ['required', 'string', 'max:1024']
         ]);
 
         $validated['course_chapter_id'] = $chapter->id;
@@ -100,11 +100,11 @@ class CourseChapterLessonsController extends Controller
     {
         abort_if($course->id != $lesson->Chapter()->Course()->id, 404);
         $validated = $request->validate([
-            'name' => ['required', 'string'],
-            'description' => ['required', 'string'],
-            'assignment' => ['required', 'string'],
-            'inputCheck' => ['required', 'string'],
-            'outputCheck' => ['required', 'string']
+            'name' => ['required', 'string', 'max:200'],
+            'description' => ['required', 'string', 'max:4096'],
+            'assignment' => ['required', 'string', 'max:4096'],
+            'inputCheck' => ['required', 'string', 'max:1024'],
+            'outputCheck' => ['required', 'string', 'max:1024']
         ]);
 
         $validated['course_id'] = $course->id;

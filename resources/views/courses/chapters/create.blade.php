@@ -9,7 +9,7 @@
                 @csrf
                 <h1>Create chapter</h1>
                 <div class="form-group">
-                    <input type="text" class="form-control" id="chapName" placeholder="Chapter name" name="name" value="{{ old('name') }}" required>
+                    <input type="text" class="form-control" id="chapName" placeholder="Chapter name" name="name" value="{{ old('name') }}" max="150" required>
                     <div class="valid-feedback">Valid.</div>
                     <div class="invalid-feedback">Please fill out this field.</div>
                 </div>
