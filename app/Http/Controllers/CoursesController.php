@@ -13,7 +13,7 @@ class CoursesController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('verified')->except(['index', 'show']);
+        $this->middleware('admin')->except(['index', 'show']);
         $this->middleware('auth')->only('show');
     }
 
