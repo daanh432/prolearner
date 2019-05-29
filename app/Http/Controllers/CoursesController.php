@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\courses;
 use App\programmingLanguages;
 use App\userCourseUnlocks;
-use Barryvdh\DomPDF\PDF;
+use Barryvdh\DomPDF\Facade as PDF;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Storage;
@@ -159,8 +159,10 @@ class CoursesController extends Controller
     }
 
     public function generateCertificate(courses $course) {
-        PDF::setOptions(['dpi' => 200, 'defaultFont' => 'sans-serif']);
-        $pdf = PDF::loadView('pdf.certificate', $course);
-        return $pdf->download('prolearner-certificate.pdf');
+        PDF::setOptions(['dpi' => 5, 'defaultFont' => 'sans-serif']);
+        $pdf = PDF::loadView('pdf.certificate', [
+            'course' => $course,
+        ]);
+        return $pdf->stream();
     }
 }
