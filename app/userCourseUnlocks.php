@@ -28,15 +28,20 @@ use Illuminate\Database\Eloquent\Model;
  */
 class userCourseUnlocks extends Model
 {
-    protected $guarded = [];
+    protected $fillable = ['user_id', 'course_id', 'amountOfCompletedLessons'];
 
     public function Finished() {
-        return $this->amountOfCompletedLessons == $this->belongsTo('App\courses', 'course_id', 'id')->get()->first()->AmountOfAssignments();
+        $course = $this->belongsTo('App\courses', 'course_id', 'id')->get()->first();
+        if ($course != null) {
+            return $this->amountOfCompletedLessons >= $course->AmountOfAssignments();
+        } else {
+            return false;
+        }
     }
 
     public function ProgressPercentage() {
         $course = $this->belongsTo('App\courses', 'course_id', 'id')->get()->first();
-        if ($course->AmountOfAssignments() > 0) {
+        if ($course != null && $course->AmountOfAssignments() > 0) {
             return 100 / $course->AmountOfAssignments() * $this->amountOfCompletedLessons;
         } else {
             return 0;

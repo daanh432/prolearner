@@ -26,6 +26,7 @@ Route::get('/courses/create', 'CoursesController@create')->name('courses.create'
 Route::post('/courses', 'CoursesController@store')->name('courses.store');
 Route::get('/courses/{course}', 'CoursesController@show')->name('courses.show');
 Route::get('/courses/{course}/edit', 'CoursesController@edit')->name('courses.edit');
+Route::get('/courses/{course}/certificate', 'CoursesController@generateCertificate')->name('courses.certificate');
 Route::patch('/courses/{course}', 'CoursesController@update')->name('courses.update');
 Route::delete('/courses/{course}', 'CoursesController@destroy')->name('courses.destroy');
 #endregion

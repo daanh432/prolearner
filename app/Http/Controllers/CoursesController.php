@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\courses;
 use App\programmingLanguages;
 use App\userCourseUnlocks;
+use Barryvdh\DomPDF\PDF;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Storage;
@@ -13,8 +14,8 @@ class CoursesController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('admin')->except(['index', 'show']);
-        $this->middleware('auth')->only('show');
+        $this->middleware('admin')->except(['index', 'show', 'generateCertificate']);
+        $this->middleware('auth')->only(['show', 'generateCertificate']);
     }
 
     /**
@@ -86,7 +87,6 @@ class CoursesController extends Controller
                 userCourseUnlocks::create([
                     'user_id' => Auth()->user()->id,
                     'course_id' => $course->id,
-                    'amountOfLessons' => $course->AmountOfAssignments(),
                     'amountOfCompletedLessons' => 0,
                 ]);
                 return view('courses.show', [
@@ -156,5 +156,11 @@ class CoursesController extends Controller
     {
         $course->delete();
         return redirect(route('courses.index'));
+    }
+
+    public function generateCertificate(courses $course) {
+        PDF::setOptions(['dpi' => 200, 'defaultFont' => 'sans-serif']);
+        $pdf = PDF::loadView('pdf.certificate', $course);
+        return $pdf->download('prolearner-certificate.pdf');
     }
 }
