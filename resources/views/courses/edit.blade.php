@@ -69,13 +69,13 @@
 
                 <div class="form-group row">
                     <div class="col-md-4 text-center">
-                        <a href="{{ URL::previous() }}" class="btn btn-secondary w-80 br-20">{{ __('pages.goBack') }}</a>
+                        <a href="{{ URL::previous() }}" class="btn btn-secondary w-100 br-20">{{ __('pages.goBack') }}</a>
                     </div>
                     <div class="col-md-4 mt-2 mt-md-0 text-center">
-                        <button type="submit" class="btn btn-danger w-80 br-20" form="deleteCourse">{{ __('pages.delete') }}</button>
+                        <button type="submit" class="btn btn-danger w-100 br-20" form="deleteCourse">{{ __('pages.delete') }}</button>
                     </div>
                     <div class="col-md-4 mt-2 mt-md-0 text-center">
-                        <button type="submit" class="btn btn-primary w-80 br-20" form="editCourse">{{ __('pages.submit') }}</button>
+                        <button type="submit" class="btn btn-primary w-100 br-20" form="editCourse">{{ __('pages.submit') }}</button>
                     </div>
                 </div>
 
