@@ -6,7 +6,7 @@
     <div class="container">
         <div class="row mt-4">
             <div class="col-md-12 containerBackground secondaryText" id="accountPage">
-                <div class="row" id="profileHeader">
+                <div class="row profileHeader">
                     <div class="col-md-3">
                         <img src="{{asset('assets/img/user.png')}}" class="rounded-circle mx-auto mx-md-0 d-block d-md-inline-block"
                              alt="User image">
@@ -19,6 +19,20 @@
                             <button type="submit" class="btn btn-secondary br-20">{{ __('pages.logout') }}</button>
                         </form>
                         <a href="" class="btn btn-primary br-20 d-inline-block">{{ __('pages.editProfile') }}</a>
+                    </div>
+                </div>
+                <div class="row profileHeader">
+                    <h2>Course:</h2>
+                    <div class="col-md-9 mx-auto">
+                        @foreach($courseUnlocks as $courseProgress)
+                            @if($courseProgress->ProgressPercentage() == 100)
+                                {{--courses that are unlocked and finished--}}
+                                <h1>{{ $courseProgress->Course()->name }}</h1>
+                            @else
+                                {{--courses that are unlocked but not finished--}}
+                                <h1>{{ $courseProgress->Course()->name }}</h1>
+                            @endif
+                        @endforeach
                     </div>
                 </div>
             </div>
