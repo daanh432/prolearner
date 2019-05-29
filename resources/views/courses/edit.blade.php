@@ -5,7 +5,7 @@
 @section('content')
     <div class="container">
         <div class="row">
-            <div class="col-md-6 mx-auto p-5 mt-5 br-20 containerBackground secondaryText">
+            <div class="col-lg-6 mx-auto p-5 mt-5 br-20 containerBackground secondaryText">
                 <form action="{{ route('courses.update', ['course' => $course->id]) }}" method="POST" id="editCourse" enctype="multipart/form-data" class="needs-validation" novalidate>
                     @csrf
                     @method('PATCH')
@@ -26,19 +26,19 @@
                         <div class="invalid-feedback">Please fill out this field.</div>
                     </div>
                     <div class="row text-center mb-3">
-                        <div class="col-3 custom-control custom-radio">
+                        <div class="col-3 custom-control custom-radio text-left">
                             <input type="radio" class="custom-control-input" id="cBeginner" name="difficulty" value="0" {{ $course->difficulty == 0 ? 'checked' : '' }}>
                             <label class="custom-control-label" for="cBeginner">Beginner</label>
                         </div>
-                        <div class="col-3 custom-control custom-radio">
+                        <div class="col-3 custom-control custom-radio text-left">
                             <input type="radio" class="custom-control-input" id="cAdvanced" name="difficulty" value="1" {{ $course->difficulty == 1 ? 'checked' : '' }}>
                             <label class="custom-control-label" for="cAdvanced">Intermediate</label>
                         </div>
-                        <div class="col-3 custom-control custom-radio">
+                        <div class="col-4 custom-control custom-radio text-right">
                             <input type="radio" class="custom-control-input" id="cVeteran" name="difficulty" value="2" {{ $course->difficulty == 2 ? 'checked' : '' }}>
                             <label class="custom-control-label" for="cVeteran">Advanced</label>
                         </div>
-                        <div class="col-3 custom-control custom-radio">
+                        <div class="col-2 custom-control custom-radio text-right">
                             <input type="radio" class="custom-control-input" id="cExpert" name="difficulty" value="3" {{ $course->difficulty == 3 ? 'checked' : '' }}>
                             <label class="custom-control-label" for="cExpert">Expert</label>
                         </div>
