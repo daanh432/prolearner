@@ -42,4 +42,8 @@ class userCourseUnlocks extends Model
             return 0;
         }
     }
+
+    public function Course() {
+        return $this->belongsTo('App\courses', 'course_id', 'id')->get()->first();
+    }
 }

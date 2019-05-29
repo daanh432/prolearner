@@ -35,7 +35,11 @@ class GeneralController extends Controller
 
     public function Dashboard()
     {
-        return view('dashboard');
+        $courseUnlocks = Auth()->User()->CourseUnlocks();
+
+        return view('dashboard', [
+            'courseUnlocks' => $courseUnlocks,
+        ]);
     }
 
     public function changeLocale(string $locale)
