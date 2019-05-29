@@ -35,6 +35,11 @@ class userCourseUnlocks extends Model
     }
 
     public function ProgressPercentage() {
-        return 100 / $this->belongsTo('App\courses', 'course_id', 'id')->get()->first()->AmountOfAssignments() * $this->amountOfCompletedLessons;
+        $course = $this->belongsTo('App\courses', 'course_id', 'id')->get()->first();
+        if ($course->AmountOfAssignments() > 0) {
+            return 100 / $course->AmountOfAssignments() * $this->amountOfCompletedLessons;
+        } else {
+            return 0;
+        }
     }
 }

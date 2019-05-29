@@ -82,4 +82,8 @@ class User extends Authenticatable implements MustVerifyEmail
             false;
         }
     }
+
+    public function CourseUnlocks() {
+        return $this->hasMany('App\userCourseUnlocks', 'user_id', 'id')->get();
+    }
 }
