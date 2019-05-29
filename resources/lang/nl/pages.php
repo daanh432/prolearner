@@ -47,4 +47,5 @@ ProLearner begon als een schoolproject maar groeit nu massaal uit tot een enorm 
     'submit' => 'Versturen',
     'close' => 'Sluiten',
     'continue' => 'Doorgaan',
+    'delete' => 'Verwijderen',
 ];
