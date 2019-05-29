@@ -5,7 +5,7 @@
 @section('content')
     <div class="container">
         <div class="row mt-4">
-            <div class="col-md-12 containerBackground secondaryText" id="accountPage">
+            <div class="col-md-12 containerBackground secondaryText br-20" id="">
                 <div class="row profileHeader">
                     <div class="col-md-3">
                         <img src="{{asset('assets/img/user.png')}}" class="rounded-circle mx-auto mx-md-0 d-block d-md-inline-block"
@@ -21,18 +21,39 @@
                         <a href="" class="btn btn-primary br-20 d-inline-block">{{ __('pages.editProfile') }}</a>
                     </div>
                 </div>
-                <div class="row profileHeader">
-                    <h2>Course:</h2>
-                    <div class="col-md-9 mx-auto">
-                        @foreach($courseUnlocks as $courseProgress)
-                            @if($courseProgress->ProgressPercentage() == 100)
-                                {{--courses that are unlocked and finished--}}
-                                <h1>{{ $courseProgress->Course()->name }}</h1>
-                            @else
-                                {{--courses that are unlocked but not finished--}}
-                                <h1>{{ $courseProgress->Course()->name }}</h1>
-                            @endif
-                        @endforeach
+                <div class="row">
+                    <div class="col-12">
+                        <div class="row">
+                            <div class="col-12">
+                                <h2>Courses</h2>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="coursesGrid text-center">
+                                    @foreach($courseUnlocks as $courseProgress)
+                                        <div>
+                                            <a class="secondaryText mx-auto d-inline-block" href="{{ route('courses.show', [$courseProgress->Course()->id]) }}">
+                                                <div class="progress position-relative" data-percentage="{{ round($courseProgress->ProgressPercentage()) }}">
+                                                <span class="progress-left">
+                                                    <span class="progress-bar"></span>
+                                                </span>
+                                                    <span class="progress-right">
+                                                    <span class="progress-bar"></span>
+                                                </span>
+                                                    <div class="progress-value">
+                                                        <div>
+                                                            {{ round($courseProgress->ProgressPercentage()) }}%
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <p>{{ $courseProgress->Course()->name }}</p>
+                                            </a>
+                                        </div>
+                                    @endforeach
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
