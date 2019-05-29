@@ -11,7 +11,7 @@ class CourseChapterLessonsController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('verified')->except(['show']);
+        $this->middleware('admin')->except(['show']);
         $this->middleware('auth')->only(['show']);
     }
 
