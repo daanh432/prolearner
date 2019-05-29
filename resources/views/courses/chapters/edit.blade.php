@@ -5,7 +5,7 @@
 @section('content')
     <div class="container">
         <div class="row">
-            <div class="col-md-6 mx-auto bg-white p-5 mt-5 rounded">
+            <div class="col-lg-6 mx-auto containerBackground secondaryText p-5 mt-5 br-20">
                 <form action="{{ route('courses.chapters.update', [ 'course' => $course->id, 'chapters' => $chapter->id]) }}" id="editChapter" method="post" enctype="multipart/form-data" class="needs-validation" novalidate>
                     @csrf
                     @method('PATCH')
@@ -20,8 +20,20 @@
                     @csrf
                     @method('DELETE')
                 </form>
-                <button type="submit" form="editChapter" class="btn btn-primary">Submit</button>
-                <button type="submit" form="deleteChapter" class="btn btn-danger">Delete</button>
+
+                <div class="form-group row">
+                    <div class="col-md-4 text-center">
+                        <a href="{{ URL::previous() }}" class="btn btn-secondary w-80 br-20">{{ __('pages.goBack') }}</a>
+                    </div>
+                    <div class="col-md-4 mt-2 mt-md-0 text-center">
+                        <button type="submit" form="deleteChapter" class="btn btn-danger w-80 br-20">{{ __('pages.delete') }}</button>
+
+                    </div>
+                    <div class="col-md-4 mt-2 mt-md-0 text-center">
+                        <button type="submit" form="editChapter" class="btn btn-primary w-80 br-20">{{ __('pages.submit') }}</button>
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>
