@@ -28,7 +28,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class userCourseUnlocks extends Model
 {
-    protected $guarded = [];
+    protected $fillable = ['user_id', 'course_id', 'amountOfCompletedLessons'];
 
     public function Finished() {
         return $this->amountOfCompletedLessons == $this->belongsTo('App\courses', 'course_id', 'id')->get()->first()->AmountOfAssignments();
