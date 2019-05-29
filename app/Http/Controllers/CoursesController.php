@@ -86,7 +86,6 @@ class CoursesController extends Controller
                 userCourseUnlocks::create([
                     'user_id' => Auth()->user()->id,
                     'course_id' => $course->id,
-                    'amountOfLessons' => $course->AmountOfAssignments(),
                     'amountOfCompletedLessons' => 0,
                 ]);
                 return view('courses.show', [
