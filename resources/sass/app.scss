@@ -115,43 +115,12 @@
 
 // Parallax CSS
 
-.parallax-window {
-  min-height: 400px;
-  position: absolute;
-  left: 0;
-  right: 0;
-  background: transparent;
-}
-
-.parallax-window-reserve {
-  width: 100%;
-  min-height: 400px;
-}
-
 .parallax-row {
   min-height: 65vh;
   background: transparent;
 }
 
 // Custom border radius's
-.br-5 {
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
-  border-radius: 5px;
-}
-
-.br-10 {
-  -webkit-border-radius: 10px;
-  -moz-border-radius: 10px;
-  border-radius: 10px;
-}
-
-.br-15 {
-  -webkit-border-radius: 15px;
-  -moz-border-radius: 15px;
-  border-radius: 15px;
-}
-
 .br-20 {
   -webkit-border-radius: 20px;
   -moz-border-radius: 20px;
@@ -168,10 +137,6 @@
   -webkit-border-radius: 30px;
   -moz-border-radius: 30px;
   border-radius: 30px;
-}
-
-.w-80 {
-  width: 80% !important;
 }
 
 .editButtons {
