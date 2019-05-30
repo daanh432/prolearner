@@ -41,3 +41,18 @@ $('#element').click(function() {
         }
     }, 'json');
 });
+
+$('.themeSwitch').click(function (e) {
+    e.preventDefault();
+    let body = $('body');
+    if (body.hasClass('darkTheme')) {
+        body.removeClass('darkTheme');
+        body.addClass('lightTheme');
+    } else {
+        body.removeClass('lightTheme');
+        body.addClass('darkTheme');
+    }
+    $.get($(this).attr('href'));
+    $('.themeSwitch').removeClass('d-none');
+    $(this).addClass('d-none');
+});
