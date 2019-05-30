@@ -30,12 +30,16 @@
         </div>
 
         <div class="liveEditorLesson" id="htmlEditor">{{ $lesson->assignment }}</div>
-        <textarea name="htmlEditor" style="display: none;"></textarea>
+        <label class="d-none">
+            <textarea name="htmlEditor" class="d-none"></textarea>
+        </label>
 
-        <div id="editorRun secondaryText"></div>
+        <div id="editorRun" class="secondaryText text-right">
+            <button class="btn btn-primary" id="editorRunButton">Run</button>
+        </div>
 
         <div id="output">
-            <iframe src="{{ route('index') }}" style="width: 100%; height: 99%; margin: 0; padding: 0;" frameborder="0"></iframe>
+            <iframe id="outputIframe" style="width: 100%; height: 99%; margin: 0; padding: 0;" frameborder="0"></iframe>
         </div>
     </div>
 @endsection
