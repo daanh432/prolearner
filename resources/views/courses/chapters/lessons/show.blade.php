@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'SHOW LESSON CHANGE')
+@section('title', $lesson->name . ' - ' . $lesson->Chapter()->name . ' - ' .$lesson->Chapter()->Course()->name)
 
 @push('head')
     <link rel="stylesheet" href="{{ asset('assets/css/liveEditor.css') }}">
