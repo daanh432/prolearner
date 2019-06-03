@@ -14,7 +14,7 @@
                     <div class="invalid-feedback">Please fill out this field.</div>
                 </div>
                 <div class="form-group">
-                    <textarea type="text" class="form-control" id="cDes" placeholder="Description" name="description" maxlength="300" required>{{ old('duration') }}</textarea>
+                    <textarea type="text" class="form-control" id="cDes" placeholder="Description" name="description" maxlength="300" required>{{ old('description') }}</textarea>
                     <div class="valid-feedback">Valid.</div>
                     <div class="invalid-feedback">Please fill out this field.</div>
                 </div>
@@ -61,7 +61,7 @@
                 </div>
                 <div class="form-group row">
                     <div class="col-md-6 text-center">
-                        <a href="{{ URL::previous() }}" class="btn btn-secondary w-100 br-20">{{ __('pages.goBack') }}</a>
+                        <a href="{{ route('courses.index') }}" class="btn btn-secondary w-100 br-20">{{ __('pages.goBack') }}</a>
                     </div>
                     <div class="col-md-6 mt-2 mt-md-0 text-center">
                         <button class="btn btn-primary w-100 br-20" type="submit">{{ __('pages.submit') }}</button>
