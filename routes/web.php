@@ -49,3 +49,5 @@ Route::get('/courses/{course}/lessons/{lesson}/edit', 'CourseChapterLessonsContr
 Route::patch('/courses/{course}/lessons/{lesson}', 'CourseChapterLessonsController@update')->name('courses.lessons.update');
 Route::delete('/courses/{course}/lessons/{lesson}', 'CourseChapterLessonsController@destroy')->name('courses.lessons.destroy');
 #endregion
+
+Route::get('/certificate', 'GeneralController@Certificate')->name('certificate')->middleware('auth');

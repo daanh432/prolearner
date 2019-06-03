@@ -18,6 +18,10 @@ class GeneralController extends Controller
         return redirect(route('index') . "#contact");
     }
 
+    public function Certificate() {
+        return view('pdf.certificate');
+    }
+
     public function ContactSubmission()
     {
         $validated = request()->validate([
