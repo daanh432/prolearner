@@ -16,7 +16,7 @@
 
                                 <div class="form-group row">
                                     <div class="col-md-6 text-center">
-                                        <a href="{{ URL::previous() }}" class="btn btn-secondary w-75 br-20">{{ __('pages.goBack') }}</a>
+                                        <a href="{{ route('courses.index') }}" class="btn btn-secondary w-75 br-20">{{ __('pages.goBack') }}</a>
                                     </div>
                                     <div class="col-md-6 mt-2 mt-md-0 text-center">
                                         <button class="btn btn-primary w-75 br-20" type="button" data-toggle="modal" data-target="#myModal">{{ __('pages.getMore') }}</button>
