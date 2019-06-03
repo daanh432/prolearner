@@ -38,7 +38,7 @@
                                     <div class="clearfix"></div>
                                 </div>
                             </a>
-                            <div id="collapse{{ $chapter->id }}" class="collapse show" data-parent="#accordion">
+                            <div id="collapse{{ $chapter->id }}" class="collapse show">
                                 <div class="card-body p-0">
                                     <ul class="pl-0 mb-0 lessons">
                                         @foreach ($chapter->Lessons() as $lesson)
