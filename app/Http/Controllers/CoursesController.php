@@ -159,10 +159,10 @@ class CoursesController extends Controller
     }
 
     public function generateCertificate(courses $course) {
-        PDF::setOptions(['dpi' => 5, 'defaultFont' => 'sans-serif']);
+        PDF::setOptions(['dpi' => 300, 'defaultFont' => 'sans-serif']);
         $pdf = PDF::loadView('pdf.certificate', [
             'course' => $course,
-        ]);
+        ])->setPaper('a4', 'landscape');
         return $pdf->stream();
     }
 }
