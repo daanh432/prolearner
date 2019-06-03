@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Mail\ContactFormMail;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
 class GeneralController extends Controller
@@ -55,9 +54,12 @@ class GeneralController extends Controller
     }
 
     public function changeTheme(string $theme) {
+        $data = ["success" => " false"];
         if ($theme == 'darkTheme' || $theme == 'lightTheme') {
             Session::put('theme', $theme);
+            $data["success"] = true;
+            $data["theme"] = $theme;
         }
-        return back();
+        return $data;
     }
 }

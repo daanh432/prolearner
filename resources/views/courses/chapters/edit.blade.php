@@ -23,7 +23,7 @@
 
                 <div class="form-group row">
                     <div class="col-md-4 text-center">
-                        <a href="{{ URL::previous() }}" class="btn btn-secondary w-100 br-20">{{ __('pages.goBack') }}</a>
+                        <a href="{{ route('courses.show', [$course->id]) }}" class="btn btn-secondary w-100 br-20">{{ __('pages.goBack') }}</a>
                     </div>
                     <div class="col-md-4 mt-2 mt-md-0 text-center">
                         <button type="submit" form="deleteChapter" class="btn btn-danger w-100 br-20">{{ __('pages.delete') }}</button>
