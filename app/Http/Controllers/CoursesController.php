@@ -130,7 +130,7 @@ class CoursesController extends Controller
             'difficulty' => ['required', 'numeric', 'between:0,3'],
             'price' => ['required', 'numeric', 'between:0,1000'],
             'programming_language_id' => ['required', 'exists:programming_languages,id'],
-            'image' => ['required', 'image', 'mimes:jpeg,png,jpg,gif', 'max:2048']
+            'image' => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif', 'max:2048']
         ]);
 
         if ($request->hasFile('image')) {
