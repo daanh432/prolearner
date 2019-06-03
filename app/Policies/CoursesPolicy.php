@@ -14,13 +14,13 @@ class CoursesPolicy
     /**
      * Determine whether the user can view the courses.
      *
-     * @param  \App\User  $user
-     * @param  \App\courses  $courses
+     * @param User $user
+     * @param courses $courses
      * @return mixed
      */
     public function view(User $user, courses $course)
     {
-        if (Auth::check() && $course->Unlocked()) {
+        if (Auth::check() && $course->Unlocked() || Auth::check() && Auth::user()->isAdmin()) {
             return true;
         } else {
             return false;
@@ -30,7 +30,7 @@ class CoursesPolicy
     /**
      * Determine whether the user can create courses.
      *
-     * @param  \App\User  $user
+     * @param User $user
      * @return mixed
      */
     public function create(User $user)
@@ -45,8 +45,8 @@ class CoursesPolicy
     /**
      * Determine whether the user can update the courses.
      *
-     * @param  \App\User  $user
-     * @param  \App\courses  $courses
+     * @param User $user
+     * @param courses $courses
      * @return mixed
      */
     public function update(User $user, courses $courses)
@@ -61,8 +61,8 @@ class CoursesPolicy
     /**
      * Determine whether the user can delete the courses.
      *
-     * @param  \App\User  $user
-     * @param  \App\courses  $courses
+     * @param User $user
+     * @param courses $courses
      * @return mixed
      */
     public function delete(User $user, courses $courses)
@@ -77,8 +77,8 @@ class CoursesPolicy
     /**
      * Determine whether the user can restore the courses.
      *
-     * @param  \App\User  $user
-     * @param  \App\courses  $courses
+     * @param User $user
+     * @param courses $courses
      * @return mixed
      */
     public function restore(User $user, courses $courses)
@@ -93,8 +93,8 @@ class CoursesPolicy
     /**
      * Determine whether the user can permanently delete the courses.
      *
-     * @param  \App\User  $user
-     * @param  \App\courses  $courses
+     * @param User $user
+     * @param courses $courses
      * @return mixed
      */
     public function forceDelete(User $user, courses $courses)
