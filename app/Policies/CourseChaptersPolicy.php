@@ -3,24 +3,24 @@
 namespace App\Policies;
 
 use App\User;
-use App\courses;
-use Illuminate\Auth\Access\HandlesAuthorization;
+use App\courseChapters;
 use Auth;
+use Illuminate\Auth\Access\HandlesAuthorization;
 
-class CoursesPolicy
+class CourseChaptersPolicy
 {
     use HandlesAuthorization;
 
     /**
-     * Determine whether the user can view the courses.
+     * Determine whether the user can view the course chapters.
      *
      * @param User $user
-     * @param courses $courses
+     * @param courseChapters $courseChapters
      * @return mixed
      */
-    public function view(User $user, courses $course)
+    public function view(User $user, courseChapters $courseChapter)
     {
-        if (Auth::check() && $course->Unlocked() || Auth::check() && Auth::user()->isAdmin()) {
+        if (Auth::check() && $courseChapter->Course()->Unlocked() || Auth::check() && Auth::user()->isAdmin()) {
             return true;
         } else {
             return false;
@@ -28,7 +28,7 @@ class CoursesPolicy
     }
 
     /**
-     * Determine whether the user can create courses.
+     * Determine whether the user can create course chapters.
      *
      * @param User $user
      * @return mixed
@@ -43,13 +43,13 @@ class CoursesPolicy
     }
 
     /**
-     * Determine whether the user can update the courses.
+     * Determine whether the user can update the course chapters.
      *
      * @param User $user
-     * @param courses $courses
+     * @param courseChapters $courseChapters
      * @return mixed
      */
-    public function update(User $user, courses $courses)
+    public function update(User $user, courseChapters $courseChapter)
     {
         if (Auth::check() && Auth::user()->isAdmin()) {
             return true;
@@ -59,13 +59,13 @@ class CoursesPolicy
     }
 
     /**
-     * Determine whether the user can delete the courses.
+     * Determine whether the user can delete the course chapters.
      *
      * @param User $user
-     * @param courses $courses
+     * @param courseChapters $courseChapters
      * @return mixed
      */
-    public function delete(User $user, courses $courses)
+    public function delete(User $user, courseChapters $courseChapter)
     {
         if (Auth::check() && Auth::user()->isAdmin()) {
             return true;
@@ -75,13 +75,13 @@ class CoursesPolicy
     }
 
     /**
-     * Determine whether the user can restore the courses.
+     * Determine whether the user can restore the course chapters.
      *
      * @param User $user
-     * @param courses $courses
+     * @param courseChapters $courseChapters
      * @return mixed
      */
-    public function restore(User $user, courses $courses)
+    public function restore(User $user, courseChapters $courseChapters)
     {
         if (Auth::check() && Auth::user()->isAdmin()) {
             return true;
@@ -91,13 +91,13 @@ class CoursesPolicy
     }
 
     /**
-     * Determine whether the user can permanently delete the courses.
+     * Determine whether the user can permanently delete the course chapters.
      *
      * @param User $user
-     * @param courses $courses
+     * @param courseChapters $courseChapters
      * @return mixed
      */
-    public function forceDelete(User $user, courses $courses)
+    public function forceDelete(User $user, courseChapters $courseChapter)
     {
         if (Auth::check() && Auth::user()->isAdmin()) {
             return true;
