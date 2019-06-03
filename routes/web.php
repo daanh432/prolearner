@@ -17,6 +17,7 @@ Route::get('/', 'GeneralController@Homepage')->name('index');
 Route::get('/theme/{theme}', 'GeneralController@changeTheme')->name('theme.update')->middleware('throttle:60,1');
 Route::get('/locale/{locale}', 'GeneralController@changeLocale')->name('locale.update');
 Route::get('/contact', 'GeneralController@Contact')->name('contact');
+Route::get('/sandbox', 'GeneralController@Sandbox')->name('sandbox');
 Route::post('/contact', 'GeneralController@ContactSubmission')->name('contact.submission');
 Route::get('/courses', 'CoursesController@index')->name('courses.index');
 Route::get('/dashboard', 'GeneralController@Dashboard')->name('dashboard')->middleware('auth');
