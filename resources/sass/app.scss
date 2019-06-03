@@ -175,8 +175,13 @@
 }
 
 .editButtons {
-  background-color: $editButtons;
   color: white;
+  background-color: $editButtons;
+}
+
+.editButtons:hover {
+  color: #b9b9b9;
+  background-color: #00005a;
 }
 
 .clearfix::after {
