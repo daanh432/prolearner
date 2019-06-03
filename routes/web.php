@@ -42,12 +42,13 @@ Route::middleware('verified')->group(function () {
 #endregion
 
 #region Course Chapter Lessons Routes
-Route::get('/courses/{course}/chapters/{chapter}/lessons/create', 'CourseChapterLessonsController@create')->name('courses.chapters.lessons.create');
-Route::post('/courses/{course}/chapters/{chapter}/lessons', 'CourseChapterLessonsController@store')->name('courses.chapters.lessons.store');
-Route::get('/courses/{course}/lessons/{lesson}', 'CourseChapterLessonsController@show')->name('courses.lessons.show');
-Route::get('/courses/{course}/lessons/{lesson}/edit', 'CourseChapterLessonsController@edit')->name('courses.lessons.edit');
-Route::patch('/courses/{course}/lessons/{lesson}', 'CourseChapterLessonsController@update')->name('courses.lessons.update');
-Route::delete('/courses/{course}/lessons/{lesson}', 'CourseChapterLessonsController@destroy')->name('courses.lessons.destroy');
+Route::middleware('auth')->group(function() {
+    Route::get('/courses/{course}/chapters/{chapter}/lessons/create', 'CourseChapterLessonsController@create')->name('courses.chapters.lessons.create');
+    Route::post('/courses/{course}/chapters/{chapter}/lessons', 'CourseChapterLessonsController@store')->name('courses.chapters.lessons.store');
+    Route::get('/courses/{course}/lessons/{lesson}', 'CourseChapterLessonsController@show')->name('courses.lessons.show');
+    Route::get('/courses/{course}/lessons/{lesson}/edit', 'CourseChapterLessonsController@edit')->name('courses.lessons.edit');
+    Route::patch('/courses/{course}/lessons/{lesson}', 'CourseChapterLessonsController@update')->name('courses.lessons.update');
+    Route::delete('/courses/{course}/lessons/{lesson}', 'CourseChapterLessonsController@destroy')->name('courses.lessons.destroy');
+    Route::post('/verifyLesson/{lesson}', 'CourseChapterLessonsController@verifyInput');
+});
 #endregion
-
-Route::get('/certificate', 'GeneralController@Certificate')->name('certificate')->middleware('auth');

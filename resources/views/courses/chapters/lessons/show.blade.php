@@ -31,7 +31,7 @@
 
         <div class="liveEditorLesson" id="htmlEditor">{{ $lesson->assignment }}</div>
         <label class="d-none">
-            <textarea name="htmlEditor" class="d-none"></textarea>
+            <textarea name="htmlEditor" class="d-none" data-lessonid="{{ $lesson->id }}"></textarea>
         </label>
 
         <div id="editorRun" class="secondaryText text-right">
