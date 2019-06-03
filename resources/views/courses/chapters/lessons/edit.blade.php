@@ -5,7 +5,7 @@
 @section('content')
     <div class="container">
         <div class="row">
-            <div class="col-md-6 mx-auto bg-white p-5 mt-5 rounded">
+            <div class="col-md-6 mx-auto containerBackground secondaryText p-5 mt-5 br-20">
                 <form action="{{ route('courses.lessons.update', [ 'course' => $course->id, 'lesson' => $lesson->id]) }}" method="post" id="storeLesson" enctype="multipart/form-data" class="needs-validation" novalidate>
                     @csrf
                     @method('PATCH')
@@ -40,8 +40,20 @@
                     @csrf
                     @method('DELETE')
                 </form>
-                <button type="submit" class="btn btn-primary" form="storeLesson">Submit</button>
-                <button type="submit" class="btn btn-danger" form="deleteLesson">Delete</button>
+
+                <div class="form-group row">
+                    <div class="col-md-4 text-center">
+                        <a href="{{ route('courses.show', [$course->id]) }}" class="btn btn-secondary w-100 br-20">{{ __('pages.goBack') }}</a>
+                    </div>
+                    <div class="col-md-4 mt-2 mt-md-0 text-center">
+                        <button type="submit" form="deleteLesson" class="btn btn-danger w-100 br-20">{{ __('pages.delete') }}</button>
+
+                    </div>
+                    <div class="col-md-4 mt-2 mt-md-0 text-center">
+                        <button type="submit" form="storeLesson" class="btn btn-primary w-100 br-20">{{ __('pages.submit') }}</button>
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>

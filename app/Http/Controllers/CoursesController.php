@@ -5,23 +5,23 @@ namespace App\Http\Controllers;
 use App\courses;
 use App\programmingLanguages;
 use App\userCourseUnlocks;
-use Exception;
+use Barryvdh\DomPDF\Facade as PDF;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Auth;
 use Storage;
 
 class CoursesController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('admin')->except(['index', 'show']);
-        $this->middleware('auth')->only('show');
+        $this->middleware('admin')->except(['index', 'show', 'generateCertificate']);
+        $this->middleware('auth')->only(['show', 'generateCertificate']);
     }
 
     /**
      * Display a listing of the resource.
      *
-     * @return Response
+     * @return \Illuminate\Http\Response
      */
     public function index()
     {
@@ -34,7 +34,7 @@ class CoursesController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return Response
+     * @return \Illuminate\Http\Response
      */
     public function create()
     {
@@ -48,8 +48,8 @@ class CoursesController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param Request $request
-     * @return Response
+     * @param \Illuminate\Http\Request $request
+     * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
@@ -73,8 +73,8 @@ class CoursesController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param courses $course
-     * @return Response
+     * @param \App\courses $course
+     * @return \Illuminate\Http\Response
      */
     public function show(courses $course)
     {
@@ -101,8 +101,8 @@ class CoursesController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param courses $course
-     * @return Response
+     * @param \App\courses $course
+     * @return \Illuminate\Http\Response
      */
     public function edit(courses $course)
     {
@@ -117,9 +117,9 @@ class CoursesController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param Request $request
-     * @param courses $courses
-     * @return Response
+     * @param \Illuminate\Http\Request $request
+     * @param \App\courses $courses
+     * @return \Illuminate\Http\Response
      */
     public function update(Request $request, courses $course)
     {
@@ -130,7 +130,7 @@ class CoursesController extends Controller
             'difficulty' => ['required', 'numeric', 'between:0,3'],
             'price' => ['required', 'numeric', 'between:0,1000'],
             'programming_language_id' => ['required', 'exists:programming_languages,id'],
-            'image' => ['required', 'image', 'mimes:jpeg,png,jpg,gif', 'max:2048']
+            'image' => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif', 'max:2048']
         ]);
 
         if ($request->hasFile('image')) {
@@ -148,13 +148,21 @@ class CoursesController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param courses $courses
-     * @return Response
-     * @throws Exception
+     * @param \App\courses $courses
+     * @return \Illuminate\Http\Response
+     * @throws \Exception
      */
     public function destroy(courses $course)
     {
         $course->delete();
         return redirect(route('courses.index'));
+    }
+
+    public function generateCertificate(courses $course) {
+        PDF::setOptions(['dpi' => 5, 'defaultFont' => 'sans-serif']);
+        $pdf = PDF::loadView('pdf.certificate', [
+            'course' => $course,
+        ]);
+        return $pdf->stream();
     }
 }

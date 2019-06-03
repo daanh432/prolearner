@@ -14,7 +14,7 @@
 Auth::routes(['verify' => true, 'register' => true]);
 
 Route::get('/', 'GeneralController@Homepage')->name('index');
-Route::get('/theme/{theme}', 'GeneralController@changeTheme')->name('theme.update');
+Route::get('/theme/{theme}', 'GeneralController@changeTheme')->name('theme.update')->middleware('throttle:60,1');
 Route::get('/locale/{locale}', 'GeneralController@changeLocale')->name('locale.update');
 Route::get('/contact', 'GeneralController@Contact')->name('contact');
 Route::post('/contact', 'GeneralController@ContactSubmission')->name('contact.submission');
@@ -26,6 +26,7 @@ Route::get('/courses/create', 'CoursesController@create')->name('courses.create'
 Route::post('/courses', 'CoursesController@store')->name('courses.store');
 Route::get('/courses/{course}', 'CoursesController@show')->name('courses.show');
 Route::get('/courses/{course}/edit', 'CoursesController@edit')->name('courses.edit');
+Route::get('/courses/{course}/certificate', 'CoursesController@generateCertificate')->name('courses.certificate');
 Route::patch('/courses/{course}', 'CoursesController@update')->name('courses.update');
 Route::delete('/courses/{course}', 'CoursesController@destroy')->name('courses.destroy');
 #endregion
@@ -48,3 +49,5 @@ Route::get('/courses/{course}/lessons/{lesson}/edit', 'CourseChapterLessonsContr
 Route::patch('/courses/{course}/lessons/{lesson}', 'CourseChapterLessonsController@update')->name('courses.lessons.update');
 Route::delete('/courses/{course}/lessons/{lesson}', 'CourseChapterLessonsController@destroy')->name('courses.lessons.destroy');
 #endregion
+
+Route::get('/certificate', 'GeneralController@Certificate')->name('certificate')->middleware('auth');
