@@ -14,7 +14,7 @@ class CourseChapterLessonsController extends Controller
     public function __construct()
     {
         $this->middleware('admin')->except(['show']);
-        $this->middleware('can:view')->only(['show']);
+        $this->middleware('can:view,lesson')->only(['show']);
     }
 
     /**
