@@ -19,7 +19,7 @@
                     <a class="nav-link scrollLink" href="{{ route('index') }}#contact">Contact</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link scrollLink" href="{{ route('sandbox') }}">Sandbox</a>
+                    <a class="nav-link" href="{{ route('sandbox') }}">Sandbox</a>
                 </li>
             </ul>
             <ul class="navbar-nav">
