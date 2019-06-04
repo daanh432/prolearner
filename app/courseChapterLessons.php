@@ -2,7 +2,11 @@
 
 namespace App;
 
+use Auth;
+use Eloquent;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Carbon;
 
 /**
  * App\courseChapterLessons
@@ -14,21 +18,21 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $assignment
  * @property string $inputCheck
  * @property string $outputCheck
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
- * @method static \Illuminate\Database\Eloquent\Builder|\App\courseChapterLessons newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\courseChapterLessons newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\courseChapterLessons query()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\courseChapterLessons whereAssignment($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\courseChapterLessons whereCourseChapterId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\courseChapterLessons whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\courseChapterLessons whereDescription($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\courseChapterLessons whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\courseChapterLessons whereInputCheck($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\courseChapterLessons whereName($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\courseChapterLessons whereOutputCheck($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\courseChapterLessons whereUpdatedAt($value)
- * @mixin \Eloquent
+ * @property Carbon|null $created_at
+ * @property Carbon|null $updated_at
+ * @method static Builder|courseChapterLessons newModelQuery()
+ * @method static Builder|courseChapterLessons newQuery()
+ * @method static Builder|courseChapterLessons query()
+ * @method static Builder|courseChapterLessons whereAssignment($value)
+ * @method static Builder|courseChapterLessons whereCourseChapterId($value)
+ * @method static Builder|courseChapterLessons whereCreatedAt($value)
+ * @method static Builder|courseChapterLessons whereDescription($value)
+ * @method static Builder|courseChapterLessons whereId($value)
+ * @method static Builder|courseChapterLessons whereInputCheck($value)
+ * @method static Builder|courseChapterLessons whereName($value)
+ * @method static Builder|courseChapterLessons whereOutputCheck($value)
+ * @method static Builder|courseChapterLessons whereUpdatedAt($value)
+ * @mixin Eloquent
  */
 class courseChapterLessons extends Model
 {
@@ -43,5 +47,16 @@ class courseChapterLessons extends Model
     
     public function Chapter() {
         return $this->belongsTo('App\courseChapters', 'course_chapter_id', 'id')->get()->first();
+    }
+
+    public function Completed() {
+        if (Auth::check() && Auth::user()->id != null) {
+            $userProgress = $this->hasOne('App\userProgress', 'course_chapter_lesson_id', 'id')->where('user_id', '=', Auth::user()->id)->get()->first();
+            if ($userProgress != null && $userProgress->completed === 1) {
+                return true;
+            }
+        } else {
+            return false;
+        }
     }
 }
