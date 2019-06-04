@@ -25,11 +25,11 @@
         <ace-editor class="liveEditorLesson" editor-id="MainEditor" v-bind:content="MainEditor.content" v-bind:lang="MainEditor.lang" v-bind:theme="MainEditor.theme" v-on:change-content="ChangeEditorContent"></ace-editor>
 
         <div class="secondaryText text-right" id="editorRun">
-            <button @click="RunCode" class="btn btn-primary">Run</button>
+            <button @click="RunCode(true)" class="btn btn-primary">Run</button>
         </div>
 
         <div id="output">
-            <iframe frameborder="0" id="outputIframe" style="width: 100%; height: 99%; margin: 0; padding: 0;"></iframe>
+            <iframe frameborder="0" ref="outputIframe" style="width: 100%; height: 99%; margin: 0; padding: 0;" @init="RunCode"></iframe>
         </div>
     </div>
 </template>
@@ -52,7 +52,11 @@
             AceEditor
         },
         created() {
-            this.CreateEditor();
+            window.addEventListener('load', () => {
+                // run after everything is in-place
+                this.CreateEditor();
+                this.RunCode(false);
+            });
         },
         methods: {
             CreateEditor: function () {
@@ -61,7 +65,7 @@
                 if (this.lesson != null && this.lesson.assignment != null) {
                     this.MainEditor.content = this.lesson.assignment;
                 } else {
-                    this.MainEditor.content = "<h1>Start coding here.</h1>";
+                    this.MainEditor.content = "<html>\n<head>\n    <title>Test Template</title>\n</head>\n<style>\nhtml, body {\n    background: white;\n}\n</style>\n<body>\n    <h1>Start coding here.</h1>\n</body>\n</html>";
                 }
             },
             ChangeEditorContent: function (a_val) {
@@ -72,11 +76,11 @@
             UpdateLang: function (a_lang) {
                 this.MainEditor.lang = a_lang;
             },
-            RunCode: function () {
-                // TODO update iframe
-                if (this.lesson != null && this.lesson.id != null) {
-                    this.ValidateAnswer();
-                }
+            RunCode: function (a_validateAnswer) {
+                this.$refs.outputIframe.contentWindow.document.open();
+                this.$refs.outputIframe.contentWindow.document.write(this.MainEditor.content);
+                this.$refs.outputIframe.contentWindow.document.close();
+                if (this.lesson != null && this.lesson.id != null && a_validateAnswer === true) this.ValidateAnswer();
             },
             ValidateAnswer: function () {
                 axios.post('/verifyLesson/' + this.lesson.id, {
