@@ -1,0 +1,75 @@
+@import 'variables';
+
+.lessonEditorContainer {
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  top: 56px;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: grid;
+  grid-template-columns: 2fr 3fr 3fr;
+  grid-template-rows: minmax(100px, auto) 10fr 1fr;
+  grid-template-areas: 'descriptionHeader menu outputHeader' 'description editor output' 'description submit output';
+  grid-gap: 0;
+}
+
+.sandboxEditorContainer {
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  top: 56px;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: grid;
+  grid-template-columns: 3fr 3fr;
+  grid-template-rows: minmax(100px, auto) 10fr 1fr;
+  grid-template-areas: 'menu outputHeader' 'editor output' 'submit output';
+  grid-gap: 0;
+}
+
+.darkTheme .editorHeaderBackground {
+  background-color: darken($darkSecondaryBackground, 5%);
+}
+
+.lightTheme .editorHeaderBackground {
+  background-color: darken($lightSecondaryBackground, 3%);
+}
+
+.darkTheme .editorBackground {
+  background-color: $darkSecondaryBackground;
+}
+
+.lightTheme .editorBackground {
+  background-color: $lightSecondaryBackground;
+}
+
+.liveEditorLesson {
+  grid-area: editor;
+}
+
+#lessonAssignmentTitle {
+  grid-area: descriptionHeader;
+}
+
+#lessonAssignmentDescription {
+  grid-area: description;
+}
+
+#outputHeader {
+  grid-area: outputHeader;
+}
+
+#output {
+  grid-area: output;
+}
+
+#menuHeader {
+  grid-area: menu;
+}
+
+#editorRun {
+  grid-area: submit;
+}

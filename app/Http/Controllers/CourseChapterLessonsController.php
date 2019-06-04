@@ -5,14 +5,16 @@ namespace App\Http\Controllers;
 use App\courseChapterLessons;
 use App\courseChapters;
 use App\courses;
+use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 class CourseChapterLessonsController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('admin')->except(['show']);
-        $this->middleware('auth')->only(['show']);
+        $this->middleware('admin')->except(['show', 'verifyInput']);
+        $this->middleware('can:view,lesson')->only(['show', 'test']);
     }
 
     /**
@@ -20,7 +22,7 @@ class CourseChapterLessonsController extends Controller
      *
      * @param courses $course
      * @param courseChapters $chapter
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function create(courses $course, courseChapters $chapter)
     {
@@ -35,8 +37,8 @@ class CourseChapterLessonsController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return Response
      */
     public function store(Request $request, courses $course, courseChapters $chapter)
     {
@@ -62,7 +64,7 @@ class CourseChapterLessonsController extends Controller
      *
      * @param courses $course
      * @param courseChapterLessons $lesson
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function show(courses $course, courseChapterLessons $lesson)
     {
@@ -77,7 +79,7 @@ class CourseChapterLessonsController extends Controller
      *
      * @param courses $course
      * @param courseChapterLessons $lesson
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function edit(courses $course, courseChapterLessons $lesson)
     {
@@ -91,10 +93,10 @@ class CourseChapterLessonsController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
+     * @param Request $request
      * @param courses $course
      * @param courseChapterLessons $lesson
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function update(Request $request, courses $course, courseChapterLessons $lesson)
     {
@@ -121,7 +123,7 @@ class CourseChapterLessonsController extends Controller
      * @param courses $course
      * @param courseChapterLessons $lesson
      * @return void
-     * @throws \Exception
+     * @throws Exception
      */
     public function destroy(courses $course, courseChapterLessons $lesson)
     {
@@ -129,5 +131,15 @@ class CourseChapterLessonsController extends Controller
         $lesson->delete();
 
         return redirect(route('courses.show', [$course->id]));
+    }
+
+    public function verifyInput(Request $request, courses $course, courseChapters $chapter, courseChapterLessons $lesson)
+    {
+        if ($request->has('answer') && stripos($request->get('answer'), $lesson->inputCheck) !== false) {
+            return ['message' => 'Looks like you\'ve got it correct.', 'answerCorrect' => true];
+        }
+        else {
+            return ['message' => 'Some mysterious error occurred', 'answerCorrect' => false];
+        }
     }
 }

@@ -30,15 +30,12 @@
                     </li>
 
                 @endif
-                @if(Session::get('theme', 'darkTheme') == 'darkTheme')
-                    <li class="nav-item">
-                        <a class="nav-link text-dark bg-light br-20" href="{{ route('theme.update', ['lightTheme']) }}">@lang('pages.lightTheme')</a>
-                    </li>
-                @else
-                    <li class="nav-item">
-                        <a class="nav-link text-light bg-dark br-20" href="{{ route('theme.update', ['darkTheme']) }}">@lang('pages.darkTheme')</a>
-                    </li>
-                @endif
+                <li class="nav-item bg-light br-20">
+                    <a class="nav-link text-dark themeSwitch {{ Session::get('theme', 'darkTheme') != 'lightTheme' ? '' : 'd-none' }}" href="{{ route('theme.update', ['lightTheme']) }}">@lang('pages.lightTheme')</a>
+                </li>
+                <li class="nav-item bg-dark br-20">
+                    <a class="nav-link text-light themeSwitch {{ Session::get('theme', 'darkTheme') != 'darkTheme' ? '' : 'd-none' }}" href="{{ route('theme.update', ['darkTheme']) }}">@lang('pages.darkTheme')</a>
+                </li>
                 @guest
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('login') }}"><i class="fas fa-user"></i> Sign in</a>
