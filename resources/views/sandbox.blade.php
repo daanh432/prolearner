@@ -8,7 +8,7 @@
 
 @section('content')
     <div id="liveEditorApp">
-        <live-editor></live-editor>
+        <live-editor v-bind:theme="theme"></live-editor>
     </div>
 @endsection
 
