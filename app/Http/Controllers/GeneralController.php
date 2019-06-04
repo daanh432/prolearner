@@ -17,6 +17,11 @@ class GeneralController extends Controller
         return redirect(route('index') . "#contact");
     }
 
+    public function Sandbox()
+    {
+        return view('sandbox');
+    }
+
     public function Certificate() {
         return view('pdf.certificate');
     }

@@ -31,7 +31,7 @@ $(document).ready(function () {
 
 $('.themeSwitch').click(function (e) {
     e.preventDefault();
-    let body = $('body');
+    let body = $(document.body);
     if (body.hasClass('darkTheme')) {
         body.removeClass('darkTheme');
         body.addClass('lightTheme');
