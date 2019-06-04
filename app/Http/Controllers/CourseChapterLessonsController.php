@@ -13,8 +13,8 @@ class CourseChapterLessonsController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('admin')->except(['show']);
-        $this->middleware('can:view')->only(['show']);
+        $this->middleware('admin')->except(['show', 'verifyInput']);
+        $this->middleware('can:view,lesson')->only(['show', 'test']);
     }
 
     /**
@@ -131,5 +131,15 @@ class CourseChapterLessonsController extends Controller
         $lesson->delete();
 
         return redirect(route('courses.show', [$course->id]));
+    }
+
+    public function verifyInput(Request $request, courses $course, courseChapters $chapter, courseChapterLessons $lesson)
+    {
+        if ($request->has('answer') && stripos($request->get('answer'), $lesson->inputCheck) !== false) {
+            return ['message' => 'Looks like you\'ve got it correct.', 'answerCorrect' => true];
+        }
+        else {
+            return ['message' => 'Some mysterious error occurred', 'answerCorrect' => false];
+        }
     }
 }

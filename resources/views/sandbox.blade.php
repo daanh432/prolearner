@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', $lesson->name . ' - ' . $lesson->Chapter()->name . ' - ' .$lesson->Chapter()->Course()->name)
+@section('title', 'Code Sandbox - Prolearner')
 
 @push('head')
     <link rel="stylesheet" href="{{ asset('assets/css/liveEditor.css') }}">
@@ -8,7 +8,7 @@
 
 @section('content')
     <div id="liveEditorApp">
-        <live-editor v-bind:lesson="{{ $lesson }}" v-bind:chapter="{{ $lesson->Chapter() }}" v-bind:course="{{ $lesson->Chapter()->Course() }}"></live-editor>
+        <live-editor></live-editor>
     </div>
 @endsection
 

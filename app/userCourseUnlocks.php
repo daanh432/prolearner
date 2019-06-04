@@ -2,7 +2,10 @@
 
 namespace App;
 
+use Eloquent;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Carbon;
 
 /**
  * App\userCourseUnlocks
@@ -12,19 +15,19 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $course_id
  * @property int $amountOfCompletedLessons
  * @property int $amountOfLessons
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
- * @method static \Illuminate\Database\Eloquent\Builder|\App\userCourseUnlocks newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\userCourseUnlocks newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\userCourseUnlocks query()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\userCourseUnlocks whereAmountOfCompletedLessons($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\userCourseUnlocks whereAmountOfLessons($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\userCourseUnlocks whereCourseId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\userCourseUnlocks whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\userCourseUnlocks whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\userCourseUnlocks whereUpdatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\userCourseUnlocks whereUserId($value)
- * @mixin \Eloquent
+ * @property Carbon|null $created_at
+ * @property Carbon|null $updated_at
+ * @method static Builder|userCourseUnlocks newModelQuery()
+ * @method static Builder|userCourseUnlocks newQuery()
+ * @method static Builder|userCourseUnlocks query()
+ * @method static Builder|userCourseUnlocks whereAmountOfCompletedLessons($value)
+ * @method static Builder|userCourseUnlocks whereAmountOfLessons($value)
+ * @method static Builder|userCourseUnlocks whereCourseId($value)
+ * @method static Builder|userCourseUnlocks whereCreatedAt($value)
+ * @method static Builder|userCourseUnlocks whereId($value)
+ * @method static Builder|userCourseUnlocks whereUpdatedAt($value)
+ * @method static Builder|userCourseUnlocks whereUserId($value)
+ * @mixin Eloquent
  */
 class userCourseUnlocks extends Model
 {
