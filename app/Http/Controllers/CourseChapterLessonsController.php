@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\courseChapterLessons;
 use App\courseChapters;
 use App\courses;
+use App\userProgress;
+use Auth;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -136,9 +138,24 @@ class CourseChapterLessonsController extends Controller
     public function verifyInput(Request $request, courses $course, courseChapters $chapter, courseChapterLessons $lesson)
     {
         if ($request->has('answer') && stripos($request->get('answer'), $lesson->inputCheck) !== false) {
+            userProgress::updateOrCreate([
+                'user_id' => Auth::user()->id,
+                'course_chapter_lesson_id' => $lesson->id,
+            ], [
+                'completed' => 1,
+                'answer' => $request->get('answer')
+            ]);
             return ['message' => 'Looks like you\'ve got it correct.', 'answerCorrect' => true];
-        }
-        else {
+        } else if ($request->has('answer')) {
+            userProgress::updateOrCreate([
+                'user_id' => Auth::user()->id,
+                'course_chapter_lesson_id' => $lesson->id,
+            ], [
+                'completed' => 0,
+                'answer' => $request->get('answer')
+            ]);
+            return ['message' => 'The answer is just incorrect', 'answerCorrect' => false];
+        } else {
             return ['message' => 'Some mysterious error occurred', 'answerCorrect' => false];
         }
     }

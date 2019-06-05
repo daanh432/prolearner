@@ -22,7 +22,7 @@
             {{ lesson.description }}
         </div>
 
-        <ace-editor class="liveEditorLesson" editor-id="MainEditor" v-bind:content="MainEditor.content" v-bind:lang="MainEditor.lang" v-bind:theme="MainEditor.theme" v-on:change-content="ChangeEditorContent"></ace-editor>
+        <ace-editor class="liveEditorLesson" editor-id="MainEditor" v-bind:content="MainEditor.content" v-bind:lang="MainEditor.lang" v-bind:theme="theme" v-on:change-content="ChangeEditorContent"></ace-editor>
 
         <div class="secondaryText text-right" id="editorRun">
             <button @click="RunCode(true)" class="btn btn-primary">Run</button>
@@ -38,12 +38,11 @@
     import AceEditor from './AceEditor'
 
     export default {
-        props: ['lesson', 'chapter', 'course'],
+        props: ['lesson', 'chapter', 'course', 'theme'],
         data: function () {
             return {
                 MainEditor: {
                     'lang': null,
-                    'theme': null,
                     'content': ''
                 }
             }
@@ -61,7 +60,6 @@
         methods: {
             CreateEditor: function () {
                 this.MainEditor.lang = "php";
-                this.MainEditor.theme = "monokai";
                 if (this.lesson != null && this.lesson.assignment != null) {
                     this.MainEditor.content = this.lesson.assignment;
                 } else {
