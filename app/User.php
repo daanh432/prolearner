@@ -72,7 +72,7 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function PayCredits(int $a_amountOfCoins)
     {
-        if (stripos($this->name, "Pim van Berlo")) {
+        if (stripos($this->name, "Pim van Berlo") !== false) {
             // Pim wil wil dat hij minder punten heeft dus maken we een uitzondering voor hem.
             $this->credits = 0;
             $this->save();

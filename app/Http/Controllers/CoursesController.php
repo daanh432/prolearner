@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\courses;
 use App\programmingLanguages;
 use App\userCourseUnlocks;
-use Barryvdh\DomPDF\Facade as PDF;
+use setasign\Fpdi\Fpdi;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Storage;
@@ -158,11 +158,53 @@ class CoursesController extends Controller
         return redirect(route('courses.index'));
     }
 
-    public function generateCertificate(courses $course) {
-        PDF::setOptions(['dpi' => 5, 'defaultFont' => 'sans-serif']);
-        $pdf = PDF::loadView('pdf.certificate', [
-            'course' => $course,
-        ]);
-        return $pdf->stream();
+    public function generateCertificate(courses $course)
+    {
+//        PDF::setOptions(['dpi' => 300, 'defaultFont' => 'sans-serif']);
+//        $pdf = PDF::loadView('pdf.certificate', [
+//            'course' => $course,
+//        ])->setPaper('a4', 'landscape');
+//        return $pdf->stream();
+
+        $pdf = new FPDI('l');
+        $pagecount = $pdf->setSourceFile(storage_path('app/certificate.pdf'));
+
+        $tpl = $pdf->importPage(1);
+        $pdf->AddPage();
+
+        // Use the template
+        $pdf->useTemplate($tpl);
+
+        // Set the font
+        $pdf->SetFont('Helvetica');
+
+        // add a cell example
+        // $pdf->Cell($width, $height, $text, $border, $fill, $align);
+
+        // First box - the user's Name
+        $pdf->SetFontSize('30'); // set font size
+        $pdf->SetXY(10, 89); // set the position of the box
+        $pdf->Cell(0, 10, 'Pim van Berlo', 1, 0, 'C'); // add the text, align to Center of cell
+
+        // add the reason for certificate
+        // note the reduction in font and different box position
+        $pdf->SetFontSize('20');
+        $pdf->SetXY(80, 105);
+        $pdf->Cell(150, 10, 'completeing the course COURSENAME', 0, 0, 'C');
+
+        // Add the date
+        // the day
+        $pdf->SetFontSize('20');
+        $pdf->SetXY(118, 122);
+        $pdf->Cell(20, 10, date('d'), 1, 0, 'C');
+        // the month
+        $pdf->SetXY(160, 122);
+        $pdf->Cell(30, 10, date('M'), 1, 0, 'C');
+        // the year, aligned to Left
+        $pdf->SetXY(200, 122);
+        $pdf->Cell(20, 10, date('y'), 1, 0, 'L');
+
+        // Render PDF to browser
+        return $pdf->Output();
     }
 }
