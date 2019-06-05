@@ -44,12 +44,14 @@ class courseChapterLessons extends Model
         'inputCheck',
         'outputCheck'
     ];
-    
-    public function Chapter() {
+
+    public function Chapter()
+    {
         return $this->belongsTo('App\courseChapters', 'course_chapter_id', 'id')->get()->first();
     }
 
-    public function Completed() {
+    public function Completed()
+    {
         if (Auth::check() && Auth::user()->id != null) {
             $userProgress = $this->hasOne('App\userProgress', 'course_chapter_lesson_id', 'id')->where('user_id', '=', Auth::user()->id)->get()->first();
             if ($userProgress != null && $userProgress->completed === 1) {
@@ -62,17 +64,18 @@ class courseChapterLessons extends Model
         }
     }
 
-    public function NextLesson() {
-       $nextLesson = courseChapterLessons::where('course_chapter_id', '=', $this->course_chapter_id)->where('id', '>', $this->id)->get()->first();
-       if ($nextLesson != null && $nextLesson->id != null) {
-           return $nextLesson->id;
-       } else {
-           $nextLesson = courseChapters::where('course_id', '=', $this->Chapter()->Course()->id)->where('id', '>', $this->Chapter()->id)->get()->first();
-           if ($nextLesson != null && $nextLesson->id != null) {
-               return $nextLesson->id;
-           } else {
-               return 'overview';
-           }
-       }
+    public function NextLesson()
+    {
+        $nextLesson = courseChapterLessons::where('course_chapter_id', '=', $this->course_chapter_id)->where('id', '>', $this->id)->get()->first();
+        if ($nextLesson != null && $nextLesson->id != null) {
+            return route('courses.lessons.show', [$nextLesson->Chapter()->Course()->id, $nextLesson->id]);
+        } else {
+            $nextLesson = courseChapters::where('course_id', '=', $this->Chapter()->Course()->id)->where('id', '>', $this->Chapter()->id)->get()->first();
+            if ($nextLesson != null && $nextLesson->id != null) {
+                return route('courses.lessons.show', [$nextLesson->Chapter()->Course()->id, $nextLesson->id]);
+            } else {
+                return route('courses.show', [$this->Chapter()->Course()->id]);
+            }
+        }
     }
 }
