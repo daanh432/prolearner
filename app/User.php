@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Cache;
 use Eloquent;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Notifications\DatabaseNotification;
@@ -80,7 +81,8 @@ class User extends Authenticatable implements MustVerifyEmail
         }
     }
 
-    public function isAdmin() {
+    public function isAdmin()
+    {
         if (Auth()->user()->userLevel === 4) {
             return true;
         } else {
@@ -88,7 +90,15 @@ class User extends Authenticatable implements MustVerifyEmail
         }
     }
 
-    public function CourseUnlocks() {
-        return $this->hasMany('App\userCourseUnlocks', 'user_id', 'id')->get();
+    public function CourseUnlocks()
+    {
+        $cacheKey = Auth()->user()->id . "UserCourseUnlocks";
+        if (Cache::has($cacheKey)) {
+            return Cache::get($cacheKey);
+        } else {
+            $courseUnlocks = $this->hasMany('App\userCourseUnlocks', 'user_id', 'id')->get();
+            Cache::put($cacheKey, $courseUnlocks, 300);
+            return $courseUnlocks;
+        }
     }
 }

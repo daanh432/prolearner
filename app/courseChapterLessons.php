@@ -71,7 +71,7 @@ class courseChapterLessons extends Model
            if ($nextLesson != null && $nextLesson->id != null) {
                return $nextLesson->id;
            } else {
-               return 'finished';
+               return 'overview';
            }
        }
     }
