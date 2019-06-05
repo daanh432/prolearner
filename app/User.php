@@ -81,6 +81,17 @@ class User extends Authenticatable implements MustVerifyEmail
         }
     }
 
+    public function AddCredits(int $a_amountOfCoins)
+    {
+        if ($a_amountOfCoins >= 0) {
+            $this->credits = $this->credits + $a_amountOfCoins;
+            $this->save();
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     public function isAdmin()
     {
         if (Auth()->user()->userLevel === 4) {
@@ -92,13 +103,6 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function CourseUnlocks()
     {
-        $cacheKey = Auth()->user()->id . "UserCourseUnlocks";
-        if (Cache::has($cacheKey)) {
-            return Cache::get($cacheKey);
-        } else {
-            $courseUnlocks = $this->hasMany('App\userCourseUnlocks', 'user_id', 'id')->get();
-            Cache::put($cacheKey, $courseUnlocks, 300);
-            return $courseUnlocks;
-        }
+        return $this->hasMany('App\userCourseUnlocks', 'user_id', 'id')->get();
     }
 }
