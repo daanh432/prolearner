@@ -110,13 +110,6 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function CourseUnlocks()
     {
-        $cacheKey = Auth()->user()->id . "UserCourseUnlocks";
-        if (Cache::has($cacheKey)) {
-            return Cache::get($cacheKey);
-        } else {
-            $courseUnlocks = $this->hasMany('App\userCourseUnlocks', 'user_id', 'id')->get();
-            Cache::put($cacheKey, $courseUnlocks, 300);
-            return $courseUnlocks;
-        }
+        return $this->hasMany('App\userCourseUnlocks', 'user_id', 'id')->get();
     }
 }
