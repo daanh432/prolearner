@@ -147,13 +147,6 @@ class CourseChapterLessonsController extends Controller
             ]);
             return ['message' => 'Looks like you\'ve got it correct.', 'nextLesson' => $lesson->NextLesson(), 'answerCorrect' => true];
         } else if ($request->has('answer')) {
-            userProgress::updateOrCreate([
-                'user_id' => Auth::user()->id,
-                'course_chapter_lesson_id' => $lesson->id,
-            ], [
-                'completed' => 0,
-                'answer' => $request->get('answer')
-            ]);
             return ['message' => 'The answer is just incorrect', 'answerCorrect' => false];
         } else {
             return ['message' => 'Some mysterious error occurred', 'answerCorrect' => false];
