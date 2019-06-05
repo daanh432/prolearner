@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\courses;
 use App\programmingLanguages;
 use App\userCourseUnlocks;
+use Carbon\Carbon;
+use Exception;
+use Illuminate\Http\Response;
 use setasign\Fpdi\Fpdi;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -21,7 +24,7 @@ class CoursesController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function index()
     {
@@ -34,7 +37,7 @@ class CoursesController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function create()
     {
@@ -48,8 +51,8 @@ class CoursesController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return Response
      */
     public function store(Request $request)
     {
@@ -73,8 +76,8 @@ class CoursesController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param \App\courses $course
-     * @return \Illuminate\Http\Response
+     * @param courses $course
+     * @return Response
      */
     public function show(courses $course)
     {
@@ -101,8 +104,8 @@ class CoursesController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param \App\courses $course
-     * @return \Illuminate\Http\Response
+     * @param courses $course
+     * @return Response
      */
     public function edit(courses $course)
     {
@@ -117,9 +120,9 @@ class CoursesController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
-     * @param \App\courses $courses
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @param courses $courses
+     * @return Response
      */
     public function update(Request $request, courses $course)
     {
@@ -148,9 +151,9 @@ class CoursesController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param \App\courses $courses
-     * @return \Illuminate\Http\Response
-     * @throws \Exception
+     * @param courses $courses
+     * @return Response
+     * @throws Exception
      */
     public function destroy(courses $course)
     {
@@ -160,17 +163,15 @@ class CoursesController extends Controller
 
     public function generateCertificate(courses $course)
     {
-//        PDF::setOptions(['dpi' => 300, 'defaultFont' => 'sans-serif']);
-//        $pdf = PDF::loadView('pdf.certificate', [
-//            'course' => $course,
-//        ])->setPaper('a4', 'landscape');
-//        return $pdf->stream();
-
+        $xPos = 84;
         $pdf = new FPDI('l');
-        $pagecount = $pdf->setSourceFile(storage_path('app/certificate.pdf'));
+        $pagecount = $pdf->setSourceFile(base_path('resources/certificate.pdf'));
+        $pdf->SetMargins(0, 0, 0);
 
         $tpl = $pdf->importPage(1);
         $pdf->AddPage();
+        $pdf->SetMargins(0, 0, 0);
+        $pdf->SetAutoPageBreak(false);
 
         // Use the template
         $pdf->useTemplate($tpl);
@@ -181,28 +182,20 @@ class CoursesController extends Controller
         // add a cell example
         // $pdf->Cell($width, $height, $text, $border, $fill, $align);
 
-        // First box - the user's Name
-        $pdf->SetFontSize('30'); // set font size
-        $pdf->SetXY(10, 89); // set the position of the box
-        $pdf->Cell(0, 10, 'Pim van Berlo', 1, 0, 'C'); // add the text, align to Center of cell
+        // Course name
+        $pdf->SetFontSize('20'); // set font size
+        $pdf->SetXY($xPos, 60); // set the position of the box
+        $pdf->Cell(0, 10, $course->name, 0, 0, 'C'); // add the text, align to Center of cell
 
-        // add the reason for certificate
-        // note the reduction in font and different box position
+        // User name
         $pdf->SetFontSize('20');
-        $pdf->SetXY(80, 105);
-        $pdf->Cell(150, 10, 'completeing the course COURSENAME', 0, 0, 'C');
+        $pdf->SetXY($xPos, 98);
+        $pdf->Cell(0, 10, Auth::user()->name, 0, 0, 'C'); // add the text, align to Center of cell
 
         // Add the date
-        // the day
-        $pdf->SetFontSize('20');
-        $pdf->SetXY(118, 122);
-        $pdf->Cell(20, 10, date('d'), 1, 0, 'C');
-        // the month
-        $pdf->SetXY(160, 122);
-        $pdf->Cell(30, 10, date('M'), 1, 0, 'C');
-        // the year, aligned to Left
-        $pdf->SetXY(200, 122);
-        $pdf->Cell(20, 10, date('y'), 1, 0, 'L');
+        $pdf->SetFontSize('8');
+        $pdf->SetXY(257, 196);
+        $pdf->Cell(0, 10, Carbon::now()->format('d-m-Y'), 0, 0, 'C');
 
         // Render PDF to browser
         return $pdf->Output();
