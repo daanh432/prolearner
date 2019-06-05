@@ -14,7 +14,7 @@ class AdminLevelUsersTableUpdate extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->integer('userLevel')->after('credits');
+            $table->integer('userLevel')->after('credits')->default(0);
         });
     }
 
