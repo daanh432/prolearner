@@ -145,7 +145,7 @@ class CourseChapterLessonsController extends Controller
                 'completed' => 1,
                 'answer' => $request->get('answer')
             ]);
-            return ['message' => 'Looks like you\'ve got it correct.', 'answerCorrect' => true];
+            return ['message' => 'Looks like you\'ve got it correct.', 'nextLesson' => $lesson->NextLesson(), 'answerCorrect' => true];
         } else if ($request->has('answer')) {
             userProgress::updateOrCreate([
                 'user_id' => Auth::user()->id,
