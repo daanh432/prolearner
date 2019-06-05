@@ -54,9 +54,25 @@ class courseChapterLessons extends Model
             $userProgress = $this->hasOne('App\userProgress', 'course_chapter_lesson_id', 'id')->where('user_id', '=', Auth::user()->id)->get()->first();
             if ($userProgress != null && $userProgress->completed === 1) {
                 return true;
+            } else {
+                return false;
             }
         } else {
             return false;
         }
+    }
+
+    public function NextLesson() {
+       $nextLesson = courseChapterLessons::where('course_chapter_id', '=', $this->course_chapter_id)->where('id', '>', $this->id)->get()->first();
+       if ($nextLesson != null && $nextLesson->id != null) {
+           return $nextLesson->id;
+       } else {
+           $nextLesson = courseChapters::where('course_id', '=', $this->Chapter()->Course()->id)->where('id', '>', $this->Chapter()->id)->get()->first();
+           if ($nextLesson != null && $nextLesson->id != null) {
+               return $nextLesson->id;
+           } else {
+               return 'overview';
+           }
+       }
     }
 }
