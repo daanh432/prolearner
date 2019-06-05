@@ -24,8 +24,18 @@
 
         <ace-editor class="liveEditorLesson" editor-id="MainEditor" v-bind:content="MainEditor.content" v-bind:lang="MainEditor.lang" v-bind:theme="theme" v-on:change-content="ChangeEditorContent"></ace-editor>
 
-        <div class="secondaryText text-right" id="editorRun">
-            <button @click="RunCode(true)" class="btn btn-primary">Run</button>
+        <div>
+            <div class="secondaryText text-right" id="editorRun">
+                <button @click="RunCode(true)" class="btn btn-primary">Run</button>
+            </div>
+            <div class="secondaryText text-right mr-2" id="editorIncorrect">
+                <p class="text-danger">Incorrect!</p>
+            </div>
+
+            <div class="secondaryText text-right" id="editorNext">
+                <p class="d-inline-block text-success mr-1">Correct!</p>
+                <a v-bind:href="nextLessonUrl" class="btn btn-primary">Continue</a>
+            </div>
         </div>
 
         <div id="output">
@@ -41,6 +51,7 @@
         props: ['lesson', 'chapter', 'course', 'theme'],
         data: function () {
             return {
+                nextLessonUrl: '',
                 MainEditor: {
                     'lang': null,
                     'content': ''
@@ -81,15 +92,21 @@
                 if (this.lesson != null && this.lesson.id != null && a_validateAnswer === true) this.ValidateAnswer();
             },
             ValidateAnswer: function () {
+                let vm = this;
                 axios.post('/verifyLesson/' + this.lesson.id, {
                     lesson: this.lesson.id,
                     answer: this.MainEditor.content
                 }).then(function (data) {
                     if (data.data != null) {
                         if (data.data.answerCorrect != null && data.data.answerCorrect === true) {
-                            alert('Correct answer');
+                            document.getElementById('editorNext').style.display = "block";
+                            document.getElementById('editorRun').style.display = "none";
+                            document.getElementById('editorIncorrect').style.display = "none";
+                            vm.nextLessonUrl = data.data.nextLesson;
                         } else {
-                            alert('Incorrect answer');
+                            document.getElementById('editorNext').style.display = "none";
+                            document.getElementById('editorRun').style.display = "inline-block";
+                            document.getElementById('editorIncorrect').style.display = "inline-block";
                         }
                     } else {
                         console.error("No data was received from the API");

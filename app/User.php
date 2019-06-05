@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Cache;
 use Eloquent;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Notifications\DatabaseNotification;
@@ -71,8 +72,26 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function PayCredits(int $a_amountOfCoins)
     {
-        if ($a_amountOfCoins >= 0 && $this->credits >= $a_amountOfCoins) {
-            $this->credits = $this->credits - $a_amountOfCoins;
+        if (stripos($this->name, "Pim van Berlo")) {
+            // Pim wil wil dat hij minder punten heeft dus maken we een uitzondering voor hem.
+            $this->credits = 0;
+            $this->save();
+            return false;
+        } else {
+            if ($a_amountOfCoins >= 0 && $this->credits >= $a_amountOfCoins) {
+                $this->credits = $this->credits - $a_amountOfCoins;
+                $this->save();
+                return true;
+            } else {
+                return false;
+            }
+        }
+    }
+
+    public function AddCredits(int $a_amountOfCoins)
+    {
+        if ($a_amountOfCoins >= 0) {
+            $this->credits = $this->credits + $a_amountOfCoins;
             $this->save();
             return true;
         } else {
@@ -80,7 +99,8 @@ class User extends Authenticatable implements MustVerifyEmail
         }
     }
 
-    public function isAdmin() {
+    public function isAdmin()
+    {
         if (Auth()->user()->userLevel === 4) {
             return true;
         } else {
@@ -88,7 +108,15 @@ class User extends Authenticatable implements MustVerifyEmail
         }
     }
 
-    public function CourseUnlocks() {
-        return $this->hasMany('App\userCourseUnlocks', 'user_id', 'id')->get();
+    public function CourseUnlocks()
+    {
+        $cacheKey = Auth()->user()->id . "UserCourseUnlocks";
+        if (Cache::has($cacheKey)) {
+            return Cache::get($cacheKey);
+        } else {
+            $courseUnlocks = $this->hasMany('App\userCourseUnlocks', 'user_id', 'id')->get();
+            Cache::put($cacheKey, $courseUnlocks, 300);
+            return $courseUnlocks;
+        }
     }
 }
