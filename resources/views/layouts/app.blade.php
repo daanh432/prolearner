@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="{{ app()->getLocale() }}">
 <head>
     <title>@yield('title', 'Prolearner')</title>
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" integrity="sha256-BtbhCIbtfeVWGsqxk1vOHEYXS6qcvQvLMZqjtpWUEx8=" crossorigin="anonymous"/>
     @stack('head')
 </head>
-<body class="darkTheme">
+<body class="{{ Session::has('theme') ? Session::get('theme') : 'darkTheme' }}">
 @include('components.header')
 
 @yield('content')

@@ -8,19 +8,9 @@ use Illuminate\Http\Request;
 
 class CourseChaptersController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @param courses $course
-     * @return \Illuminate\Http\Response
-     */
-    public function index(courses $course)
+    public function __construct()
     {
-        $chapters = courseChapters::all();
-        return view('courses.chapters.index', [
-            'course' => $course,
-            'chapters' => $chapters
-        ]);
+        $this->middleware('admin');
     }
 
     /**
@@ -39,13 +29,14 @@ class CourseChaptersController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
+     * @param courses $course
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request, courses $course)
     {
         $validated = $request->validate([
-            'name' => ['required', 'string'],
+            'name' => ['required', 'string', 'max:100'],
         ]);
 
         $validated['course_id'] = $course->id;
@@ -53,21 +44,6 @@ class CourseChaptersController extends Controller
         courseChapters::create($validated);
 
         return redirect(route('courses.show', ['course_id' => $course->id]));
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param courses $course
-     * @param courseChapters $chapter
-     * @return \Illuminate\Http\Response
-     */
-    public function show(courses $course, courseChapters $chapter)
-    {
-        return view('courses.chapters.show', [
-            'course' => $course,
-            'chapter' => $chapter
-        ]);
     }
 
     /**
@@ -79,6 +55,7 @@ class CourseChaptersController extends Controller
      */
     public function edit(courses $course, courseChapters $chapter)
     {
+        abort_if($course->id != $chapter->Course()->id, 404);
         return view('courses.chapters.edit', [
             'course' => $course,
             'chapter' => $chapter
@@ -88,14 +65,16 @@ class CourseChaptersController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\courseChapters  $courseChapters
+     * @param \Illuminate\Http\Request $request
+     * @param courses $course
+     * @param courseChapters $chapter
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, courses $course, courseChapters $chapter)
     {
+        abort_if($course->id != $chapter->Course()->id, 404);
         $validated = $request->validate([
-            'name' => ['required', 'string']
+            'name' => ['required', 'string', 'max:150'],
         ]);
 
         $validated['course_id'] = $course->id;
@@ -108,11 +87,16 @@ class CourseChaptersController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\courseChapters  $courseChapters
-     * @return \Illuminate\Http\Response
+     * @param courses $course
+     * @param courseChapters $chapter
+     * @return void
+     * @throws \Exception
      */
     public function destroy(courses $course, courseChapters $chapter)
     {
-        //
+        abort_if($course->id != $chapter->Course()->id, 404);
+        $chapter->delete();
+
+        return redirect(route('courses.show', ['course_id' => $course->id]));
     }
 }

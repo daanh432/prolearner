@@ -6,6 +6,11 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
+                @can('create', App\courses::class)
+                    <div class="text-right">
+                        <a href="{{ route('courses.create') }}" class="btn editButtons mt-1">New Course</a>
+                    </div>
+                @endcan
                 <div class="courseGridContainer my-5 ">
                     @foreach($courses as $course)
                         <div class="gridItem p-3 br-20 position-relative containerBackground secondaryText">
@@ -17,13 +22,23 @@
                             </div>
                             <p>{{ $course->description }}</p>
                             <p class="position-absolute duration">Duration: {{ $course->duration }}. </p>
-                            <a href="{{ route('courses.show', [$course->id]) }}" class="btn btn-info w-25 br-20 position-absolute">
-                                @if($course->price >= 1)
-                                    {{ __('pages.unlockFor', ['points' => $course->price]) }}
-                                @else
-                                    {{ __('pages.start') }}
-                                @endif
-                            </a>
+                            @if(Auth::check() && $course->Completed())
+                                <a href="{{ route('courses.completed', [$course->id]) }}" class="btn btn-info w-25 br-20 position-absolute">
+                                    {{ __('pages.getCertificate') }}
+                                </a>
+                            @else
+                                <a href="{{ route('courses.show', [$course->id]) }}" class="btn btn-info w-25 br-20 position-absolute">
+                                    @if(Auth::check() && Auth::user()->can('view', $course))
+                                        {{ __('pages.continue') }}
+                                    @else
+                                        @if($course->price > 0)
+                                            {{ __('pages.unlockFor', ['points' => $course->price]) }}
+                                        @else
+                                            {{ __('pages.start') }}
+                                        @endif
+                                    @endif
+                                </a>
+                            @endif
                         </div>
                     @endforeach
                 </div>

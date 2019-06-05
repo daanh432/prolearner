@@ -28,3 +28,18 @@ $(document).ready(function () {
         }, 500);
     }
 });
+
+$('.themeSwitch').click(function (e) {
+    e.preventDefault();
+    let body = $(document.body);
+    if (body.hasClass('darkTheme')) {
+        body.removeClass('darkTheme');
+        body.addClass('lightTheme');
+    } else {
+        body.removeClass('lightTheme');
+        body.addClass('darkTheme');
+    }
+    $.get($(this).attr('href'));
+    $('.themeSwitch').removeClass('d-none');
+    $(this).addClass('d-none');
+});

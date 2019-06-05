@@ -8,14 +8,14 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-10 mx-auto mt-5 p-0">
-                        <div class="row">
-                            <div class="col-md-7 mt-5 lightText">
-                                <h1>{{ __('pages.homepageTitle') }}</h1>
-                                <p>Go from zero to a junior programmer within weeks!</p>
-                            </div>
-                            <div id="homepageRegistrationForm" class="p-4 br-20 col-md-5 secondaryText containerBackground">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-6 mt-5 lightText">
+                                    <h1>{{ __('pages.homepageTitle') }}</h1>
+                                    <p>{{__('pages.homepageText')}}</p>
+                                </div>
                                 <!-- Register form -->
-                                <form action="{{ route('register') }}" method="post">
+                                <form action="{{ route('register') }}" id="homepageRegistrationForm" class="needs-validation p-4 br-20 col-lg-6 secondaryText containerBackground" method="post" novalidate>
                                     @csrf
                                     <h2 class="text-center my-4">{{ __('auth.register') }}</h2>
                                     <div class="form-group mb-4">
@@ -61,38 +61,35 @@
             </div>
         </div>
     </div>
-    <div class="container">
-        <div class="row my-5">
+    <div class="container my-5">
+        <div class="row">
             <div class="col-md-12">
                 <div id="homepageAboutUs" class="containerBackground br-30 mx-auto p-4 col-md-10 secondaryText">
                     <h2 class="text-center my-4">{{ __('pages.about') }} ProLearner</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus quis elit elit. Nam luctus finibus nisi,
-                        ac imperdiet
-                        nibh. Sed rhoncus, magna eget fringilla tempor, diam lorem mattis ante, tristique fringilla enim nisi
-                        vitae erat.
-                        Aenean ut neque congue magna convallis dignissim nec vel nisi. Proin aliquam sit amet mi nec pharetra.
-                        Proin varius, ligula quis semper commodo, purus mauris volutpat orci, varius mollis dui odio ut lacus.
-                        In vel sapien vitae velit consequat molestie vel non urna. Cras sollicitudin nulla sit amet sodales
-                        gravida.
-                        Fusce blandit gravida viverra. Donec vulputate nisi at augue varius sollicitudin. hendrerit quis, tempus
-                        eu tortor.</p>
+                    <p>{{ __('pages.aboutUsText') }}</p>
                 </div>
             </div>
         </div>
     </div>
     <div class="container-fluid">
-        <div class="row parallax-row" data-parallax="scroll" data-image-src="{{ asset('/assets/img/parallaxBackground.jpg') }}"></div>
+        <div class="row parallax-row" id="steveJobs" data-parallax="scroll" data-image-src="{{ asset('/assets/img/steveJobs.png') }}">
+            <div class="col-md-6 mt-5 lightText m-auto">
+                <h3 class="text-center">“It doesn't make sense to hire smart people and then tell them what to do, We hire smart people so they can tell us what to do.”</h3>
+                <h3 class="text-center">-Steve Jobs-</h3>
+            </div>
+        </div>
     </div>
-    <div class="container">
+    <div class="container mt-5">
         <div id="homepageContactForm" data-scroll-anchor="contact" class="col-md-10 p-4 containerBackground secondaryText br-30 mx-auto">
             <!-- Contact form -->
-            <div class="row my-5">
+            <div class="row">
                 <div class="container">
-                    <section class="mb-4">
+                    <section>
                         <h2 class="text-center my-4">{{ __("pages.contact") }} ProLearner</h2>
-                        <div class="row mb-5">
-                            <div class="col-md-9 mb-md-0 mx-auto">
-                                <form action="" method="POST">
+                        <div class="row">
+                            <div class="col-md-9 mx-auto">
+                                <form action="{{ route('contact.submission') }}" method="POST">
+                                    @csrf
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="md-form mb-0">
@@ -102,7 +99,7 @@
 
                                         <div class="col-md-6">
                                             <div class="md-form mb-0">
-                                                <input type="text" id="emailContact" name="email" placeholder="{{ __("pages.email") }}" class="form-control mb-4">
+                                                <input type="text" id="emailContact" name="email" placeholder="{{ __("auth.E-Mail Address") }}" class="form-control mb-4">
                                             </div>
                                         </div>
                                     </div>
@@ -119,6 +116,16 @@
                                         <div class="col-md-12">
                                             <div class="md-form">
                                                 <textarea id="message" name="message" rows="2" maxlength="500" placeholder="{{ __("pages.message") }}" class="form-control md-textarea mb-4"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="md-form text-center">
+                                                <div class="d-inline-block {{ $errors->has('g-recaptcha-response') ? 'border border-danger rounded' : '' }}">
+                                                    {!! htmlFormSnippet() !!}
+                                                </div>
                                             </div>
                                         </div>
                                     </div>

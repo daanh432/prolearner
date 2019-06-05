@@ -5,21 +5,21 @@
 @section('content')
     <div class="container">
         <div class="row">
-            <form action="{{ route('courses.store') }}" method="post" id="storeCourse" enctype="multipart/form-data" class="needs-validation col-md-6 mx-auto bg-white p-5 mt-5 rounded" novalidate>
+            <form action="{{ route('courses.store') }}" method="post" id="storeCourse" enctype="multipart/form-data" class="needs-validation col-lg-6 mx-auto p-5 mt-5 br-20 containerBackground secondaryText" novalidate>
                 @csrf
                 <h1>Create course</h1>
                 <div class="form-group">
-                    <input type="text" class="form-control" id="cName" placeholder="Course name" name="name" value="{{ old('name') }}" required>
+                    <input type="text" class="form-control" id="cName" placeholder="Course name" name="name" value="{{ old('name') }}" maxlength="100" required>
                     <div class="valid-feedback">Valid.</div>
                     <div class="invalid-feedback">Please fill out this field.</div>
                 </div>
                 <div class="form-group">
-                    <textarea type="text" class="form-control" id="cDes" placeholder="Description" name="description" maxlength="300" required>{{ old('duration') }}</textarea>
+                    <textarea type="text" class="form-control" id="cDes" placeholder="Description" name="description" maxlength="300" required>{{ old('description') }}</textarea>
                     <div class="valid-feedback">Valid.</div>
                     <div class="invalid-feedback">Please fill out this field.</div>
                 </div>
                 <div class="form-group">
-                    <input type="text" class="form-control" id="cDur" placeholder="Duration" name="duration" value="{{ old('duration') }}" required>
+                    <input type="text" class="form-control" id="cDur" placeholder="Duration" name="duration" value="{{ old('duration') }}" maxlength="11" required>
                     <div class="valid-feedback">Valid.</div>
                     <div class="invalid-feedback">Please fill out this field.</div>
                 </div>
@@ -42,7 +42,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <input type="text" class="form-control" id="cPrice" placeholder="Price" name="price" value="{{ old('price') }}" required>
+                    <input type="number" class="form-control" id="cPrice" placeholder="Price" name="price" value="{{ old('price') }}" minlength="0" maxlength="4" required>
                     <div class="valid-feedback">Valid.</div>
                     <div class="invalid-feedback">Please fill out this field.</div>
                 </div>
@@ -59,7 +59,14 @@
                     <div class="valid-feedback">Valid.</div>
                     <div class="invalid-feedback">Please fill out this field.</div>
                 </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <div class="form-group row">
+                    <div class="col-md-6 text-center">
+                        <a href="{{ route('courses.index') }}" class="btn btn-secondary w-100 br-20">{{ __('pages.goBack') }}</a>
+                    </div>
+                    <div class="col-md-6 mt-2 mt-md-0 text-center">
+                        <button class="btn btn-primary w-100 br-20" type="submit">{{ __('pages.submit') }}</button>
+                    </div>
+                </div>
             </form>
         </div>
     </div>
