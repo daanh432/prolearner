@@ -50,8 +50,8 @@
                                 <div class="card-body p-0">
                                     <ul class="pl-0 mb-0 lessons">
                                         @foreach ($chapter->Lessons() as $lesson)
-                                            <a href="" class="text-decoration-none">
-                                                <li class="list-style-type-none p-3 secondaryText">
+                                            <li class="list-style-type-none p-3 secondaryText">
+                                                <a href="{{ route('courses.lessons.show', [$course->id, $lesson->id]) }}" class="text-decoration-none">
                                                     <div class="d-inline-block float-left secondaryText">
                                                         <p class="p-0 m-0">{{ $lesson->name }}</p>
                                                     </div>
@@ -61,8 +61,8 @@
                                                         </div>
                                                     @endcan
                                                     <div class="clearfix"></div>
-                                                </li>
-                                            </a>
+                                                </a>
+                                            </li>
                                         @endforeach
                                     </ul>
                                 </div>

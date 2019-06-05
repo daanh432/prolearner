@@ -33,25 +33,42 @@ class userCourseUnlocks extends Model
 {
     protected $fillable = ['user_id', 'course_id', 'amountOfCompletedLessons'];
 
-    public function Finished() {
+    public function Finished()
+    {
         $course = $this->belongsTo('App\courses', 'course_id', 'id')->get()->first();
         if ($course != null) {
-            return $this->amountOfCompletedLessons >= $course->AmountOfAssignments();
+            return $this->AmountOfCompletedLessons() >= $course->AmountOfAssignments();
         } else {
             return false;
         }
     }
 
-    public function ProgressPercentage() {
+    public function ProgressPercentage()
+    {
         $course = $this->belongsTo('App\courses', 'course_id', 'id')->get()->first();
         if ($course != null && $course->AmountOfAssignments() > 0) {
-            return 100 / $course->AmountOfAssignments() * $this->amountOfCompletedLessons;
+            return 100 / $course->AmountOfAssignments() * $this->AmountOfCompletedLessons();
         } else {
             return 0;
         }
     }
 
-    public function Course() {
+    public function Course()
+    {
         return $this->belongsTo('App\courses', 'course_id', 'id')->get()->first();
+    }
+
+    public function AmountOfCompletedLessons()
+    {
+        $amountOfCompletedLessons = 0;
+        $course = $this->hasOne('App\courses', 'id', 'course_id')->get()->first();
+        foreach ($course->Chapters() as $chapter) {
+            foreach ($chapter->Lessons() as $lesson) {
+                if ($lesson->Completed()) {
+                    $amountOfCompletedLessons++;
+                }
+            }
+        }
+        return $amountOfCompletedLessons;
     }
 }
