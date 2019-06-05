@@ -159,7 +159,8 @@ class CoursesController extends Controller
         return redirect(route('courses.index'));
     }
 
-    public function generateCertificate(courses $course) {
+    public function generateCertificate(courses $course)
+    {
         PDF::setOptions(['dpi' => 5, 'defaultFont' => 'sans-serif']);
         $pdf = PDF::loadView('pdf.certificate', [
             'course' => $course,
@@ -167,13 +168,19 @@ class CoursesController extends Controller
         return $pdf->stream();
     }
 
-    public function completed(courses $course) {
-        return view('courses.completed', [
-            'course' => $course
-        ]);
+    public function completed(courses $course)
+    {
+        if (Auth::check() && $course->Completed()) {
+            return view('courses.completed', [
+                'course' => $course
+            ]);
+        } else {
+            return redirect(route('courses.show', [$course->id]));
+        }
     }
 
-    public function feedback(Request $request, courses $course) {
+    public function feedback(Request $request, courses $course)
+    {
         $validated = $request->validate([
             'comment' => ['required', 'string', 'max:2048'],
         ]);
