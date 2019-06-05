@@ -164,42 +164,46 @@ class CoursesController extends Controller
 
     public function generateCertificate(courses $course)
     {
-        $xPos = 84;
-        $pdf = new FPDI('l');
-        $pagecount = $pdf->setSourceFile(base_path('resources/certificate.pdf'));
-        $pdf->SetMargins(0, 0, 0);
+        if (Auth::check() && $course->Completed()) {
+            $xPos = 84;
+            $pdf = new FPDI('l');
+            $pagecount = $pdf->setSourceFile(base_path('resources/certificate.pdf'));
+            $pdf->SetMargins(0, 0, 0);
 
-        $tpl = $pdf->importPage(1);
-        $pdf->AddPage();
-        $pdf->SetMargins(0, 0, 0);
-        $pdf->SetAutoPageBreak(false);
+            $tpl = $pdf->importPage(1);
+            $pdf->AddPage();
+            $pdf->SetMargins(0, 0, 0);
+            $pdf->SetAutoPageBreak(false);
 
-        // Use the template
-        $pdf->useTemplate($tpl);
+            // Use the template
+            $pdf->useTemplate($tpl);
 
-        // Set the font
-        $pdf->SetFont('Helvetica');
+            // Set the font
+            $pdf->SetFont('Helvetica');
 
-        // add a cell example
-        // $pdf->Cell($width, $height, $text, $border, $fill, $align);
+            // add a cell example
+            // $pdf->Cell($width, $height, $text, $border, $fill, $align);
 
-        // Course name
-        $pdf->SetFontSize('20'); // set font size
-        $pdf->SetXY($xPos, 60); // set the position of the box
-        $pdf->Cell(0, 10, $course->name, 0, 0, 'C'); // add the text, align to Center of cell
+            // Course name
+            $pdf->SetFontSize('20'); // set font size
+            $pdf->SetXY($xPos, 60); // set the position of the box
+            $pdf->Cell(0, 10, $course->name, 0, 0, 'C'); // add the text, align to Center of cell
 
-        // User name
-        $pdf->SetFontSize('20');
-        $pdf->SetXY($xPos, 98);
-        $pdf->Cell(0, 10, Auth::user()->name, 0, 0, 'C'); // add the text, align to Center of cell
+            // User name
+            $pdf->SetFontSize('20');
+            $pdf->SetXY($xPos, 98);
+            $pdf->Cell(0, 10, Auth::user()->name, 0, 0, 'C'); // add the text, align to Center of cell
 
-        // Add the date
-        $pdf->SetFontSize('8');
-        $pdf->SetXY(257, 196);
-        $pdf->Cell(0, 10, Carbon::now()->format('d-m-Y'), 0, 0, 'C');
+            // Add the date
+            $pdf->SetFontSize('8');
+            $pdf->SetXY(257, 196);
+            $pdf->Cell(0, 10, Carbon::now()->format('d-m-Y'), 0, 0, 'C');
 
-        // Render PDF to browser
-        return $pdf->Output();
+            // Render PDF to browser
+            return $pdf->Output();
+        } else {
+            return back()->withErrors(['You don\'t have permissions to access this page. We have brought you back to a safe place!']);
+        }
     }
 
     public function completed(courses $course)
@@ -209,19 +213,22 @@ class CoursesController extends Controller
                 'course' => $course
             ]);
         } else {
-            return redirect(route('courses.show', [$course->id]));
+            return back()->withErrors(['You don\'t have permissions to access this page. We have brought you back to a safe place!']);
         }
     }
 
     public function feedback(Request $request, courses $course)
     {
-        $validated = $request->validate([
-            'comment' => ['required', 'string', 'max:2048'],
-        ]);
+        if (Auth::check() && $course->Completed()) {
+            $validated = $request->validate([
+                'comment' => ['required', 'string', 'max:2048'],
+            ]);
 
-        $validated['course_id'] = $course->id;
-        courseFeedback::create($validated);
-
-        return redirect(route('courses.index'));
+            $validated['course_id'] = $course->id;
+            courseFeedback::create($validated);
+            return redirect(route('courses.index'));
+        } else {
+            return back()->withErrors(['You don\'t have permissions to access this page. We have brought you back to a safe place!']);
+        }
     }
 }
