@@ -83,6 +83,12 @@ class CoursesController extends Controller
     public function show(courses $course)
     {
         if (Auth()->user()->can('view', $course)) {
+            if (Auth()->user()->isAdmin() && $course->Unlocked() === false) {
+                userCourseUnlocks::create([
+                    'user_id' => Auth()->user()->id,
+                    'course_id' => $course->id,
+                ]);
+            }
             return view('courses.show', [
                 'course' => $course
             ]);
@@ -91,7 +97,6 @@ class CoursesController extends Controller
                 userCourseUnlocks::create([
                     'user_id' => Auth()->user()->id,
                     'course_id' => $course->id,
-                    'amountOfCompletedLessons' => 0,
                 ]);
                 return view('courses.show', [
                     'course' => $course
