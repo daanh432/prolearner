@@ -72,4 +72,17 @@
 
 #editorRun {
   grid-area: submit;
+  float: right;
+}
+
+#editorNext {
+  grid-area: submit;
+  display: none;
+  float: right;
+}
+
+#editorIncorrect {
+  grid-area: submit;
+  display: none;
+  float: right;
 }

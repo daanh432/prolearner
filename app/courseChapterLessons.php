@@ -72,7 +72,12 @@ class courseChapterLessons extends Model
         } else {
             $nextLesson = courseChapters::where('course_id', '=', $this->Chapter()->Course()->id)->where('id', '>', $this->Chapter()->id)->get()->first();
             if ($nextLesson != null && $nextLesson->id != null) {
-                return route('courses.lessons.show', [$nextLesson->Chapter()->Course()->id, $nextLesson->id]);
+                if ($nextLesson->Lessons()->first() != null) {
+                    $nextLessonId = $nextLesson->Lessons()->first()->id;
+                    return route('courses.lessons.show', [$nextLesson->Course()->id, $nextLessonId]);
+                } else {
+                    return route('courses.show', [$this->Chapter()->Course()->id]);
+                }
             } else {
                 return route('courses.show', [$this->Chapter()->Course()->id]);
             }
