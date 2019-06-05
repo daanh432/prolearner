@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\courseFeedback;
 use App\courses;
 use App\programmingLanguages;
 use App\userCourseUnlocks;
@@ -17,8 +18,8 @@ class CoursesController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('admin')->except(['index', 'show', 'generateCertificate']);
-        $this->middleware('auth')->only(['show', 'generateCertificate']);
+        $this->middleware('admin')->except(['index', 'show', 'generateCertificate', 'completed', 'feedback']);
+        $this->middleware('auth')->only(['show', 'generateCertificate', 'completed', 'feedback']);
     }
 
     /**
@@ -199,5 +200,28 @@ class CoursesController extends Controller
 
         // Render PDF to browser
         return $pdf->Output();
+    }
+
+    public function completed(courses $course)
+    {
+        if (Auth::check() && $course->Completed()) {
+            return view('courses.completed', [
+                'course' => $course
+            ]);
+        } else {
+            return redirect(route('courses.show', [$course->id]));
+        }
+    }
+
+    public function feedback(Request $request, courses $course)
+    {
+        $validated = $request->validate([
+            'comment' => ['required', 'string', 'max:2048'],
+        ]);
+
+        $validated['course_id'] = $course->id;
+        courseFeedback::create($validated);
+
+        return redirect(route('courses.index'));
     }
 }

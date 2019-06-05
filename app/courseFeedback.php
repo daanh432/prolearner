@@ -24,5 +24,5 @@ use Illuminate\Database\Eloquent\Model;
  */
 class courseFeedback extends Model
 {
-    //
+    protected $fillable = ['course_id', 'comment'];
 }
