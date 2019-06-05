@@ -30,6 +30,8 @@ Route::get('/courses/{course}/edit', 'CoursesController@edit')->name('courses.ed
 Route::get('/courses/{course}/certificate', 'CoursesController@generateCertificate')->name('courses.certificate');
 Route::patch('/courses/{course}', 'CoursesController@update')->name('courses.update');
 Route::delete('/courses/{course}', 'CoursesController@destroy')->name('courses.destroy');
+Route::get('/courses/{course}/completed', 'CoursesController@completed')->name('courses.completed');
+Route::post('/courses/{course}/completed', 'CoursesController@feedback')->name('courses.feedback');
 #endregion
 
 #region Chapter Routes
