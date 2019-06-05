@@ -135,25 +135,31 @@ class CourseChapterLessonsController extends Controller
         return redirect(route('courses.show', [$course->id]));
     }
 
+    /**
+     * @param Request $request
+     * @param courses $course
+     * @param courseChapters $chapter
+     * @param courseChapterLessons $lesson
+     * @return array
+     */
     public function verifyInput(Request $request, courses $course, courseChapters $chapter, courseChapterLessons $lesson)
     {
         if ($request->has('answer') && stripos($request->get('answer'), $lesson->inputCheck) !== false) {
-            userProgress::updateOrCreate([
-                'user_id' => Auth::user()->id,
-                'course_chapter_lesson_id' => $lesson->id,
-            ], [
-                'completed' => 1,
-                'answer' => $request->get('answer')
-            ]);
+            if ($lesson->Completed() === false) {
+                if (Auth::user()->AddCredits(10)) {
+                    userProgress::updateOrCreate([
+                        'user_id' => Auth::user()->id,
+                        'course_chapter_lesson_id' => $lesson->id,
+                    ], [
+                        'completed' => 1,
+                        'answer' => $request->get('answer')
+                    ]);
+                } else {
+                    return ['message' => 'Some mysterious error occurred', 'answerCorrect' => false];
+                }
+            }
             return ['message' => 'Looks like you\'ve got it correct.', 'nextLesson' => $lesson->NextLesson(), 'answerCorrect' => true];
         } else if ($request->has('answer')) {
-            userProgress::updateOrCreate([
-                'user_id' => Auth::user()->id,
-                'course_chapter_lesson_id' => $lesson->id,
-            ], [
-                'completed' => 0,
-                'answer' => $request->get('answer')
-            ]);
             return ['message' => 'The answer is just incorrect', 'answerCorrect' => false];
         } else {
             return ['message' => 'Some mysterious error occurred', 'answerCorrect' => false];
