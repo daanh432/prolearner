@@ -170,7 +170,7 @@ class CoursesController extends Controller
     public function generateCertificate(courses $course)
     {
         if (Auth::check() && $course->Completed()) {
-            $xPos = 84;
+            $xPos = 86;
             $pdf = new FPDI('l');
             $pagecount = $pdf->setSourceFile(base_path('resources/certificate.pdf'));
             $pdf->SetMargins(0, 0, 0);
@@ -191,17 +191,18 @@ class CoursesController extends Controller
 
             // Course name
             $pdf->SetFontSize('20'); // set font size
-            $pdf->SetXY($xPos, 60); // set the position of the box
+            $pdf->SetXY($xPos, 70); // set the position of the box
             $pdf->Cell(0, 10, $course->name, 0, 0, 'C'); // add the text, align to Center of cell
 
             // User name
             $pdf->SetFontSize('20');
-            $pdf->SetXY($xPos, 98);
+            $pdf->SetXY($xPos, 105);
             $pdf->Cell(0, 10, Auth::user()->name, 0, 0, 'C'); // add the text, align to Center of cell
 
             // Add the date
-            $pdf->SetFontSize('8');
-            $pdf->SetXY(257, 196);
+            $pdf->SetFontSize('20');
+//            $pdf->SetXY(257, 196);
+            $pdf->SetXY($xPos, 135);
             $pdf->Cell(0, 10, Carbon::now()->format('d-m-Y'), 0, 0, 'C');
 
             // Render PDF to browser
