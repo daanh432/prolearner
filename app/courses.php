@@ -69,4 +69,17 @@ class courses extends Model
             return false;
         }
     }
+
+    public function Completed() {
+        if (Auth::check()) {
+            $courseUnlock = $this->hasOne('App\userCourseUnlocks', 'course_id', 'id')->where('user_id', '=', Auth()->user()->id)->get()->first();
+            if ($courseUnlock != null) {
+                return $courseUnlock->Finished();
+            } else {
+                return false;
+            }
+        } else {
+            return false;
+        }
+    }
 }
