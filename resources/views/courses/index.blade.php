@@ -7,14 +7,14 @@
         <div class="row mt-3">
             @can('create', App\courses::class)
                 <div class="col-md-9">
-                    <input type="text" class="form-control" placeholder="{{ __('pages.search') }}" name="search">
+                    <input id="courseSearchBar" type="text" class="form-control" placeholder="{{ __('pages.search') }}" name="search">
                 </div>
                 <div class="col-md-3">
                     <a href="{{ route('courses.create') }}" class="btn editButtons">New Course</a>
                 </div>
             @else
                 <div class="col-md-12">
-                    <input type="text" class="form-control" placeholder="{{ __('pages.search') }}" name="search">
+                    <input id="courseSearchBar" type="text" class="form-control" placeholder="{{ __('pages.search') }}" name="search">
                 </div>
             @endcan
         </div>

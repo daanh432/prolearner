@@ -43,3 +43,8 @@ $('.themeSwitch').click(function (e) {
     $('.themeSwitch').removeClass('d-none');
     $(this).addClass('d-none');
 });
+
+$('#courseSearchBar').change(function (e) {
+    console.log(e);
+    console.log(this.val());
+});
