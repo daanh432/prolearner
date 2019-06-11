@@ -87,7 +87,13 @@
             },
             RunCode: function (a_validateAnswer) {
                 this.$refs.outputIframe.contentWindow.document.open();
-                this.$refs.outputIframe.contentWindow.document.write(this.MainEditor.content);
+                axios.post('/runCode', {
+                    'rawCode': this.MainEditor.content
+                }).then(data => {
+                    if(data.data.error === "No" && data.data.success === "Yes") {
+                        this.$refs.outputIframe.contentWindow.document.write(data.data.message);
+                    }
+                });
                 this.$refs.outputIframe.contentWindow.document.close();
                 if (this.lesson != null && this.lesson.id != null && a_validateAnswer === true) this.ValidateAnswer();
             },
