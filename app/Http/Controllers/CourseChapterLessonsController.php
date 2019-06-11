@@ -8,6 +8,7 @@ use App\courses;
 use App\userProgress;
 use Auth;
 use Exception;
+use GuzzleHttp\Client;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
@@ -15,7 +16,7 @@ class CourseChapterLessonsController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('admin')->except(['show', 'verifyInput']);
+        $this->middleware('admin')->except(['show', 'verifyInput', 'runCode']);
         $this->middleware('can:view,lesson')->only(['show', 'test']);
     }
 
@@ -163,6 +164,28 @@ class CourseChapterLessonsController extends Controller
             return ['message' => 'The answer is just incorrect', 'answerCorrect' => false];
         } else {
             return ['message' => 'Some mysterious error occurred', 'answerCorrect' => false];
+        }
+    }
+
+    public function runCode(Request $request)
+    {
+        $evalCommand = $request->get('rawCode', '');
+
+        try {
+            $client = new Client();
+            $response = $client->request('POST', 'https://php-eval-prolearner.herokuapp.com/', [
+                'form_params' => [
+                    'evalCommand' => $evalCommand
+                ]
+            ]);
+            $apiResponse = json_decode($response->getBody()->getContents());
+            $response = [];
+            foreach ($apiResponse as $key => $value) {
+                $response[$key] = $value;
+            }
+            return $response;
+        } catch (Exception $exception) {
+            return ["error" => "Yes", "success" => "No"];
         }
     }
 }

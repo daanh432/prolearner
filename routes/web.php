@@ -53,5 +53,6 @@ Route::middleware('auth')->group(function() {
     Route::patch('/courses/{course}/lessons/{lesson}', 'CourseChapterLessonsController@update')->name('courses.lessons.update');
     Route::delete('/courses/{course}/lessons/{lesson}', 'CourseChapterLessonsController@destroy')->name('courses.lessons.destroy');
     Route::post('/verifyLesson/{lesson}', 'CourseChapterLessonsController@verifyInput');
+    Route::post('/runCode', 'CourseChapterLessonsController@runCode');
 });
 #endregion
