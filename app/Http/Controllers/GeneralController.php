@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Mail\ContactFormMail;
 use Illuminate\Support\Facades\Session;
+use Mail;
 
 class GeneralController extends Controller
 {
