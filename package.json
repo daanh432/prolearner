@@ -24,6 +24,7 @@
         "vue-template-compiler": "^2.6.10"
     },
     "dependencies": {
+        "aos": "^2.3.4",
         "autoprefixer": "^9.6.0"
     },
     "browserslist": [
