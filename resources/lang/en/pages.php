@@ -48,4 +48,5 @@ accomplished with a signature from the creators. ProLearner started as a school 
     'continue' => 'Continue',
     'delete' => 'Delete',
     'getCertificate' => 'Certificate',
+    'search' => 'Search',
 ];
