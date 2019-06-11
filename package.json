@@ -23,5 +23,13 @@
         "vue": "^2.5.17",
         "vue-template-compiler": "^2.6.10"
     },
-    "dependencies": {}
+    "dependencies": {
+        "aos": "^2.3.4",
+        "autoprefixer": "^9.6.0"
+    },
+    "browserslist": [
+        "last 40 versions",
+        "> 1%",
+        "IE 10"
+    ]
 }
