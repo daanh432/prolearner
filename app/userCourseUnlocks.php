@@ -31,7 +31,7 @@ use Illuminate\Support\Carbon;
  */
 class userCourseUnlocks extends Model
 {
-    protected $fillable = ['user_id', 'course_id', 'amountOfCompletedLessons'];
+    protected $fillable = ['user_id', 'course_id'];
 
     public function Finished()
     {
