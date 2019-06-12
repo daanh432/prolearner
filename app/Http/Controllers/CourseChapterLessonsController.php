@@ -145,7 +145,7 @@ class CourseChapterLessonsController extends Controller
      */
     public function verifyInput(Request $request, courses $course, courseChapters $chapter, courseChapterLessons $lesson)
     {
-        if ($request->has('answer') && stripos($request->get('answer'), $lesson->inputCheck) !== false) {
+        if ($request->has('answer') && stripos(preg_replace('/\s/', '', $request->get('answer')), preg_replace('/\s/', '', $lesson->inputCheck)) !== false) {
             if ($lesson->Completed() === false) {
                 if (Auth::user()->AddCredits(10)) {
                     userProgress::updateOrCreate([
