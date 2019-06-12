@@ -2,10 +2,14 @@
 
 @section('title', 'Create lesson')
 
+@push('head')
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jodit/3.1.92/jodit.min.css">
+@endpush
+
 @section('content')
     <div class="container">
         <div class="row">
-            <div id="pureLiveEditorApp" class="col-md-12 containerBackground secondaryText p-5 mt-5 br-20">
+            <div id="pureLiveEditorApp" data-assignment="{{ old('assignment') ? old('assignment') : 'Example Code' }}" data-input-check="{{ old('inputCheck') ? old('inputCheck') : 'Input Check Code' }}" class="col-md-12 containerBackground secondaryText p-5 mt-5 br-20">
                 <form action="{{ route('courses.chapters.lessons.store', [ 'course' => $course->id, 'chapter' => $chapter->id]) }}" method="post" id="storeLesson" enctype="multipart/form-data" class="needs-validation" novalidate>
                     @csrf
                     <h1>Create lesson</h1>
@@ -15,8 +19,8 @@
                         <div class="invalid-feedback">Please fill out this field.</div>
                     </div>
 
-                    <div class="form-group">
-                        <textarea type="text" class="form-control" id="lesDes" placeholder="Description" maxlength="4096" name="description" maxlength="5000" required>{{ old('duration') }}</textarea>
+                    <div class="form-group text-dark">
+                        <textarea type="text" class="form-control fancyEditor" id="lesDes" placeholder="Description" maxlength="4096" name="description" maxlength="5000" required>{{ old('duration') }}</textarea>
                         <div class="valid-feedback">Valid.</div>
                         <div class="invalid-feedback">Please fill out this field.</div>
                     </div>
@@ -46,4 +50,13 @@
 @push('scripts')
     <script src="{{ asset('ace/ace.js') }}" type="text/javascript" charset="utf-8"></script>
     <script src="{{ asset('assets/js/liveEditor.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jodit/3.1.92/jodit.min.js"></script>
+    <script>
+        $('.fancyEditor').each(function () {
+            let editor = new Jodit(this, {
+                "language": "nl",
+                "buttons": "|,bold,strikethrough,underline,italic,|,superscript,subscript,|,ul,ol,|,outdent,indent,|,font,fontsize,brush,paragraph,|,image,file,video,table,link,|,align,undo,redo,\n,cut,hr,eraser,copyformat,|"
+            });
+        });
+    </script>
 @endpush
