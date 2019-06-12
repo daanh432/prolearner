@@ -102,21 +102,20 @@ function InitTheme(a_vm) {
     }, 100);
 }
 
-let changedFlag = false;
+window.changedFlag = false;
 
 $(document).ready(function () {
     $('.shortcutCheck').on('change keyup paste', function () {
-        changedFlag = true;
-        console.log('test');
+        window.changedFlag = true;
     });
 
     $('.shortcutButton').click(function () {
-        changedFlag = false;
+        window.changedFlag = false;
     });
 });
 
 window.onbeforeunload = function (e) {
-    if (changedFlag === true) {
+    if (window.changedFlag === true) {
         e.preventDefault(); // Cancel the event
         e.returnValue = 'Changes you have made will not be saved. Are you sure you want to quit?';
     }
@@ -136,7 +135,7 @@ document.onkeydown = function (e) {
             e.stopPropagation();
             break;
         case 87://Block Ctrl+W -- Doesnt work in Chrome and new Firefox
-            if (changedFlag === true) {
+            if (window.changedFlag === true) {
                 e.preventDefault();
                 e.stopPropagation();
             }

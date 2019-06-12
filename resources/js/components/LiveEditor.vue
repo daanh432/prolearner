@@ -32,7 +32,7 @@
             </div>
             <div class="secondaryText text-right d-block" v-if="correct === true">
                 <p class="d-inline-block text-success mr-1">Correct!</p>
-                <a v-bind:href="nextLessonUrl" class="btn btn-primary shortcutButton">Continue</a>
+                <button @click="NextLesson" class="btn btn-primary shortcutButton">Continue</button>
             </div>
         </div>
 
@@ -79,6 +79,7 @@
             ChangeEditorContent: function (a_val) {
                 if (this.MainEditor.content !== a_val) {
                     this.MainEditor.content = a_val;
+                    window.changedFlag = true;
                 }
             },
             UpdateLang: function (a_lang) {
@@ -121,6 +122,10 @@
                 }).catch(function (err) {
                     console.error("Something went wrong trying to check your answer.\nPlease try again later");
                 });
+            },
+            NextLesson: function () {
+                window.changedFlag = false;
+                window.location = this.nextLessonUrl;
             }
         }
     }
