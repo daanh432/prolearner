@@ -18,9 +18,7 @@
             <h1 class="mt-3">Output:</h1>
         </div>
 
-        <div class="editorBackground secondaryText" id="lessonAssignmentDescription" v-if="lesson != null && lesson.description != null">
-            {{ lesson.description }}
-        </div>
+        <div class="editorBackground secondaryText" id="lessonAssignmentDescription" v-if="lesson != null && lesson.description != null" v-html="lesson.description"></div>
 
         <ace-editor class="liveEditorLesson" editor-id="MainEditor" v-bind:content="MainEditor.content" v-bind:lang="MainEditor.lang" v-bind:theme="theme" v-on:change-content="ChangeEditorContent"></ace-editor>
 
@@ -90,7 +88,7 @@
                 axios.post('/runCode', {
                     'rawCode': this.MainEditor.content
                 }).then(data => {
-                    if(data.data.error === "No" && data.data.success === "Yes") {
+                    if (data.data.error === "No" && data.data.success === "Yes") {
                         this.$refs.outputIframe.contentWindow.document.write(data.data.message);
                     }
                 });
