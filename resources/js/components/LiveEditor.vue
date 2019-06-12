@@ -6,12 +6,12 @@
         </div>
 
         <div class="editorHeaderBackground text-center" id="menuHeader">
-            <div class="btn-group btn-group mt-4">
-                <button @click="UpdateLang('php')" class="btn btn-primary" type="button">PHP</button>
-                <button @click="UpdateLang('html')" class="btn btn-primary" type="button">HTML</button>
-                <button @click="UpdateLang('css')" class="btn btn-primary" type="button">CSS</button>
-                <button @click="UpdateLang('javascript')" class="btn btn-primary" type="button">JS</button>
-            </div>
+            <!--            <div class="btn-group btn-group mt-4">-->
+            <!--                <button @click="UpdateLang('php')" class="btn btn-primary" type="button">PHP</button>-->
+            <!--                <button @click="UpdateLang('html')" class="btn btn-primary" type="button">HTML</button>-->
+            <!--                <button @click="UpdateLang('css')" class="btn btn-primary" type="button">CSS</button>-->
+            <!--                <button @click="UpdateLang('javascript')" class="btn btn-primary" type="button">JS</button>-->
+            <!--            </div>-->
         </div>
 
         <div class="editorHeaderBackground secondaryText text-center" id="outputHeader">
@@ -21,18 +21,18 @@
         <div class="editorBackground secondaryText" id="lessonAssignmentDescription" v-if="lesson != null && lesson.description != null" v-html="lesson.description"></div>
 
         <ace-editor class="liveEditorLesson" editor-id="MainEditor" v-bind:content="MainEditor.content" v-bind:lang="MainEditor.lang" v-bind:theme="theme" v-on:change-content="ChangeEditorContent"></ace-editor>
+        <input type="hidden" class="shortcutCheck" v-model="MainEditor.content" name="MainEditorContent"/>
 
-        <div>
-            <div class="secondaryText text-right" id="editorRun">
-                <button @click="RunCode(true)" class="btn btn-primary">Run</button>
-            </div>
-            <div class="secondaryText text-right mr-2" id="editorIncorrect">
+        <div class="text-right">
+            <div class="secondaryText text-right mr-2 d-inline-block" v-if="correct === false">
                 <p class="text-danger">Incorrect!</p>
             </div>
-
-            <div class="secondaryText text-right" id="editorNext">
+            <div class="secondaryText text-right d-inline-block" v-if="correct !== true">
+                <button @click="RunCode(true)" class="btn btn-primary">Run</button>
+            </div>
+            <div class="secondaryText text-right d-block" v-if="correct === true">
                 <p class="d-inline-block text-success mr-1">Correct!</p>
-                <a v-bind:href="nextLessonUrl" class="btn btn-primary">Continue</a>
+                <button @click="NextLesson" class="btn btn-primary shortcutButton">Continue</button>
             </div>
         </div>
 
@@ -50,6 +50,7 @@
         data: function () {
             return {
                 nextLessonUrl: '',
+                correct: null,
                 MainEditor: {
                     'lang': null,
                     'content': ''
@@ -78,6 +79,7 @@
             ChangeEditorContent: function (a_val) {
                 if (this.MainEditor.content !== a_val) {
                     this.MainEditor.content = a_val;
+                    window.changedFlag = true;
                 }
             },
             UpdateLang: function (a_lang) {
@@ -103,14 +105,10 @@
                 }).then(function (data) {
                     if (data.data != null) {
                         if (data.data.answerCorrect != null && data.data.answerCorrect === true) {
-                            document.getElementById('editorNext').style.display = "block";
-                            document.getElementById('editorRun').style.display = "none";
-                            document.getElementById('editorIncorrect').style.display = "none";
+                            vm.correct = true;
                             vm.nextLessonUrl = data.data.nextLesson;
                         } else {
-                            document.getElementById('editorNext').style.display = "none";
-                            document.getElementById('editorRun').style.display = "inline-block";
-                            document.getElementById('editorIncorrect').style.display = "inline-block";
+                            vm.correct = false;
                         }
                     } else {
                         console.error("No data was received from the API");
@@ -118,6 +116,10 @@
                 }).catch(function (err) {
                     console.error("Something went wrong trying to check your answer.\nPlease try again later");
                 });
+            },
+            NextLesson: function () {
+                window.changedFlag = false;
+                window.location = this.nextLessonUrl;
             }
         }
     }
