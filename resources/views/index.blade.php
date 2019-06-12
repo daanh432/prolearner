@@ -14,46 +14,48 @@
                                     <h1>{{ __('pages.homepageTitle') }}</h1>
                                     <p>{{__('pages.homepageText')}}</p>
                                 </div>
+                            @guest
                                 <!-- Register form -->
-                                <form action="{{ route('register') }}" id="homepageRegistrationForm" class="needs-validation p-4 br-20 col-lg-6 secondaryText containerBackground" method="post" novalidate>
-                                    @csrf
-                                    <h2 class="text-center my-4">{{ __('auth.register') }}</h2>
-                                    <div class="form-group mb-4">
-                                        <input type="text" id="fullName" class="form-control" placeholder="{{ __('pages.fullName') }}" name="name" required>
-                                        <div class="valid-feedback">Valid.</div>
-                                        <div class="invalid-feedback">Please fill out this field.</div>
-                                    </div>
+                                    <form action="{{ route('register') }}" id="homepageRegistrationForm" class="needs-validation p-4 br-20 col-lg-6 secondaryText containerBackground" method="post" novalidate>
+                                        @csrf
+                                        <h2 class="text-center my-4">{{ __('auth.register') }}</h2>
+                                        <div class="form-group mb-4">
+                                            <input type="text" id="fullName" class="form-control" placeholder="{{ __('pages.fullName') }}" name="name" required>
+                                            <div class="valid-feedback">Valid.</div>
+                                            <div class="invalid-feedback">Please fill out this field.</div>
+                                        </div>
 
-                                    <div class="form-group mb-4">
-                                        <input type="email" id="email" class="form-control" placeholder="{{ __('auth.E-Mail Address') }}" name="email" required>
-                                        <div class="valid-feedback">Valid.</div>
-                                        <div class="invalid-feedback">Please fill out this field.</div>
-                                    </div>
+                                        <div class="form-group mb-4">
+                                            <input type="email" id="email" class="form-control" placeholder="{{ __('auth.E-Mail Address') }}" name="email" required>
+                                            <div class="valid-feedback">Valid.</div>
+                                            <div class="invalid-feedback">Please fill out this field.</div>
+                                        </div>
 
-                                    <div class="form-group mb-4">
-                                        <input type="password" id="password" class="form-control" placeholder="{{ __('auth.password') }}" name="password" aria-describedby="defaultRegisterFormPasswordHelpBlock" required>
-                                        <div class="valid-feedback">Valid.</div>
-                                        <div class="invalid-feedback">Please fill out this field.</div>
-                                    </div>
+                                        <div class="form-group mb-4">
+                                            <input type="password" id="password" class="form-control" placeholder="{{ __('auth.password') }}" name="password" aria-describedby="defaultRegisterFormPasswordHelpBlock" required>
+                                            <div class="valid-feedback">Valid.</div>
+                                            <div class="invalid-feedback">Please fill out this field.</div>
+                                        </div>
 
-                                    <div class="form-group mb-4">
-                                        <input type="password" id="confirmPassword" class="form-control" placeholder="{{ __('pages.confirmPassword') }}" name="password_confirmation" aria-describedby="defaultRegisterFormPasswordHelpBlock" required>
-                                        <div class="valid-feedback">Valid.</div>
-                                        <div class="invalid-feedback">Please fill out this field.</div>
-                                    </div>
+                                        <div class="form-group mb-4">
+                                            <input type="password" id="confirmPassword" class="form-control" placeholder="{{ __('pages.confirmPassword') }}" name="password_confirmation" aria-describedby="defaultRegisterFormPasswordHelpBlock" required>
+                                            <div class="valid-feedback">Valid.</div>
+                                            <div class="invalid-feedback">Please fill out this field.</div>
+                                        </div>
 
-                                    <div class="form-group">
-                                        <div class="text-center">
-                                            <div class="gc-reset d-inline-block {{ $errors->has('g-recaptcha-response') ? 'border border-danger rounded' : '' }}">
-                                                {!! htmlFormSnippet() !!}
+                                        <div class="form-group">
+                                            <div class="text-center">
+                                                <div class="gc-reset d-inline-block {{ $errors->has('g-recaptcha-response') ? 'border border-danger rounded' : '' }}">
+                                                    {!! htmlFormSnippet() !!}
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
 
-                                    <div class="text-center row no-gutters">
-                                        <button class="btn btn-primary col-md-12 br-20" type="submit">{{ __('auth.register') }}</button>
-                                    </div>
-                                </form>
+                                        <div class="text-center row no-gutters">
+                                            <button class="btn btn-primary col-md-12 br-20" type="submit">{{ __('auth.register') }}</button>
+                                        </div>
+                                    </form>
+                                @endguest
                             </div>
                         </div>
                     </div>
