@@ -32,6 +32,9 @@ if ($('#liveEditorApp').length) {
 }
 
 if ($('#pureLiveEditorApp').length) {
+    let appDiv = $('#pureLiveEditorApp');
+    console.log(appDiv.attr('data-assignment'));
+    console.log(appDiv.attr('data-input-check'));
     let vueVM = new Vue({
         el: '#pureLiveEditorApp',
         components: {
@@ -42,10 +45,10 @@ if ($('#pureLiveEditorApp').length) {
                 'theme': 'monokai',
                 MainEditor: {
                     'lang': null,
-                    'content': ''
+                    'content': appDiv.attr('data-assignment')
                 },
                 SecondaryEditor: {
-                    'content': ''
+                    'content': appDiv.attr('data-input-check')
                 }
             }
         },
@@ -56,7 +59,6 @@ if ($('#pureLiveEditorApp').length) {
             CreateEditor: function () {
                 this.MainEditor.lang = "php";
                 this.MainEditor.theme = window.customTheme;
-                this.MainEditor.content = "";
             },
             ChangeEditorContent: function (a_val) {
                 if (this.MainEditor.content !== a_val) {
