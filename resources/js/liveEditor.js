@@ -33,8 +33,6 @@ if ($('#liveEditorApp').length) {
 
 if ($('#pureLiveEditorApp').length) {
     let appDiv = $('#pureLiveEditorApp');
-    console.log(appDiv.attr('data-assignment'));
-    console.log(appDiv.attr('data-input-check'));
     let vueVM = new Vue({
         el: '#pureLiveEditorApp',
         components: {
@@ -104,9 +102,23 @@ function InitTheme(a_vm) {
     }, 100);
 }
 
+window.changedFlag = false;
+
+$(document).ready(function () {
+    $('.shortcutCheck').on('change keyup paste', function () {
+        window.changedFlag = true;
+    });
+
+    $('.shortcutButton').click(function () {
+        window.changedFlag = false;
+    });
+});
+
 window.onbeforeunload = function (e) {
-    e.preventDefault(); // Cancel the event
-    e.returnValue = 'Changes you have made will not be saved. Are you sure you want to quit?';
+    if (window.changedFlag === true) {
+        e.preventDefault(); // Cancel the event
+        e.returnValue = 'Changes you have made will not be saved. Are you sure you want to quit?';
+    }
 };
 
 //Prevent Ctrl+S (and Ctrl+W for old browsers and Edge)
@@ -119,9 +131,14 @@ document.onkeydown = function (e) {
 
     switch (code) {
         case 83://Block Ctrl+S
-        case 87://Block Ctrl+W -- Not work in Chrome and new Firefox
             e.preventDefault();
             e.stopPropagation();
+            break;
+        case 87://Block Ctrl+W -- Doesnt work in Chrome and new Firefox
+            if (window.changedFlag === true) {
+                e.preventDefault();
+                e.stopPropagation();
+            }
             break;
     }
 };
