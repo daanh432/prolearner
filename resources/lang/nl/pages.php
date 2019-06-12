@@ -49,4 +49,5 @@ ProLearner begon als een schoolproject maar groeit nu massaal uit tot een enorm 
     'continue' => 'Doorgaan',
     'delete' => 'Verwijderen',
     'getCertificate' => 'Certficaat',
+    'search' => 'Zoeken',
 ];

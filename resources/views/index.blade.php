@@ -72,8 +72,8 @@
         </div>
     </div>
     <div class="container-fluid">
-        <div class="row parallax-row" id="steveJobs" data-parallax="scroll" data-image-src="{{ asset('/assets/img/steveJobs.png') }}">
-            <div class="col-md-6 mt-5 lightText m-auto">
+        <div class="row parallax-row" data-parallax="scroll" data-image-src="{{ asset('/assets/img/steveJobs.png') }}">
+            <div class="col-md-6 lightText centerDiv">
                 <h3 class="text-center">“It doesn't make sense to hire smart people and then tell them what to do, We hire smart people so they can tell us what to do.”</h3>
                 <h3 class="text-center">-Steve Jobs-</h3>
             </div>

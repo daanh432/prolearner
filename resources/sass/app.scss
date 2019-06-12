@@ -155,10 +155,6 @@
   display: table;
 }
 
-#steveJobs {
-  background-position: right;
-}
-
 .createEditEditor {
   height: 300px !important;
   width: 100% !important;
@@ -166,4 +162,8 @@
 
 .downloadButton {
   background-color: $accents;
+}
+
+.centerDiv {
+  margin: 24vh auto;
 }
