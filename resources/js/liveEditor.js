@@ -105,11 +105,8 @@ function InitTheme(a_vm) {
 }
 
 window.onbeforeunload = function (e) {
-    // Cancel the event
-    e.preventDefault();
-
-    // Chrome requires returnValue to be set
-    e.returnValue = 'Really want to quit the game?';
+    e.preventDefault(); // Cancel the event
+    e.returnValue = 'Changes you have made will not be saved. Are you sure you want to quit?';
 };
 
 //Prevent Ctrl+S (and Ctrl+W for old browsers and Edge)
