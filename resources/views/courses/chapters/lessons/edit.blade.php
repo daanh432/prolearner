@@ -17,21 +17,21 @@
                         <h1>Edit lesson</h1>
                     </div>
                     <div class="form-group">
-                        <input type="text" class="form-control" id="lesName" placeholder="Lesson name" maxlength="200" name="name" value="{{ $lesson->name }}" required>
+                        <input type="text" class="form-control shortcutCheck" id="lesName" placeholder="Lesson name" maxlength="200" name="name" value="{{ $lesson->name }}" required>
                         <div class="valid-feedback">Valid.</div>
                         <div class="invalid-feedback">Please fill out this field.</div>
                     </div>
                     <div class="form-group text-dark">
-                        <textarea type="text" class="form-control fancyEditor" id="lesDes" placeholder="Description" name="description" maxlength="4096" required>{{ $lesson->description }}</textarea>
+                        <textarea type="text" class="form-control fancyEditor shortcutCheck" id="lesDes" placeholder="Description" name="description" maxlength="4096" required>{{ $lesson->description }}</textarea>
                         <div class="valid-feedback">Valid.</div>
                         <div class="invalid-feedback">Please fill out this field.</div>
                     </div>
 
                     <ace-editor class="createEditEditor mb-3" editor-id="MainEditor" v-bind:content="MainEditor.content" v-bind:lang="MainEditor.lang" v-bind:theme="theme" v-on:change-content="ChangeEditorContent"></ace-editor>
-                    <input type="hidden" name="assignment" v-model="MainEditor.content">
+                    <input type="hidden" name="assignment" class="shortcutCheck" v-model="MainEditor.content">
 
                     <ace-editor class="createEditEditor mb-3" editor-id="SecondaryEditor" v-bind:content="SecondaryEditor.content" v-bind:lang="MainEditor.lang" v-bind:theme="theme" v-on:change-content="ChangeEditorContent2"></ace-editor>
-                    <input type="hidden" name="inputCheck" v-model="SecondaryEditor.content">
+                    <input type="hidden" name="inputCheck" class="shortcutCheck" v-model="SecondaryEditor.content">
 
                     <input type="hidden" class="form-control" id="lesOutputCheck" placeholder="Output check" maxlength="1024" name="outputCheck" value="{{ $lesson->outputCheck }}" required>
                 </form>
@@ -48,7 +48,7 @@
                         <button type="submit" form="deleteLesson" class="btn btn-danger w-100 br-20">{{ __('pages.delete') }}</button>
                     </div>
                     <div class="col-md-4 mt-2 mt-md-0 text-center">
-                        <button type="submit" form="storeLesson" class="btn btn-primary w-100 br-20">{{ __('pages.submit') }}</button>
+                        <button type="submit" form="storeLesson" class="btn btn-primary w-100 br-20 shortcutButton">{{ __('pages.submit') }}</button>
                     </div>
                 </div>
 
