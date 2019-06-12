@@ -14,5 +14,15 @@ const mix = require('laravel-mix');
 mix.js('resources/js/app.js', 'public/assets/js')
     .js('resources/js/libraries/parallax.js', 'public/assets/js')
     .js('resources/js/liveEditor.js', 'public/assets/js')
-    .sass('resources/sass/app.scss', 'public/assets/css')
-    .sass('resources/sass/liveEditor.scss', 'public/assets/css');
+    .js('resources/js/coursesSearch.js', 'public/assets/js');
+
+mix.sass('resources/sass/app.scss', 'public/assets/css')
+    .sass('resources/sass/liveEditor.scss', 'public/assets/css').options({
+    postCss: [
+        require('autoprefixer')({
+            grid: "autoplace"
+        })
+    ]
+});
+
+mix.version();
