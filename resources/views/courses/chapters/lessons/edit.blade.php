@@ -2,21 +2,27 @@
 
 @section('title', 'Edit Lesson')
 
+@push('head')
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jodit/3.1.92/jodit.min.css">
+@endpush
+
 @section('content')
     <div class="container">
         <div class="row">
-            <div id="pureLiveEditorApp" class="col-md-12 mx-auto containerBackground secondaryText p-5 mt-5 br-20">
+            <div id="pureLiveEditorApp" data-assignment="{{ $lesson->assignment }}" data-input-check="{{ $lesson->inputCheck }}" class="col-md-12 mx-auto containerBackground secondaryText p-5 mt-5 br-20">
                 <form action="{{ route('courses.lessons.update', [ 'course' => $course->id, 'lesson' => $lesson->id]) }}" method="post" id="storeLesson" enctype="multipart/form-data" class="needs-validation" novalidate>
                     @csrf
                     @method('PATCH')
-                    <h1>Edit lesson</h1>
+                    <div class="text-center">
+                        <h1>Edit lesson</h1>
+                    </div>
                     <div class="form-group">
                         <input type="text" class="form-control" id="lesName" placeholder="Lesson name" maxlength="200" name="name" value="{{ $lesson->name }}" required>
                         <div class="valid-feedback">Valid.</div>
                         <div class="invalid-feedback">Please fill out this field.</div>
                     </div>
-                    <div class="form-group">
-                        <textarea type="text" class="form-control" id="lesDes" placeholder="Description" name="description" maxlength="4096" required>{{ $lesson->description }}</textarea>
+                    <div class="form-group text-dark">
+                        <textarea type="text" class="form-control fancyEditor" id="lesDes" placeholder="Description" name="description" maxlength="4096" required>{{ $lesson->description }}</textarea>
                         <div class="valid-feedback">Valid.</div>
                         <div class="invalid-feedback">Please fill out this field.</div>
                     </div>
@@ -54,4 +60,13 @@
 @push('scripts')
     <script src="{{ asset('ace/ace.js') }}" type="text/javascript" charset="utf-8"></script>
     <script src="{{ asset('assets/js/liveEditor.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jodit/3.1.92/jodit.min.js"></script>
+    <script>
+        $('.fancyEditor').each(function () {
+            let editor = new Jodit(this, {
+                "language": "nl",
+                "buttons": "|,bold,strikethrough,underline,italic,|,superscript,subscript,|,ul,ol,|,outdent,indent,|,font,fontsize,brush,paragraph,|,image,file,video,table,link,|,align,undo,redo,\n,cut,hr,eraser,copyformat,|"
+            });
+        });
+    </script>
 @endpush
