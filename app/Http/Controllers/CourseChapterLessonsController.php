@@ -49,7 +49,7 @@ class CourseChapterLessonsController extends Controller
 
         $validated = $request->validate([
             'name' => ['required', 'string', 'max:200'],
-            'description' => ['required', 'string', 'max:4096'],
+            'description' => ['required', 'max:4096'],
             'assignment' => ['required', 'string', 'max:4096'],
             'inputCheck' => ['required', 'string', 'max:1024'],
             'outputCheck' => ['required', 'string', 'max:1024']
@@ -106,7 +106,7 @@ class CourseChapterLessonsController extends Controller
         abort_if($course->id != $lesson->Chapter()->Course()->id, 404);
         $validated = $request->validate([
             'name' => ['required', 'string', 'max:200'],
-            'description' => ['required', 'string', 'max:4096'],
+            'description' => ['required', 'max:4096'],
             'assignment' => ['required', 'string', 'max:4096'],
             'inputCheck' => ['required', 'string', 'max:1024'],
             'outputCheck' => ['required', 'string', 'max:1024']
@@ -145,7 +145,7 @@ class CourseChapterLessonsController extends Controller
      */
     public function verifyInput(Request $request, courses $course, courseChapters $chapter, courseChapterLessons $lesson)
     {
-        if ($request->has('answer') && stripos($request->get('answer'), $lesson->inputCheck) !== false) {
+        if ($request->has('answer') && stripos(preg_replace('/\s/', '', $request->get('answer')), preg_replace('/\s/', '', $lesson->inputCheck)) !== false) {
             if ($lesson->Completed() === false) {
                 if (Auth::user()->AddCredits(10)) {
                     userProgress::updateOrCreate([

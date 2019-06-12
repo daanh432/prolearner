@@ -43,6 +43,9 @@ if ($('#pureLiveEditorApp').length) {
                 MainEditor: {
                     'lang': null,
                     'content': ''
+                },
+                SecondaryEditor: {
+                    'content': ''
                 }
             }
         },
@@ -58,6 +61,11 @@ if ($('#pureLiveEditorApp').length) {
             ChangeEditorContent: function (a_val) {
                 if (this.MainEditor.content !== a_val) {
                     this.MainEditor.content = a_val;
+                }
+            },
+            ChangeEditorContent2: function (a_val) {
+                if (this.SecondaryEditor.content !== a_val) {
+                    this.SecondaryEditor.content = a_val;
                 }
             },
             UpdateLang: function (a_lang) {
