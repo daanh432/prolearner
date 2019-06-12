@@ -106,15 +106,9 @@
                     if (data.data != null) {
                         if (data.data.answerCorrect != null && data.data.answerCorrect === true) {
                             vm.correct = true;
-                            // document.getElementById('editorNext').style.display = "block";
-                            // document.getElementById('editorRun').style.display = "none";
-                            // document.getElementById('editorIncorrect').style.display = "none";
                             vm.nextLessonUrl = data.data.nextLesson;
                         } else {
                             vm.correct = false;
-                            // document.getElementById('editorNext').style.display = "none";
-                            // document.getElementById('editorRun').style.display = "inline-block";
-                            // document.getElementById('editorIncorrect').style.display = "inline-block";
                         }
                     } else {
                         console.error("No data was received from the API");
