@@ -6,12 +6,12 @@
         </div>
 
         <div class="editorHeaderBackground text-center" id="menuHeader">
-            <!--            <div class="btn-group btn-group mt-4">-->
-            <!--                <button @click="UpdateLang('php')" class="btn btn-primary" type="button">PHP</button>-->
-            <!--                <button @click="UpdateLang('html')" class="btn btn-primary" type="button">HTML</button>-->
-            <!--                <button @click="UpdateLang('css')" class="btn btn-primary" type="button">CSS</button>-->
-            <!--                <button @click="UpdateLang('javascript')" class="btn btn-primary" type="button">JS</button>-->
-            <!--            </div>-->
+            <div class="btn-group btn-group mt-4">
+                <button @click="UpdateLang('php')" class="btn btn-primary" type="button">PHP</button>
+                <button @click="UpdateLang('html')" class="btn btn-primary" type="button">HTML</button>
+                <button @click="UpdateLang('css')" class="btn btn-primary" type="button">CSS</button>
+                <button @click="UpdateLang('javascript')" class="btn btn-primary" type="button">JS</button>
+            </div>
         </div>
 
         <div class="editorHeaderBackground secondaryText text-center" id="outputHeader">
@@ -20,10 +20,12 @@
 
         <div class="editorBackground secondaryText" id="lessonAssignmentDescription" v-if="lesson != null && lesson.description != null" v-html="lesson.description"></div>
 
-        <ace-editor class="liveEditorLesson" editor-id="MainEditor" v-bind:content="MainEditor.content" v-bind:lang="MainEditor.lang" v-bind:theme="theme" v-on:change-content="ChangeEditorContent"></ace-editor>
-        <input type="hidden" class="shortcutCheck" v-model="MainEditor.content" name="MainEditorContent"/>
+        <div class="liveEditorLesson">
+            <ace-editor editor-id="MainEditor" v-bind:content="MainEditor.content" v-bind:lang="MainEditor.lang" v-bind:theme="theme" v-on:change-content="ChangeEditorContent"></ace-editor>
+            <input class="shortcutCheck" name="MainEditorContent" type="hidden" v-model="MainEditor.content"/>
+        </div>
 
-        <div class="text-right">
+        <div class="text-right" id="editorRun">
             <div class="secondaryText text-right mr-2 d-inline-block" v-if="correct === false">
                 <p class="text-danger">Incorrect!</p>
             </div>
