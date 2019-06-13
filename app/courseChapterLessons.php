@@ -66,20 +66,24 @@ class courseChapterLessons extends Model
 
     public function NextLesson()
     {
-        $nextLesson = courseChapterLessons::where('course_chapter_id', '=', $this->course_chapter_id)->where('id', '>', $this->id)->get()->first();
-        if ($nextLesson != null && $nextLesson->id != null) {
-            return route('courses.lessons.show', [$nextLesson->Chapter()->Course()->id, $nextLesson->id]);
+        if ($this->Chapter()->Course()->Completed()) {
+            return route('courses.completed', $this->Chapter()->Course()->id);
         } else {
-            $nextLesson = courseChapters::where('course_id', '=', $this->Chapter()->Course()->id)->where('id', '>', $this->Chapter()->id)->get()->first();
+            $nextLesson = courseChapterLessons::where('course_chapter_id', '=', $this->course_chapter_id)->where('id', '>', $this->id)->get()->first();
             if ($nextLesson != null && $nextLesson->id != null) {
-                if ($nextLesson->Lessons()->first() != null) {
-                    $nextLessonId = $nextLesson->Lessons()->first()->id;
-                    return route('courses.lessons.show', [$nextLesson->Course()->id, $nextLessonId]);
+                return route('courses.lessons.show', [$nextLesson->Chapter()->Course()->id, $nextLesson->id]);
+            } else {
+                $nextLesson = courseChapters::where('course_id', '=', $this->Chapter()->Course()->id)->where('id', '>', $this->Chapter()->id)->get()->first();
+                if ($nextLesson != null && $nextLesson->id != null) {
+                    if ($nextLesson->Lessons()->first() != null) {
+                        $nextLessonId = $nextLesson->Lessons()->first()->id;
+                        return route('courses.lessons.show', [$nextLesson->Course()->id, $nextLessonId]);
+                    } else {
+                        return route('courses.show', [$this->Chapter()->Course()->id]);
+                    }
                 } else {
                     return route('courses.show', [$this->Chapter()->Course()->id]);
                 }
-            } else {
-                return route('courses.show', [$this->Chapter()->Course()->id]);
             }
         }
     }
