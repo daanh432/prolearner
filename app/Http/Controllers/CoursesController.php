@@ -8,10 +8,10 @@ use App\programmingLanguages;
 use App\userCourseUnlocks;
 use Carbon\Carbon;
 use Exception;
-use Illuminate\Http\Response;
-use setasign\Fpdi\Fpdi;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
+use setasign\Fpdi\Fpdi;
 use Storage;
 
 class CoursesController extends Controller
@@ -206,7 +206,7 @@ class CoursesController extends Controller
             $pdf->Cell(0, 10, Carbon::now()->format('d-m-Y'), 0, 0, 'C');
 
             // Render PDF to browser
-            return $pdf->Output();
+            return $pdf->Output(Auth::user()->name . '_' . $course->name . '_Certificate.pdf', 'I');
         } else {
             return back()->withErrors(['You don\'t have permissions to access this page. We have brought you back to a safe place!']);
         }

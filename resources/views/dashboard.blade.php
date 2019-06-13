@@ -23,40 +23,68 @@
                 </div>
                 <div class="row">
                     <div class="col-12">
-                        <div class="row">
-                            <div class="col-12">
-                                <h2>Courses</h2>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="coursesGrid text-center">
-                                    @foreach($courseUnlocks as $courseProgress)
-                                        <div>
-                                            <a class="secondaryText mx-auto d-inline-block" href="{{ route('courses.show', [$courseProgress->Course()->id]) }}">
-                                                <div class="progress position-relative" data-percentage="{{ round($courseProgress->ProgressPercentage()) }}">
+                        <h2>@lang('pages.courses')</h2>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="coursesGrid text-center">
+                            @foreach($courseUnlocks as $courseProgress)
+                                <div>
+                                    <a class="secondaryText mx-auto d-inline-block" href="{{ route('courses.show', [$courseProgress->Course()->id]) }}">
+                                        <div class="progress position-relative" data-percentage="{{ round($courseProgress->ProgressPercentage()) }}">
                                                 <span class="progress-left">
                                                     <span class="progress-bar"></span>
                                                 </span>
-                                                    <span class="progress-right">
+                                            <span class="progress-right">
                                                     <span class="progress-bar"></span>
                                                 </span>
-                                                    <div class="progress-value">
-                                                        <div>
-                                                            {{ round($courseProgress->ProgressPercentage()) }}%
-                                                        </div>
+                                            <div class="progress-value">
+                                                <div>
+                                                    {{ round($courseProgress->ProgressPercentage()) }}%
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <p>{{ $courseProgress->Course()->name }}</p>
+                                    </a>
+                                </div>
+                            @endforeach
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <h2>@lang('pages.certificates')</h2>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="coursesGrid text-center">
+                            @foreach($courseUnlocks as $courseProgress)
+                                @if($courseProgress->Finished())
+                                    <div>
+                                        <a class="secondaryText mx-auto d-inline-block" href="{{ route('courses.certificate', [$courseProgress->Course()->id]) }}" download>
+                                            <div class="progress position-relative" data-percentage="{{ round($courseProgress->ProgressPercentage()) }}">
+                                                <span class="progress-left">
+                                                    <span class="progress-bar"></span>
+                                                </span>
+                                                <span class="progress-right">
+                                                    <span class="progress-bar"></span>
+                                                </span>
+                                                <div class="progress-value">
+                                                    <div class="small">
+                                                        Download
                                                     </div>
                                                 </div>
-                                                <p>{{ $courseProgress->Course()->name }}</p>
-                                            </a>
-                                        </div>
-                                    @endforeach
-                                </div>
-                            </div>
+                                            </div>
+                                            <p>{{ $courseProgress->Course()->name }}</p>
+                                        </a>
+                                    </div>
+                                @endif
+                            @endforeach
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 @endsection
