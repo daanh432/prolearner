@@ -49,4 +49,8 @@ accomplished with a signature from the creators. ProLearner started as a school 
     'delete' => 'Delete',
     'getCertificate' => 'Certificate',
     'search' => 'Search',
+    'feedbackRequest' => 'We want to give you the best experience possible. Because of that we want to ask a few minutes of your time to give feedback about the course you have made.',
+    'giveFeedback' => 'Give feedback',
+    'congratsWithCompletingCourse' => 'Congrats on completing the course!',
+    'showCourse' => 'Show the course',
 ];

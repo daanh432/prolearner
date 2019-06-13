@@ -50,4 +50,8 @@ ProLearner begon als een schoolproject maar groeit nu massaal uit tot een enorm 
     'delete' => 'Verwijderen',
     'getCertificate' => 'Certficaat',
     'search' => 'Zoeken',
+    'feedbackRequest' => 'We willen u de best mogelijke ervaring bieden. Daarom willen we u enkele minuten van uw tijd vragen om feedback te geven over de cursus die u hebt gemaakt.',
+    'giveFeedback' => 'Geef feedback',
+    'congratsWithCompletingCourse' => 'Gefeliciteerd met het afronden van de cursus!',
+    'showCourse' => 'Laat de cursus zien.',
 ];
