@@ -25,16 +25,21 @@
             <input class="shortcutCheck" name="MainEditorContent" type="hidden" v-model="MainEditor.content"/>
         </div>
 
-        <div class="text-right" id="editorRun">
-            <div class="secondaryText text-right mr-2 d-inline-block" v-if="correct === false">
-                <p class="text-danger">Incorrect!</p>
+        <div id="editorRun">
+            <div class="secondaryText text-right d-inline-block" v-if="lesson != null && course != null">
+                <button @click="BackToOverview" class="btn btn-primary">Back to overview</button>
             </div>
-            <div class="secondaryText text-right d-inline-block" v-if="correct !== true">
-                <button @click="RunCode(true)" class="btn btn-primary">Run</button>
-            </div>
-            <div class="secondaryText text-right d-block" v-if="correct === true">
-                <p class="d-inline-block text-success mr-1">Correct!</p>
-                <button @click="NextLesson" class="btn btn-primary shortcutButton">Continue</button>
+            <div class="d-inline-block float-right">
+                <div class="secondaryText text-right mr-2 d-inline-block" v-if="correct === false">
+                    <p class="text-danger">Incorrect!</p>
+                </div>
+                <div class="secondaryText text-right d-inline-block" v-if="correct !== true">
+                    <button @click="RunCode(true)" class="btn btn-primary">Run</button>
+                </div>
+                <div class="secondaryText text-right d-inline-block" v-if="correct === true">
+                    <p class="d-inline-block text-success mr-1">Correct!</p>
+                    <button @click="NextLesson" class="btn btn-primary shortcutButton">Continue</button>
+                </div>
             </div>
         </div>
 
@@ -48,7 +53,7 @@
     import AceEditor from './AceEditor'
 
     export default {
-        props: ['lesson', 'chapter', 'course', 'theme'],
+        props: ['lesson', 'chapter', 'course', 'theme', 'courseurl'],
         data: function () {
             return {
                 nextLessonUrl: '',
@@ -122,6 +127,9 @@
             NextLesson: function () {
                 window.changedFlag = false;
                 window.location = this.nextLessonUrl;
+            },
+            BackToOverview: function() {
+                window.location = this.courseurl;
             }
         }
     }
