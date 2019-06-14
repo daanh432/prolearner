@@ -8,9 +8,16 @@
 .gridItem {
   background: white;
   height: 275px;
-  width: 500px;
-  flex: 0 0 475px;
-  margin: 5px;
+  width: 50%;
+  max-width: 450px;
+  flex: 0 0 100%;
+  margin: 0 0 5px;
+}
+
+@media only screen and (min-width: 600px) {
+  .gridItem {
+    margin: 5px;
+  }
 }
 
 .duration {
