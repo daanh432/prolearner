@@ -4,9 +4,14 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
+var ua = window.navigator.userAgent;
+var msie = ua.indexOf("MSIE ");
+if (msie > 0 || !!navigator.userAgent.match(/Trident.*rv\:11\./)) {
+    document.write('<script src="https://cdnjs.cloudflare.com/ajax/libs/bluebird/3.3.5/bluebird.min.js"></scr' + 'ipt>');
+}
+
 require('./bootstrap');
 require('./libraries/jquery.visible');
-
 
 $(document).ready(function () {
     $('.toast').toast('show');

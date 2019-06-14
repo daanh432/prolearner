@@ -37,7 +37,7 @@ class userCourseUnlocks extends Model
     {
         $course = $this->belongsTo('App\courses', 'course_id', 'id')->get()->first();
         if ($course != null) {
-            return $this->AmountOfCompletedLessons() >= $course->AmountOfAssignments();
+            return $this->AmountOfCompletedLessons() >= $course->AmountOfAssignments() && $course->AmountOfAssignments() > 0;
         } else {
             return false;
         }

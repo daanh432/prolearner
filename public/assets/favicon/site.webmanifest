@@ -1,0 +1,20 @@
+{
+    "name": "ProLearner",
+    "short_name": "ProLearner",
+    "icons": [
+        {
+            "src": "/favicons/android-chrome-192x192.png?v=9BPpnpy2En",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "/favicons/android-chrome-512x512.png?v=9BPpnpy2En",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ],
+    "theme_color": "#ffffff",
+    "background_color": "#ffffff",
+    "start_url": "https://prolearner.daanhendriks.nl/",
+    "display": "standalone"
+}

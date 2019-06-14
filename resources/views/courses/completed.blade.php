@@ -9,22 +9,22 @@
                 <img src="{{ asset('assets/img/Logo_ProLearner_white.png') }}" alt="Logo website" id="completedImage" class="mw-100">
             </div>
             <div class="col-md-12 text-center">
-                <h1 class="text-white">Congrats on completing the course!</h1>
+                <h1 class="text-white">@lang('pages.congratsWithCompletingCourse')</h1>
             </div>
             <div class="col-md-1"></div>
             <div class="col-md-4 mt-md-0 mt-1">
-                <a href="{{ route('courses.certificate', $course->id) }}" class="btn downloadButton w-100">Download Certificate</a>
+                <a href="{{ route('courses.certificate', $course->id) }}" class="btn downloadButton w-100">Download @lang('pages.getCertificate')</a>
             </div>
             <div class="col-md-2"></div>
             <div class="col-md-4 mt-md-0 mt-1">
-                <a href="{{ route('courses.show', $course->id) }}" class="btn btn-primary w-100">Back to the course</a>
+                <a href="{{ route('courses.show', $course->id) }}" class="btn btn-primary w-100">@lang('pages.showCourse')</a>
             </div>
             <div class="col-md-1"></div>
 
             <!-- Review button -->
             <div class="col-md-4 mx-auto mt-md-3 mt-1">
                 <button type="button" class="btn btn-secondary w-100" data-toggle="modal" data-target="#myModal">
-                    Give feedback
+                    @lang('pages.giveFeedback')
                 </button>
             </div>
 
@@ -41,7 +41,7 @@
 
                         <!-- Modal body -->
                         <div class="modal-body">
-                            <p>We want to give you the best experiance possible. Because of that we want to ask a few minutes of your time to give feedback about the course you have made.</p>
+                            <p>@lang('pages.feedbackRequest')</p>
                             <form action="{{ route('courses.feedback', $course->id) }}" name="feedback" id="feedback" method="post">
                                 @csrf
                                 <textarea name="comment" id="comment" class="w-100" rows="6" ></textarea>
