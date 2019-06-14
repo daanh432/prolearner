@@ -2,7 +2,9 @@ import AOS from 'aos';
 import 'aos/dist/aos.css'; // You can also use <link> for styles
 
 $(document).ready(function () {
-    AOS.init();
+    AOS.init({
+        once: true
+    });
 
     let timeoutTimer;
 
