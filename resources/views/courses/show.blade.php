@@ -34,7 +34,7 @@
                             <a class="lessonHeader card-link secondaryText" data-toggle="collapse" href="#collapse{{ $chapter->id }}">
                                 <div class="card-header p-3 secondaryText">
                                     <div class="d-inline-block float-left">
-                                        <p class="p-0 m-0">{{ $chapter->name }}</p>
+                                        <p class="p-0 m-0 openClose">{{ $chapter->name }}</p>
                                     </div>
                                     <div class="text-right d-inline-block float-right">
                                         @can('update', $chapter)
@@ -54,7 +54,11 @@
                                             <li class="list-style-type-none p-3 secondaryText">
                                                 <a href="{{ route('courses.lessons.show', [$course->id, $lesson->id]) }}" class="text-decoration-none">
                                                     <div class="d-inline-block float-left secondaryText">
-                                                        <p class="p-0 m-0">{{ $lesson->name }}</p>
+                                                        <div class="p-0 m-0 lessonNameRow">
+                                                            <i class="far fa-play-circle text-primary lessonCompletedIcon"></i>
+                                                            <i class="far fa-check-circle text-primary lessonCompletedIcon"></i>
+                                                            <p class="d-inline-block lessonNameRow">{{ $lesson->name }}</p>
+                                                        </div>
                                                     </div>
                                                     @can('update', $lesson)
                                                         <div class="text-right d-inline-block float-right">
