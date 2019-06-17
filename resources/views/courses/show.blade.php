@@ -21,6 +21,7 @@
             <div class="col-md-12">
                 <div class="text-right">
                     @can('update', $course)
+                        <a href="{{ route('feedback', $course->id)  }}" class="btn btn-secondary mt-1">Show feedback</a>
                         <a href="{{ route('courses.edit', $course->id) }}" class="btn btn-primary mt-1" id="">Edit Course</a>
                     @endcan
                     @can('create', App\courseChapters::class)

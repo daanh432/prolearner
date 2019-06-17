@@ -1,33 +1,67 @@
 @import 'variables';
 
-.lessonEditorContainer {
-  margin: 0;
-  padding: 0;
-  position: absolute;
-  top: 56px;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  display: grid;
-  grid-template-columns: 2fr 3fr 3fr;
-  grid-template-rows: minmax(100px, auto) 10fr 1fr;
-  grid-template-areas: 'descriptionHeader menu outputHeader' 'description editor output' 'description submit output';
-  grid-gap: 0;
+@media only screen and (max-width: 600px) {
+  .lessonEditorContainer {
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    top: 56px;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: grid;
+    grid-template-columns: 3fr;
+    grid-template-rows: 1fr 3fr 4fr 1fr 1fr 4fr;
+    grid-template-areas: 'descriptionHeader' 'description' 'editor' 'submit' 'outputHeader' 'output';
+    grid-gap: 0;
+  }
+
+  .sandboxEditorContainer {
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    top: 56px;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: grid;
+    grid-template-columns: 3fr;
+    grid-template-rows: 1fr 4fr 1fr 1fr 4fr;
+    grid-template-areas: 'menu' 'editor' 'submit' 'outputHeader' 'output';
+    grid-gap: 0;
+  }
 }
 
-.sandboxEditorContainer {
-  margin: 0;
-  padding: 0;
-  position: absolute;
-  top: 56px;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  display: grid;
-  grid-template-columns: 3fr 3fr;
-  grid-template-rows: 1fr 10fr 1fr;
-  grid-template-areas: 'menu outputHeader' 'editor output' 'submit output';
-  grid-gap: 0;
+@media only screen and (min-width: 600px) {
+  .lessonEditorContainer {
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    top: 56px;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: grid;
+    grid-template-columns: 3fr 3fr 3fr;
+    grid-template-rows: minmax(100px, auto) 10fr 1fr;
+    grid-template-areas: 'descriptionHeader descriptionHeader outputHeader' 'description editor output' 'description submit output';
+    grid-gap: 0;
+  }
+
+  .sandboxEditorContainer {
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    top: 56px;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: grid;
+    grid-template-columns: 3fr 3fr;
+    grid-template-rows: minmax(100px, auto) 10fr 1fr;
+    grid-template-areas: 'menu outputHeader' 'editor output' 'submit output';
+    grid-gap: 0;
+  }
 }
 
 .darkTheme .editorHeaderBackground {
