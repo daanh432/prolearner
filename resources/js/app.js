@@ -40,11 +40,25 @@ $('.themeSwitch').click(function (e) {
     if (body.hasClass('darkTheme')) {
         body.removeClass('darkTheme');
         body.addClass('lightTheme');
+        $(".logoSrc").attr('src', '/assets/img/logo.png');
     } else {
         body.removeClass('lightTheme');
         body.addClass('darkTheme');
+        $(".logoSrc").attr('src', '/assets/img/Logo_ProLearner_white.png');
     }
     $.get($(this).attr('href'));
     $('.themeSwitch').removeClass('d-none');
     $(this).addClass('d-none');
+});
+
+let allowCollapse = true;
+
+$('.openClose').click(function (e) {
+    if (allowCollapse === true) {
+        this.classList.toggle("active");
+        allowCollapse = false;
+        setTimeout(function () {
+            allowCollapse = true;
+        }, 350);
+    }
 });

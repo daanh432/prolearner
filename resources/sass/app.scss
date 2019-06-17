@@ -167,3 +167,15 @@
 .centerDiv {
   margin: 25vh auto;
 }
+
+#headerBrandLogo {
+  width: 20%;
+  height: 56px !important;
+  max-height: 56px !important;
+}
+
+#headerBrandLogo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}

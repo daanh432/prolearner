@@ -44,6 +44,10 @@ class courses extends Model
         return $this->hasMany('App\courseChapters', 'course_id', 'id')->orderBy('id', 'ASC')->get();
     }
 
+    public function Comments() {
+        return $this->hasMany('App\courseFeedback', 'course_id', 'id')->orderBy('created_at', 'DESC')->get();
+    }
+
     /** Returns the amount of assignments in this course
      * @return int
      */

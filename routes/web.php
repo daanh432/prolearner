@@ -28,6 +28,7 @@ Route::post('/courses', 'CoursesController@store')->name('courses.store');
 Route::get('/courses/{course}', 'CoursesController@show')->name('courses.show');
 Route::get('/courses/{course}/edit', 'CoursesController@edit')->name('courses.edit');
 Route::get('/courses/{course}/certificate', 'CoursesController@generateCertificate')->name('courses.certificate');
+Route::get('/courses/{course}/feedback', 'CoursesController@feedbackOverview')->name('feedback');
 Route::patch('/courses/{course}', 'CoursesController@update')->name('courses.update');
 Route::delete('/courses/{course}', 'CoursesController@destroy')->name('courses.destroy');
 Route::get('/courses/{course}/completed', 'CoursesController@completed')->name('courses.completed');

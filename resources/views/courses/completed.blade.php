@@ -6,10 +6,10 @@
     <div class="container">
         <div class="row">
             <div class="col-md-6 mx-auto">
-                <img src="{{ asset('assets/img/Logo_ProLearner_white.png') }}" alt="Logo website" id="completedImage" class="mw-100">
+                <img src="{{ Session::get('theme', 'darkTheme') == 'darkTheme' ? asset('assets/img/Logo_ProLearner_white.png') : asset('assets/img/logo.png') }}" alt="Logo website" id="completedImage" class="mw-100 logoSrc">
             </div>
-            <div class="col-md-12 text-center">
-                <h1 class="text-white">@lang('pages.congratsWithCompletingCourse')</h1>
+            <div class="col-md-12 text-center secondaryText">
+                <h1>@lang('pages.congratsWithCompletingCourse')</h1>
             </div>
             <div class="col-md-1"></div>
             <div class="col-md-4 mt-md-0 mt-1">
