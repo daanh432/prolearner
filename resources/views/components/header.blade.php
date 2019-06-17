@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-md navbar-dark sticky-top headerBackground">
     <div class="container">
         <!-- Brand -->
-        <a class="navbar-brand" id="headerBrandLogo" href="{{ route('index') }}"><img src="{{ asset('assets/img/logo.png') }}" alt="ProLearner Logo"></a>
+        <a class="navbar-brand" id="headerBrandLogo" href="{{ route('index') }}"><img src="{{ Session::get('theme', 'darkTheme') == 'darkTheme' ? asset('assets/img/Logo_ProLearner_white.png') : asset('assets/img/logo.png') }}" class="logoSrc" alt="ProLearner Logo"></a>
 
         <!-- Toggler/collapsibe Button -->
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
