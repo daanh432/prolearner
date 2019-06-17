@@ -237,4 +237,13 @@ class CoursesController extends Controller
             return back()->withErrors(['You don\'t have permissions to access this page. We have brought you back to a safe place!']);
         }
     }
+
+    public function feedbackOverview(courses $course) {
+        $courseFeedback = $course->Comments();
+
+        return view('courses.feedbackOverview', [
+            'course' => $course,
+            'feedbackOverviews' => $courseFeedback
+        ]);
+    }
 }

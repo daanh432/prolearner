@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\courses;
 use App\Mail\ContactFormMail;
 use Illuminate\Support\Facades\Session;
 use Mail;
