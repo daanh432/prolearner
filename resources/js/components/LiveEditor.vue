@@ -6,12 +6,12 @@
         </div>
 
         <div class="editorHeaderBackground text-center" id="menuHeader">
-            <div class="btn-group btn-group mt-4">
+            <!--<div class="btn-group btn-group mt-4">
                 <button @click="UpdateLang('php')" class="btn btn-primary" type="button">PHP</button>
                 <button @click="UpdateLang('html')" class="btn btn-primary" type="button">HTML</button>
                 <button @click="UpdateLang('css')" class="btn btn-primary" type="button">CSS</button>
                 <button @click="UpdateLang('javascript')" class="btn btn-primary" type="button">JS</button>
-            </div>
+            </div>-->
         </div>
 
         <div class="editorHeaderBackground secondaryText text-center" id="outputHeader">
@@ -128,7 +128,7 @@
                 window.changedFlag = false;
                 window.location = this.nextLessonUrl;
             },
-            BackToOverview: function() {
+            BackToOverview: function () {
                 window.location = this.courseurl;
             }
         }
