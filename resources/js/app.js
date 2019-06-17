@@ -48,3 +48,15 @@ $('.themeSwitch').click(function (e) {
     $('.themeSwitch').removeClass('d-none');
     $(this).addClass('d-none');
 });
+
+let allowCollapse = true;
+
+$('.openClose').click(function (e) {
+    if (allowCollapse === true) {
+        this.classList.toggle("active");
+        allowCollapse = false;
+        setTimeout(function () {
+            allowCollapse = true;
+        }, 350);
+    }
+});
