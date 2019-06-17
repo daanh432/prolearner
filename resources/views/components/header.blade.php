@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-md navbar-dark sticky-top headerBackground">
     <div class="container">
         <!-- Brand -->
-        <a class="navbar-brand" href="{{ route('index') }}">ProLearner</a>
+        <a class="navbar-brand" id="headerBrandLogo" href="{{ route('index') }}"><img src="{{ asset('assets/img/logo.png') }}" alt="ProLearner Logo"></a>
 
         <!-- Toggler/collapsibe Button -->
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
