@@ -8,7 +8,7 @@
 
 @section('content')
     <div id="liveEditorApp">
-        <live-editor v-bind:theme="theme" v-bind:lesson="{{ $lesson }}" v-bind:chapter="{{ $lesson->Chapter() }}" v-bind:course="{{ $lesson->Chapter()->Course() }}"></live-editor>
+        <live-editor v-bind:courseurl="'{{ route('courses.show', $lesson->Chapter()->Course())}}'" v-bind:theme="theme" v-bind:lesson="{{ $lesson }}" v-bind:chapter="{{ $lesson->Chapter() }}" v-bind:course="{{ $lesson->Chapter()->Course() }}"></live-editor>
     </div>
 @endsection
 
