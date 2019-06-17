@@ -1,7 +1,7 @@
 <template>
     <div v-bind:class="{ lessonEditorContainer: lesson != null && lesson.description != null, sandboxEditorContainer: lesson == null}">
         <div class="editorHeaderBackground secondaryText text-center" id="lessonAssignmentTitle" v-if="lesson != null && lesson.name != null && chapter != null && chapter.name != null && course != null && course.name != null">
-            <h1>{{ lesson.name }}</h1>
+            <h2>{{ lesson.name }}</h2>
             <p>{{ chapter.name }} - {{ course.name }}</p>
         </div>
 
