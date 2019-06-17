@@ -55,8 +55,11 @@
                                                 <a href="{{ route('courses.lessons.show', [$course->id, $lesson->id]) }}" class="text-decoration-none">
                                                     <div class="d-inline-block float-left secondaryText">
                                                         <div class="p-0 m-0 lessonNameRow">
-                                                            <i class="far fa-play-circle text-primary lessonCompletedIcon"></i>
-                                                            <i class="far fa-check-circle text-primary lessonCompletedIcon"></i>
+                                                            @if($lesson->Completed())
+                                                                <i class="far fa-check-circle text-primary lessonCompletedIcon"></i>
+                                                            @else
+                                                                <i class="far fa-play-circle text-primary lessonCompletedIcon"></i>
+                                                            @endif
                                                             <p class="d-inline-block lessonNameRow">{{ $lesson->name }}</p>
                                                         </div>
                                                     </div>
