@@ -201,7 +201,6 @@ class CoursesController extends Controller
 
             // Add the date
             $pdf->SetFontSize('20');
-//            $pdf->SetXY(257, 196);
             $pdf->SetXY($xPos, 135);
             $pdf->Cell(0, 10, Carbon::now()->format('d-m-Y'), 0, 0, 'C');
 
