@@ -1,5 +1,3 @@
-// Fonts
-//@import url('https://fonts.googleapis.com/css?family=Nunito');
 // Variables
 @import 'variables';
 // Bootstrap
@@ -169,7 +167,7 @@
 }
 
 #headerBrandLogo {
-  width: 20%;
+  max-width: 20%;
   height: 56px !important;
   max-height: 56px !important;
 }
