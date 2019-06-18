@@ -25,4 +25,6 @@ mix.sass('resources/sass/app.scss', 'public/assets/css')
     ]
 });
 
-mix.version();
+if (mix.inProduction()) {
+    mix.version();
+}
