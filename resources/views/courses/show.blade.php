@@ -31,10 +31,10 @@
                 <div id="accordion" class="w-100 mt-4">
                     @foreach($course->Chapters() as $chapter)
                         <div class="card containerBackground">
-                            <a class="lessonHeader card-link secondaryText" data-toggle="collapse" href="#collapse{{ $chapter->id }}">
+                            <div class="lessonHeader card-link secondaryText openClose" data-toggle="collapse" href="#collapse{{ $chapter->id }}">
                                 <div class="card-header p-3 secondaryText">
                                     <div class="d-inline-block float-left">
-                                        <p class="p-0 m-0 openClose">{{ $chapter->name }}</p>
+                                        <p class="p-0 m-0">{{ $chapter->name }}</p>
                                     </div>
                                     <div class="text-right d-inline-block float-right">
                                         @can('update', $chapter)
@@ -46,7 +46,7 @@
                                     </div>
                                     <div class="clearfix"></div>
                                 </div>
-                            </a>
+                            </div>
                             <div id="collapse{{ $chapter->id }}" class="collapse show">
                                 <div class="card-body p-0">
                                     <ul class="pl-0 mb-0 lessons">
