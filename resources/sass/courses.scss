@@ -58,6 +58,14 @@
   background-color: #ebebeb;
 }
 
+.lessonHeader {
+  cursor: pointer;
+}
+
+.lessonHeader:hover {
+  cursor: pointer;
+}
+
 .lessons > a:last-child > li {
   border-bottom: none;
 }
@@ -111,17 +119,16 @@
   vertical-align: middle;
 }
 
-.openClose:after {
+.openClose:before {
   font-family: "Font Awesome 5 Free";
   content: '\f0d7';
   color: white;
   font-weight: bold;
   float: left;
-  margin: 0 5px;
+  margin: 1.5vh 10px 0 25px;
 }
 
-.openClose.active:after {
+.openClose.active:before {
   font-family: "Font Awesome 5 Free";
   content: '\f0da';
-
 }
