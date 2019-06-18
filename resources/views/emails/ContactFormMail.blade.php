@@ -3,16 +3,16 @@
 
     You received a message on https://prolearner.daanhendriks.nl/.
 
-    First name: {{ $submission->name }}<br>
-    Email address: {{ $submission->email }}<br>
-    Subject: {{ $submission->subject }}<br>
-    Message:<br>
+    First name: {{ $submission->name }}
+    Email address: {{ $submission->email }}
+    Subject: {{ $submission->subject }}
+    Message:
     {{ $submission->message }}
 
     @component('mail::button', ['url' => 'mailto:' . $submission->email ])
         Respond to message
     @endcomponent
 
-    Kind regards,<br>
+    Kind regards,
     {{ config('app.name') }}
 @endcomponent
