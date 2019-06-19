@@ -5,6 +5,7 @@ namespace App;
 use Cache;
 use Eloquent;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Notifications\DatabaseNotification;
 use Illuminate\Notifications\DatabaseNotificationCollection;
 use Illuminate\Notifications\Notifiable;
@@ -38,6 +39,8 @@ use Illuminate\Support\Carbon;
  * @method static Builder|User wherePassword($value)
  * @method static Builder|User whereRememberToken($value)
  * @method static Builder|User whereUpdatedAt($value)
+ * @property int $userLevel
+ * @method static Builder|User whereUserLevel($value)
  */
 class User extends Authenticatable implements MustVerifyEmail
 {
@@ -70,6 +73,10 @@ class User extends Authenticatable implements MustVerifyEmail
         'email_verified_at' => 'datetime',
     ];
 
+    /** Removed the amount of coins from the users balance
+     * @param int $a_amountOfCoins
+     * @return bool
+     */
     public function PayCredits(int $a_amountOfCoins)
     {
         if ($a_amountOfCoins >= 0 && $this->credits >= $a_amountOfCoins) {
@@ -81,6 +88,10 @@ class User extends Authenticatable implements MustVerifyEmail
         }
     }
 
+    /** Adds the amount of coins to the users balance
+     * @param int $a_amountOfCoins
+     * @return bool
+     */
     public function AddCredits(int $a_amountOfCoins)
     {
         if ($a_amountOfCoins >= 0) {
@@ -92,15 +103,21 @@ class User extends Authenticatable implements MustVerifyEmail
         }
     }
 
+    /** Returns true or false if the user is an admin or not
+     * @return bool
+     */
     public function isAdmin()
     {
         if (Auth()->user()->userLevel === 4) {
             return true;
         } else {
-            false;
+            return false;
         }
     }
 
+    /** Returns all the courses the user has unlocked
+     * @return Collection
+     */
     public function CourseUnlocks()
     {
         return $this->hasMany('App\userCourseUnlocks', 'user_id', 'id')->get();
