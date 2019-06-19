@@ -44,21 +44,24 @@ class courses extends Model
     /** Returns all the chapters from this course
      * @return Collection
      */
-    public function Chapters() {
+    public function Chapters()
+    {
         return $this->hasMany('App\courseChapters', 'course_id', 'id')->orderBy('id', 'ASC')->get();
     }
 
     /** Returns all the comments from this course
      * @return Collection
      */
-    public function Comments() {
+    public function Comments()
+    {
         return $this->hasMany('App\courseFeedback', 'course_id', 'id')->orderBy('created_at', 'DESC')->get();
     }
 
     /** Returns the amount of assignments in this course
      * @return int
      */
-    public function AmountOfAssignments() {
+    public function AmountOfAssignments()
+    {
         $m_amountOfAssignments = 0;
 
         foreach ($this->Chapters() as $chapter) {
@@ -73,7 +76,8 @@ class courses extends Model
     /** Checks if user has unlocked and bought the course
      * @return bool
      */
-    public function Unlocked() {
+    public function Unlocked()
+    {
         if (Auth::check()) {
             return userCourseUnlocks::where('course_id', $this->id)->where('user_id', Auth()->user()->id)->get()->count() > 0;
         } else {
@@ -84,7 +88,8 @@ class courses extends Model
     /** Checks if the user has completed the course
      * @return bool
      */
-    public function Completed() {
+    public function Completed()
+    {
         if (Auth::check()) {
             $courseUnlock = $this->hasOne('App\userCourseUnlocks', 'course_id', 'id')->where('user_id', '=', Auth()->user()->id)->get()->first();
             if ($courseUnlock != null) {
