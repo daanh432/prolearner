@@ -31,21 +31,23 @@
                         <p>{{ $course->description }}</p>
                         <p class="position-absolute duration">Duration: {{ $course->duration }}. </p>
                         @if(Auth::check() && $course->Completed())
-                            <a href="{{ route('courses.completed', [$course->id]) }}" class="btn btn-info w-25 br-20 position-absolute">
+                            <a href="{{ route('courses.completed', [$course->id]) }}" class="btn downloadButton w-25 br-20 position-absolute">
                                 {{ __('pages.getCertificate') }}
                             </a>
                         @else
-                            <a href="{{ route('courses.show', [$course->id]) }}" class="btn btn-info w-25 br-20 position-absolute">
-                                @if(Auth::check() && Auth::user()->can('view', $course))
+                            @if(Auth::check() && Auth::user()->can('view', $course))
+                                <a href="{{ route('courses.show', [$course->id]) }}" class="btn btn-primary w-25 br-20 position-absolute">
                                     {{ __('pages.continue') }}
-                                @else
+                                </a>
+                            @else
+                                <a href="{{ route('courses.show', [$course->id]) }}" class="btn btn-info w-25 br-20 position-absolute">
                                     @if($course->price > 0)
                                         {{ __('pages.unlockFor', ['points' => $course->price]) }}
                                     @else
                                         {{ __('pages.start') }}
                                     @endif
-                                @endif
-                            </a>
+                                </a>
+                            @endif
                         @endif
                     </div>
                 @endforeach
