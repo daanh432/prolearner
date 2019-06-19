@@ -45,11 +45,17 @@ class courseChapterLessons extends Model
         'outputCheck'
     ];
 
+    /** Returns the chapter that belongs to this lesson
+     * @return mixed
+     */
     public function Chapter()
     {
         return $this->belongsTo('App\courseChapters', 'course_chapter_id', 'id')->get()->first();
     }
 
+    /** Returns the status if you have completed the lesson or not
+     * @return bool
+     */
     public function Completed()
     {
         if (Auth::check() && Auth::user()->id != null) {
@@ -64,6 +70,9 @@ class courseChapterLessons extends Model
         }
     }
 
+    /** Returns the url to the next lesson / page
+     * @return string
+     */
     public function NextLesson()
     {
         if ($this->Chapter()->Course()->Completed()) {

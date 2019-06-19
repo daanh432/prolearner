@@ -33,6 +33,9 @@ class userCourseUnlocks extends Model
 {
     protected $fillable = ['user_id', 'course_id'];
 
+    /** Returns a boolean for if a course if finished
+     * @return bool
+     */
     public function Finished()
     {
         $course = $this->belongsTo('App\courses', 'course_id', 'id')->get()->first();
@@ -43,29 +46,40 @@ class userCourseUnlocks extends Model
         }
     }
 
+    /** Returns the progress percentage
+     * @return float|int
+     */
     public function ProgressPercentage()
     {
         $course = $this->belongsTo('App\courses', 'course_id', 'id')->get()->first();
         if ($course != null && $course->AmountOfAssignments() > 0) {
-            return 100 / $course->AmountOfAssignments() * $this->AmountOfCompletedLessons();
+            return round(100 / $course->AmountOfAssignments() * $this->AmountOfCompletedLessons());
         } else {
             return 0;
         }
     }
 
+    /** Returns the course object that is connected to this user course unlock
+     * @return mixed
+     */
     public function Course()
     {
         return $this->belongsTo('App\courses', 'course_id', 'id')->get()->first();
     }
 
+    /** Returns the amount of completed lessons in that course
+     * @return int
+     */
     public function AmountOfCompletedLessons()
     {
         $amountOfCompletedLessons = 0;
-        $course = $this->hasOne('App\courses', 'id', 'course_id')->get()->first();
-        foreach ($course->Chapters() as $chapter) {
-            foreach ($chapter->Lessons() as $lesson) {
-                if ($lesson->Completed()) {
-                    $amountOfCompletedLessons++;
+        $course = $this->hasOne('App\courses', 'id', 'course_id')->get();
+        if ($course->count() > 0) {
+            foreach ($course->first()->Chapters() as $chapter) {
+                foreach ($chapter->Lessons() as $lesson) {
+                    if ($lesson->Completed()) {
+                        $amountOfCompletedLessons++;
+                    }
                 }
             }
         }
