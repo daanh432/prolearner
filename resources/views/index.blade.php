@@ -20,13 +20,13 @@
                                         @csrf
                                         <h2 class="text-center my-4">{{ __('auth.register') }}</h2>
                                         <div class="form-group mb-4">
-                                            <input type="text" id="fullName" class="form-control" placeholder="{{ __('pages.fullName') }}" name="name" required>
+                                            <input type="text" id="fullName" class="form-control" placeholder="{{ __('pages.fullName') }}" name="name" value="{{ old('name') }}" required>
                                             <div class="valid-feedback">Valid.</div>
                                             <div class="invalid-feedback">Please fill out this field.</div>
                                         </div>
 
                                         <div class="form-group mb-4">
-                                            <input type="email" id="email" class="form-control" placeholder="{{ __('auth.E-Mail Address') }}" name="email" required>
+                                            <input type="email" id="email" class="form-control" placeholder="{{ __('auth.E-Mail Address') }}" name="email" required value="{{ old('email') }}">
                                             <div class="valid-feedback">Valid.</div>
                                             <div class="invalid-feedback">Please fill out this field.</div>
                                         </div>
