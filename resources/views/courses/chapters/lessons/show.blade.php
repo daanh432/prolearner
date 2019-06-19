@@ -3,7 +3,7 @@
 @section('title', $lesson->name . ' - ' . $lesson->Chapter()->name . ' - ' .$lesson->Chapter()->Course()->name)
 
 @push('head')
-    <link rel="stylesheet" href="{{ asset('assets/css/liveEditor.css') }}">
+    <link rel="stylesheet" href="{{ mix('assets/css/liveEditor.css') }}">
 @endpush
 
 @section('content')
@@ -14,5 +14,5 @@
 
 @push('scripts')
     <script src="{{ asset('ace/ace.js') }}" type="text/javascript" charset="utf-8"></script>
-    <script src="{{ asset('assets/js/liveEditor.js') }}"></script>
+    <script src="{{ mix('assets/js/liveEditor.js') }}"></script>
 @endpush

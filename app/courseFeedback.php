@@ -2,7 +2,10 @@
 
 namespace App;
 
+use Eloquent;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Carbon;
 
 /**
  * App\courseFeedback
@@ -10,17 +13,17 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $id
  * @property int $course_id
  * @property string $comment
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
- * @method static \Illuminate\Database\Eloquent\Builder|\App\courseFeedback newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\courseFeedback newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\courseFeedback query()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\courseFeedback whereComment($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\courseFeedback whereCourseId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\courseFeedback whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\courseFeedback whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\courseFeedback whereUpdatedAt($value)
- * @mixin \Eloquent
+ * @property Carbon|null $created_at
+ * @property Carbon|null $updated_at
+ * @method static Builder|courseFeedback newModelQuery()
+ * @method static Builder|courseFeedback newQuery()
+ * @method static Builder|courseFeedback query()
+ * @method static Builder|courseFeedback whereComment($value)
+ * @method static Builder|courseFeedback whereCourseId($value)
+ * @method static Builder|courseFeedback whereCreatedAt($value)
+ * @method static Builder|courseFeedback whereId($value)
+ * @method static Builder|courseFeedback whereUpdatedAt($value)
+ * @mixin Eloquent
  */
 class courseFeedback extends Model
 {

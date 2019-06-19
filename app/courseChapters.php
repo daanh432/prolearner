@@ -2,7 +2,11 @@
 
 namespace App;
 
+use Eloquent;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Carbon;
 
 /**
  * App\courseChapters
@@ -10,17 +14,17 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $id
  * @property int $course_id
  * @property string $name
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
- * @method static \Illuminate\Database\Eloquent\Builder|\App\courseChapters newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\courseChapters newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\courseChapters query()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\courseChapters whereCourseId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\courseChapters whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\courseChapters whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\courseChapters whereName($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\courseChapters whereUpdatedAt($value)
- * @mixin \Eloquent
+ * @property Carbon|null $created_at
+ * @property Carbon|null $updated_at
+ * @method static Builder|courseChapters newModelQuery()
+ * @method static Builder|courseChapters newQuery()
+ * @method static Builder|courseChapters query()
+ * @method static Builder|courseChapters whereCourseId($value)
+ * @method static Builder|courseChapters whereCreatedAt($value)
+ * @method static Builder|courseChapters whereId($value)
+ * @method static Builder|courseChapters whereName($value)
+ * @method static Builder|courseChapters whereUpdatedAt($value)
+ * @mixin Eloquent
  */
 class courseChapters extends Model
 {
@@ -28,10 +32,16 @@ class courseChapters extends Model
         'name', 'course_id'
     ];
 
+    /** Returns the lessons that are linked to this chapter
+     * @return Collection
+     */
     public function Lessons() {
         return $this->hasMany('App\courseChapterLessons', 'course_chapter_id', 'id')->orderBy('id', 'ASC')->get();
     }
 
+    /** Returns the course that is linked to this chapter
+     * @return mixed
+     */
     public function Course() {
         return $this->belongsTo('App\courses', 'course_id', 'id')->get()->first();
     }

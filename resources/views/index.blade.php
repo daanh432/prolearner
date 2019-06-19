@@ -20,13 +20,13 @@
                                         @csrf
                                         <h2 class="text-center my-4">{{ __('auth.register') }}</h2>
                                         <div class="form-group mb-4">
-                                            <input type="text" id="fullName" class="form-control" placeholder="{{ __('pages.fullName') }}" name="name" required>
+                                            <input type="text" id="fullName" class="form-control" placeholder="{{ __('pages.fullName') }}" name="name" value="{{ old('name') }}" required>
                                             <div class="valid-feedback">Valid.</div>
                                             <div class="invalid-feedback">Please fill out this field.</div>
                                         </div>
 
                                         <div class="form-group mb-4">
-                                            <input type="email" id="email" class="form-control" placeholder="{{ __('auth.E-Mail Address') }}" name="email" required>
+                                            <input type="email" id="email" class="form-control" placeholder="{{ __('auth.E-Mail Address') }}" name="email" required value="{{ old('email') }}">
                                             <div class="valid-feedback">Valid.</div>
                                             <div class="invalid-feedback">Please fill out this field.</div>
                                         </div>
@@ -95,13 +95,13 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="md-form mb-0">
-                                                <input type="text" id="name" name="name" placeholder="{{ __("pages.name") }}" class="form-control mb-4">
+                                                <input type="text" id="name" name="name" placeholder="{{ __("pages.name") }}" class="form-control mb-4" value="{{ old('name') }}">
                                             </div>
                                         </div>
 
                                         <div class="col-md-6">
                                             <div class="md-form mb-0">
-                                                <input type="text" id="emailContact" name="email" placeholder="{{ __("auth.E-Mail Address") }}" class="form-control mb-4">
+                                                <input type="text" id="emailContact" name="email" placeholder="{{ __("auth.E-Mail Address") }}" class="form-control mb-4" value="{{ old('email') }}">
                                             </div>
                                         </div>
                                     </div>
@@ -109,7 +109,7 @@
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="md-form mb-0">
-                                                <input type="text" id="subject" name="subject" placeholder="{{ __("pages.subject") }}" class="form-control mb-4">
+                                                <input type="text" id="subject" name="subject" placeholder="{{ __("pages.subject") }}" class="form-control mb-4" value="{{ old('subject') }}">
                                             </div>
                                         </div>
                                     </div>
@@ -117,7 +117,7 @@
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="md-form">
-                                                <textarea id="message" name="message" rows="2" maxlength="500" placeholder="{{ __("pages.message") }}" class="form-control md-textarea mb-4"></textarea>
+                                                <textarea id="message" name="message" rows="2" maxlength="500" placeholder="{{ __("pages.message") }}" class="form-control md-textarea mb-4">{{ old('message') }}</textarea>
                                             </div>
                                         </div>
                                     </div>
