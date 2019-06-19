@@ -3,8 +3,7 @@
 
 You received a message on https://prolearner.daanhendriks.nl/.
 
-First name: {{ $submission->firstName }}<br>
-Last name: {{ $submission->lastName }}<br>
+First name: {{ $submission->name }}<br>
 Email address: {{ $submission->emailAddress }}<br>
 Subject: {{ $submission->subject }}<br>
 Message:<br>

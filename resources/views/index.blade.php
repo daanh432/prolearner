@@ -95,13 +95,13 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="md-form mb-0">
-                                                <input type="text" id="name" name="name" placeholder="{{ __("pages.name") }}" class="form-control mb-4">
+                                                <input type="text" id="name" name="name" placeholder="{{ __("pages.name") }}" class="form-control mb-4" value="{{ old('name') }}">
                                             </div>
                                         </div>
 
                                         <div class="col-md-6">
                                             <div class="md-form mb-0">
-                                                <input type="text" id="emailContact" name="email" placeholder="{{ __("auth.E-Mail Address") }}" class="form-control mb-4">
+                                                <input type="text" id="emailContact" name="email" placeholder="{{ __("auth.E-Mail Address") }}" class="form-control mb-4" value="{{ old('emailContact') }}">
                                             </div>
                                         </div>
                                     </div>
@@ -109,7 +109,7 @@
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="md-form mb-0">
-                                                <input type="text" id="subject" name="subject" placeholder="{{ __("pages.subject") }}" class="form-control mb-4">
+                                                <input type="text" id="subject" name="subject" placeholder="{{ __("pages.subject") }}" class="form-control mb-4" value="{{ old('subject') }}">
                                             </div>
                                         </div>
                                     </div>
@@ -117,7 +117,7 @@
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="md-form">
-                                                <textarea id="message" name="message" rows="2" maxlength="500" placeholder="{{ __("pages.message") }}" class="form-control md-textarea mb-4"></textarea>
+                                                <textarea id="message" name="message" rows="2" maxlength="500" placeholder="{{ __("pages.message") }}" class="form-control md-textarea mb-4">{{ old('message') }}</textarea>
                                             </div>
                                         </div>
                                     </div>
