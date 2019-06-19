@@ -4,7 +4,7 @@
 You received a message on https://prolearner.daanhendriks.nl/.
 
 First name: {{ $submission->name }}<br>
-Email address: {{ $submission->emailAddress }}<br>
+Email address: {{ $submission->email }}<br>
 Subject: {{ $submission->subject }}<br>
 Message:<br>
 {{ $submission->message }}
