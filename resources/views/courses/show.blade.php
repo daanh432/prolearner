@@ -58,7 +58,7 @@
                                                             @if($lesson->Completed())
                                                                 <i class="far fa-check-circle text-primary lessonCompletedIcon"></i>
                                                             @else
-                                                                <i class="far fa-play-circle text-primary lessonCompletedIcon"></i>
+                                                                <i class="far fa-play-circle lessonCompletedIcon"></i>
                                                             @endif
                                                             <p class="d-inline-block lessonNameRow">{{ $lesson->name }}</p>
                                                         </div>
