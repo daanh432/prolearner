@@ -9,7 +9,7 @@ Subject: {{ $submission->subject }}<br>
 Message:<br>
 {{ $submission->message }}
 
-@component('mail::button', ['url' => 'mailto:' . $submission->emailAddress ])
+@component('mail::button', ['url' => 'mailto:' . $submission->email ])
 Respond to message
 @endcomponent
 
